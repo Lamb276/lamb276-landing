@@ -1,0 +1,27 @@
+@font-face {
+    font-family: "Golos Text";
+    src: url("./assets/fonts/GolosText-VariableFont_wght.ttf")
+        format("truetype-variations");
+    src: url("./assets/fonts/GolosText-VariableFont_wght.ttf")
+        format("truetype");
+    font-weight: 100 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+html {
+    font-size: 10px !important; /* 1rem = 10px */
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Golos Text", sans-serif;
+    font-weight: 100;
+    background-color: #020202;
+    color: #ecfdf5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
