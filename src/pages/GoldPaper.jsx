@@ -573,6 +573,13 @@ const ContentContainer = styled.div`
     padding-left: 2rem;
     padding-right: 2rem;
 
+    /* Mobile */
+    ${media.mobile`
+    padding-top: 12rem;
+    padding-bottom: 5.6rem;
+    `}
+
+    /* Tablet */
     ${media.tablet`
         padding-top: 12rem;
         padding-left: 4rem;
@@ -588,6 +595,7 @@ const Section = styled.section`
     align-items: flex-start;
     text-align: left;
 
+    /* Mobile */
     ${media.mobile`
         margin-bottom: 8rem;
     `}
@@ -596,7 +604,8 @@ const Section = styled.section`
 const HeroSection = styled(Section)`
     margin-bottom: 10rem;
 
-    ${media.mobile`margin-bottom: 10rem;`}
+    /* Mobile */
+    ${media.mobile`margin-bottom: 8rem;`}
 `;
 
 const Title = styled.h1`
@@ -606,8 +615,9 @@ const Title = styled.h1`
     text-transform: uppercase;
     text-shadow: 0 0 20px rgba(5, 208, 155, 0.3);
 
+    /* Mobile,Tablet */
+    ${media.mobile`font-size: 4.4rem; margin-bottom: 0rem;`}
     ${media.tablet`font-size: 6rem;`}
-    ${media.mobile`font-size: 4rem;`}
 `;
 
 const MetaInfo = styled.div`
@@ -619,6 +629,13 @@ const MetaInfo = styled.div`
     margin-bottom: 0.8rem;
     flex-wrap: wrap;
     justify-content: flex-start;
+
+    /* Mobile */
+    ${media.mobile`
+        ${({ theme }) => theme.typography.md};
+        gap: 0.8rem;
+        margin-bottom: 0.4rem;
+        `}
 `;
 
 const Subtitle = styled.h2`
@@ -627,6 +644,8 @@ const Subtitle = styled.h2`
     width: 100%;
     line-height: 1.3;
     margin-bottom: 0rem;
+
+    /* Mobile */
     ${media.mobile`${({ theme }) => theme.typography.md};`}
 `;
 
@@ -643,8 +662,9 @@ const SectionTitle = styled.h3`
     display: block; // block으로 변경하여 전체 영역 차지 가능
     width: 100%;
 
+    /* Mobile */
     ${media.mobile`
-        ${({ theme }) => theme.typography.xl_1};
+        ${({ theme }) => theme.typography.xxl};
         margin-bottom: 3rem;
     `}
 `;
@@ -656,6 +676,10 @@ const SubSectionHeader = styled.h4`
     margin-top: 1rem;
     text-transform: uppercase;
     width: 100%;
+
+    ${media.mobile`
+        ${({ theme }) => theme.typography.lg};
+    `}
 `;
 
 const QuoteBox = styled.div`
@@ -666,6 +690,7 @@ const QuoteBox = styled.div`
     margin-bottom: 4rem;
     line-height: 1.3;
 
+    /* Mobile */
     ${media.mobile`
         ${({ theme }) => theme.typography.md};
     `}
@@ -681,6 +706,12 @@ const Tagline = styled.p`
     .highlight {
         color: ${({ theme }) => theme.colors.ng};
     }
+
+    /* Mobile */
+    ${media.mobile`
+        ${({ theme }) => theme.typography.md};
+        line-height: 1.3;
+    `}
 `;
 
 const TextBlock = styled.div`
@@ -697,6 +728,7 @@ const TextBlock = styled.div`
         text-align: left;
     }
 
+    /* Mobile */
     ${media.mobile`
         p {
             ${({ theme }) => theme.typography.sm_2};
@@ -759,6 +791,7 @@ const GridTwoColumn = styled.div`
     gap: 3rem;
     width: 100%;
 
+    /* Mobile */
     ${media.mobile`grid-template-columns: 1fr;`}
 `;
 
@@ -792,8 +825,9 @@ const GridThreeColumn = styled.div`
     gap: 2rem;
     width: 100%;
 
-    ${media.tablet`grid-template-columns: repeat(2, 1fr);`}
+    /* Mobile, Tablet */
     ${media.mobile`grid-template-columns: 1fr;`}
+    ${media.tablet`grid-template-columns: repeat(2, 1fr);`}
 `;
 
 const VisionCard = styled(GridCard)`
@@ -928,6 +962,11 @@ const ChartImageWrapper = styled.div`
         height: auto;
         object-fit: contain;
     }
+
+    /* Mobile */
+    ${media.mobile`
+        width: 100%;
+    `}
 `;
 
 const DisclaimerSection = styled.div`
