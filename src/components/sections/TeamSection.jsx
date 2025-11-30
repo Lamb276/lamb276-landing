@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { LEADER_DATA, MEMBER_DATA } from "../../constants/team";
 import drKimImage from "../../assets/images/dr-kim.png";
 import Button from "../common/Button";
+import { media } from "../../styles/media";
 
 const memberImagesModules = import.meta.glob(
     "../../assets/images/member/*.png",
@@ -95,78 +96,107 @@ const TeamSection = () => {
 
 export default TeamSection;
 
-// 이미지 placeholder (이미지가 없을 때 보여줄 회색 박스)
-// const PlaceholderImage = styled.div`
-//     width: 100%;
-//     height: 100%;
-//     background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     color: #333;
-//     font-size: 1.2rem;
-// `;
-
 const SectionContainer = styled.section`
-    padding: 16rem 16rem;
     background-color: ${({ theme }) => theme.colors.ngB};
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0;
+
+    /* Tablet */
+    ${media.tablet`
+        padding: 14rem 8rem 8rem;
+    `}
+
+    /* PC */
+    ${media.pc`
+        padding: 16rem;
+    `}
 `;
 
 const InnerWrapper = styled.div`
     width: 100%;
-    padding: 0 16rem;
     max-width: 128rem;
+
+    /* Tablet */
+    ${media.tablet`
+        padding: 0 2rem;
+    `}
 `;
 
 // Leader
 const LeaderWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 4rem;
     margin-bottom: 4rem;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.pc}) {
+    /* Tablet */
+    ${media.tablet`
+        gap: 0;
+        margin-bottom: 8rem;
+    `}
+
+    /* PC */
+    ${media.pc`
+        gap: 4rem;
         flex-direction: row;
-        align-items: center;
+        align-items: end;
         justify-content: space-between;
-    }
+    `}
 `;
 
 const LeaderInfo = styled(motion.div)`
     flex: 1;
-    order: 2; /* 모바일: 텍스트가 아래 */
+    order: 2;
+    position: relative;
+    z-index: 10;
+    margin-top: -8rem;
+    padding: 0 2rem;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.pc}) {
-        order: 1; /* PC: 텍스트가 왼쪽 */
+    /* Tablet */
+    ${media.tablet`
+        margin-top: -16rem;
+    `}
+
+    /* PC */
+    ${media.pc`
+        order: 1;
         max-width: 50%;
-    }
+        margin-top: 0;
+        margin-bottom: 4rem;
+        padding-left: 0;
+        padding: 0;
+    `}
 `;
 
 const LeaderName = styled.h2`
     ${({ theme }) => theme.typography.xxl};
     color: ${({ theme }) => theme.colors.ng};
     margin-bottom: 2rem;
+    text-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.5);
+
+    /* Mobile */
+    ${media.mobile`
+        margin-bottom: 1.6rem;
+    `}
 `;
 
 const LeaderDesc = styled.p`
     ${({ theme }) => theme.typography.sm_2};
     color: ${({ theme }) => theme.colors.ngW_Alpha};
     opacity: 0.8;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
     white-space: pre-line;
 `;
 
 const LeaderImageFrame = styled(motion.div)`
     flex: 1;
     order: 1;
-
-    height: 56rem;
+    height: 40rem;
     width: 100%;
     overflow: hidden;
     position: relative;
+    z-index: 1;
 
     &::after {
         content: "";
@@ -182,44 +212,81 @@ const LeaderImageFrame = styled(motion.div)`
         object-position: top center;
     }
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.pc}) {
+    /* Tablet */
+    ${media.tablet`
+        display: flex;
+        width: 48rem;
+        height: auto;
+        margin-left: auto;
+    `}
+
+    /* PC */
+    ${media.pc`
         order: 2;
+        height: 56rem;
         max-width: 40rem;
-    }
+        margin-left: 0;
+    `}
 `;
 
 const ButtonWrapper = styled.div`
     display: flex;
     align-items: center;
+    justify-content: center;
+
+    /* Tablet, PC */
+    ${media.tablet`
     justify-content: flex-end;
+    `}
+    ${media.pc`
+    justify-content: flex-end;
+    `}
 `;
 
 // Member
 const GridContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 모바일: 2열 */
-    gap: 6rem 2.4rem;
+    gap: 3.2rem 2rem;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    /* Mobile */
+    ${media.mobile`
+        padding: 0 2rem;
+    `}
+
+    /* Tablet */
+    ${media.tablet`
         grid-template-columns: repeat(3, 1fr); /* 태블릿: 3열 */
-    }
+        padding: 0 0rem;
+        gap: 6rem 2.4rem;
+    `}
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.pc}) {
+    /* PC */
+    ${media.pc`
         grid-template-columns: repeat(4, 1fr); /* PC: 4열 */
         max-width: 108rem;
-    }
+        gap: 6rem 2.4rem;
+    `}
 `;
 
 const MemberCard = styled(motion.div)`
     display: flex;
     flex-direction: column;
+    gap: 1.2rem;
+
+    /* Tablet, PC */
+    ${media.tablet`
     gap: 2rem;
+    `}
+    ${media.pc`
+    gap: 2rem;
+    `}
 `;
 
 const MemberImage = styled.div`
     width: 100%;
     aspect-ratio: 1 / 1;
-    border-radius: 4.8rem;
+    border-radius: 2.8rem;
     overflow: hidden;
     position: relative;
     border: 0.2rem solid transparent;
@@ -243,6 +310,14 @@ const MemberImage = styled.div`
         pointer-events: none;
         box-shadow: inset 0 0rem 0rem #05d09b;
     }
+
+    /* Tablet, PC */
+    ${media.tablet`
+    border-radius: 4.8rem;
+    `}
+    ${media.pc`
+    border-radius: 4.8rem;
+    `}
 `;
 
 const MemberInfo = styled.div`
@@ -251,19 +326,43 @@ const MemberInfo = styled.div`
 `;
 
 const MemberRole = styled.span`
-    ${({ theme }) => theme.typography.sm_1};
+    ${({ theme }) => theme.typography.xs};
     color: ${({ theme }) => theme.colors.ngW_Alpha};
     margin-bottom: 1.2rem;
+
+    /* Tablet, PC */
+    ${media.tablet`
+        ${({ theme }) => theme.typography.sm_1};
+    `}
+    ${media.pc`
+        ${({ theme }) => theme.typography.sm_1};
+    `}
 `;
 
 const MemberName = styled.h3`
-    ${({ theme }) => theme.typography.md};
+    font-size: 1.6rem;
     color: ${({ theme }) => theme.colors.ngW};
     font-weight: 600;
+
+    /* Tablet, PC */
+    ${media.tablet`
+        ${({ theme }) => theme.typography.xl_2};
+    `}
+    ${media.pc`
+        ${({ theme }) => theme.typography.xl_2};
+    `}
 `;
 
 const MemberPosition = styled.span`
-    ${({ theme }) => theme.typography.sm_1};
+    font-size: 1.2rem;
     color: ${({ theme }) => theme.colors.ng};
-    margin-top: 0.5rem;
+    margin-top: 0rem;
+
+    /* Tablet, PC */
+    ${media.tablet`
+        ${({ theme }) => theme.typography.sm_2};
+    `}
+    ${media.pc`
+        ${({ theme }) => theme.typography.sm_2};
+    `}
 `;

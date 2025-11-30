@@ -45,7 +45,7 @@ export const typography = {
     xxxl: css`
         // 3xl
         font-size: 8rem;
-        line-height: 8rem; /* 80px */
+        line-height: 8rem;
         letter-spacing: -3.2px;
     `,
 };

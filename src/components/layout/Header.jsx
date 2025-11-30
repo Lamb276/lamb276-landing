@@ -14,6 +14,9 @@ import {
     AboutModalContent,
     ContactModalContent,
 } from "../layout/ModalContents";
+import { media } from "../../styles/media";
+
+const mobileLogo = "/favicon.svg";
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,8 +34,8 @@ const Header = () => {
     }, []);
 
     const handleLogoClick = () => {
-        navigate("/"); // Home('/') 경로로 이동
-        window.scrollTo({ top: 0, behavior: "smooth" }); // 스크롤 최상단으로
+        navigate("/");
+        window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
     const handleMenuClick = (e, item) => {
@@ -49,15 +52,18 @@ const Header = () => {
         <>
             <HeaderWrapper $isScrolled={isScrolled}>
                 <HeaderInner>
-                    <LeftSection>
-                        <MobileMenuBtn onClick={() => setIsMenuOpen(true)}>
-                            <RxHamburgerMenu />
-                        </MobileMenuBtn>
-                        <Logo onClick={handleLogoClick}>
-                            <img src={lambLogo} alt="Logo" />
-                        </Logo>
-                    </LeftSection>
+                    {/* 1. Hamburger (Mobile) */}
+                    <MobileMenuBtn onClick={() => setIsMenuOpen(true)}>
+                        <RxHamburgerMenu />
+                    </MobileMenuBtn>
 
+                    {/* 2. Logo */}
+                    <Logo onClick={handleLogoClick}>
+                        <DefaultLogo src={lambLogo} alt="Logo" />
+                        <MobileLogoImg src={mobileLogo} alt="Logo Symbol" />
+                    </Logo>
+
+                    {/* 3. Nav */}
                     <Nav>
                         {MENU_ITEMS.map((item) => {
                             if (item.children) {
@@ -71,7 +77,10 @@ const Header = () => {
                                             setHoveredItem(null)
                                         }
                                     >
-                                        <NavItem to={item.path}>
+                                        <NavItem
+                                            as="div"
+                                            style={{ cursor: "default" }}
+                                        >
                                             {item.label}
                                             <ArrowIcon
                                                 animate={{
@@ -149,6 +158,7 @@ const Header = () => {
                         })}
                     </Nav>
 
+                    {/* 4. Button */}
                     <Button
                         size="sm"
                         variant="token"
@@ -173,12 +183,12 @@ const HeaderWrapper = styled.header`
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 20rem; /* PC 기준 (모바일은 아래 Inner나 패딩으로 조절) */
+    right: 0;
+    width: auto;
+    height: 9.6rem;
     z-index: 1000;
     display: flex;
     justify-content: center;
-
     background: linear-gradient(
         180deg,
         rgba(2, 2, 2, 1) 0%,
@@ -186,52 +196,106 @@ const HeaderWrapper = styled.header`
     );
     backdrop-filter: none;
     pointer-events: none;
+    padding: 0;
 
-    padding: 0 2rem;
+    /* Tablet */
+    ${media.tablet`
+        height: 14rem;
+        background: linear-gradient(
+            180deg,
+            rgba(2, 2, 2, 1) 0%,
+            rgba(2, 2, 2, 0.8) 50%,
+            rgba(2, 2, 2, 0) 100%
+        );
+    `}
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-        padding: 0 4rem;
-    }
-
-    /* PC 패딩 제거 (InnerMaxWidth로 제어) 또는 유지 */
-    @media (min-width: ${({ theme }) => theme.breakpoints.pc}) {
-        padding: 0 16rem;
-        /* height는 유지하거나 필요시 줄임 */
-    }
+    /* PC */
+    ${media.pc`
+        height: 20rem;
+    `}
 `;
 
 const HeaderInner = styled.div`
     width: 100%;
-    max-width: 128rem; /* [핵심] 컨텐츠 최대 너비 제한 */
+    max-width: 128rem;
     height: 100%;
-
-    /* Flex 레이아웃 담당 */
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 2.4rem;
 
-    /* 자식 요소 클릭 가능하게 */
     & > * {
         pointer-events: auto;
     }
-`;
 
-const LeftSection = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
+    /* Mobile */
+    ${media.mobile`
+        justify-content: flex-start;
+        padding: 0 2rem;
+        gap: 2rem;
+        
+        & > :last-child {
+            display: none;
+        }
+    `}
+
+    /* Tablet */
+    ${media.tablet`
+        padding: 0 4rem;
+        flex-wrap: wrap;
+        align-content: center;
+        gap: 0; 
+        justify-content: space-between;
+
+        & > :nth-child(2) { 
+            order: 1; 
+            width: auto;
+        }
+        
+        & > :nth-child(4) { 
+            order: 2; 
+            width: auto;
+            margin-left: 0;
+        }
+
+        & > :nth-child(3) { 
+            order: 3; 
+            width: 100%;
+            justify-content: center; 
+            margin-top: 1.5rem;
+        }
+    `}
+
+    /* PC */
+    ${media.pc`
+        padding: 0 16rem;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        gap: 0;
+        
+        & > :nth-child(2) { width: auto; order: 0; margin: 0; }
+        & > :nth-child(4) { width: auto; order: 0; margin: 0; }
+        & > :nth-child(3) { 
+            width: auto; 
+            order: 0; 
+            margin-top: 0; 
+            position: absolute; 
+            left: 50%; 
+            transform: translateX(-50%); 
+        }
+    `}
 `;
 
 const MobileMenuBtn = styled.button`
-    display: flex;
     align-items: center;
     font-size: 2.8rem;
     color: ${({ theme }) => theme.colors.ngW};
     padding: 0;
+    display: flex;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-        display: none;
-    }
+    /* Tablet, PC */
+    ${media.tablet`display: none;`}
+    ${media.pc`display: none;`}
 `;
 
 const Logo = styled.div`
@@ -242,24 +306,31 @@ const Logo = styled.div`
     font-weight: 700;
     color: ${({ theme }) => theme.colors.ngW};
     cursor: pointer;
+    height: 3.2rem;
+    flex-shrink: 0;
+    position: static;
+    transform: none;
+    left: auto;
+`;
 
-    img {
-        width: auto;
-        height: 3.2rem;
-    }
+const DefaultLogo = styled.img`
+    width: auto;
+    height: 100%;
+    ${media.mobile`display: none;`}
+`;
+
+const MobileLogoImg = styled.img`
+    width: auto;
+    height: 100%;
+    display: none;
+    ${media.mobile`display: block;`}
 `;
 
 const Nav = styled.nav`
-    display: none;
-
-    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-        display: flex;
-        gap: 4rem;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        align-items: center;
-    }
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+    ${media.mobile`display: none;`}
 `;
 
 const NavGroup = styled.div`
@@ -268,7 +339,7 @@ const NavGroup = styled.div`
     align-items: center;
     height: auto;
     cursor: pointer;
-    padding: 1rem 0;
+    padding: 0;
 `;
 
 const NavItem = styled(Link)`
@@ -280,7 +351,6 @@ const NavItem = styled(Link)`
     align-items: center;
     gap: 0.4rem;
     white-space: nowrap;
-
     &:hover {
         color: ${({ theme }) => theme.colors.ng};
         text-shadow: 0 0 0.8rem ${({ theme }) => theme.colors.ng_Alpha};
@@ -298,8 +368,9 @@ const DropdownMenu = styled(motion.div)`
     top: 100%;
     left: -35%;
     transform: translateX(-50%);
-    margin-top: 0rem;
     min-width: 8.8rem;
+    padding-top: 1.6rem;
+    pointer-events: auto;
     display: flex;
     flex-direction: column;
 `;
@@ -330,7 +401,6 @@ const DropdownItem = styled.a`
     border-radius: 0rem;
     transition: all 0.2s ease;
     text-align: center;
-
     &:hover {
         color: ${({ theme }) => theme.colors.ngW};
     }

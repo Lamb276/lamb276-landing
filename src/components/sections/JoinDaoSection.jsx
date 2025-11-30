@@ -5,6 +5,7 @@ import DiscordIcon from "../../assets/icons/discord.svg";
 import twinkleSvg from "../../assets/icons/twinkle.svg";
 import JoinDaoBg from "../../assets/images/join-dao-background.png";
 import Button from "../common/Button";
+import { media } from "../../styles/media";
 
 const JoinDaoSection = () => {
     return (
@@ -87,12 +88,22 @@ const opacityLoop = keyframes`
 const SectionContainer = styled.section`
     position: relative;
     width: 100%;
-    padding: 16rem 16rem;
+    padding: 2rem 2.8rem 16rem;
     background-color: ${({ theme }) => theme.colors.ngB};
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+
+    /* Tablet */
+    ${media.tablet`
+    padding: 16rem 8rem;
+    `}
+
+    /* PC */
+    ${media.pc`
+    padding: 8rem 16rem 16rem;
+    `}
 `;
 
 const BackgroundImage = styled.img`
@@ -112,18 +123,34 @@ const ContentWrapper = styled(motion.div)`
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 2rem;
+
+    /* Tablet, PC */
+    ${media.tablet`
     gap: 4rem;
+    `}
+    ${media.pc`
+    gap: 4rem;
+    `}
 `;
 
 const TitleArea = styled.div`
     display: flex;
     align-items: center;
+    gap: 1.2rem;
+
+    /* Tablet, PC */
+    ${media.tablet`
     gap: 2rem;
+    `}
+    ${media.pc`
+    gap: 2rem;
+    `}
 `;
 
 const StarIcon = styled.div`
-    width: 4rem;
-    height: 4rem;
+    width: 4.4rem;
+    height: 4.4rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -133,27 +160,52 @@ const StarIcon = styled.div`
         height: auto;
         animation: ${neonPulseIcon} 3s ease-in-out infinite;
     }
+
+    /* Tablet, PC */
+    ${media.tablet`
+        width: 4rem;
+        height: 4rem;
+    `}
+    ${media.pc`
+        width: 4rem;
+        height: 4rem;
+    `}
 `;
 
 const Title = styled.h2`
-    /* 모바일 */
-    font-size: 3.6rem;
+    ${({ theme }) => theme.typography.xxl};
     line-height: 1;
     color: ${({ theme }) => theme.colors.ng};
     font-weight: 500;
 
-    /* 태블릿 및 PC 이상 */
-    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    /* Tablet, PC */
+    ${media.tablet`
+        font-size: 4.8rem;
+        line-height: 1;
+        letter-spacing: -0.32rem;
+    `}
+    ${media.pc`
         font-size: 5.6rem;
         line-height: 1;
         letter-spacing: -0.32rem;
-    }
+    `}
 `;
 
 const SubtitleList = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+
+    /* Tablet, PC */
+    ${media.tablet`
+        gap: 2rem;
+        margin-bottom: 0;
+    `}
+    ${media.pc`
+        gap: 2rem;
+        margin-bottom: 0;
+    `}
 `;
 
 const SubtitleItem = styled.p`
@@ -163,9 +215,13 @@ const SubtitleItem = styled.p`
     letter-spacing: -4%;
     animation: ${neonPulseText} 2s ease-in-out infinite;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    /* Tablet, PC */
+    ${media.tablet`
         ${({ theme }) => theme.typography.xxl};
-    }
+    `}
+    ${media.pc`
+        ${({ theme }) => theme.typography.xxl};
+    `}
 `;
 
 const BackgroundGlow = styled.div`

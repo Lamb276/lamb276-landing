@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
+import { media } from "../../styles/media";
 
 const partnerLogosModules = import.meta.glob(
     "../../assets/images/partner/*.svg",
@@ -44,7 +45,6 @@ const MarqueeContainer = styled.div`
     width: 100%;
     max-width: 128rem;
     margin: 0 auto;
-    padding: 16rem 0 0;
     background-color: transparent;
     overflow: hidden;
     display: flex;
@@ -65,6 +65,19 @@ const MarqueeContainer = styled.div`
         black 90%,
         transparent
     );
+
+    /* 모바일 */
+    padding: 6rem 0 8rem;
+
+    /* Tablet */
+    ${media.tablet`
+        padding: 14rem 0 0;
+    `}
+
+    /* PC */
+    ${media.pc`
+        padding: 16rem 0 0;
+    `}
 `;
 
 const Track = styled.div`

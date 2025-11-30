@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import coinImage from "../../assets/images/lamb-coin-btm-transper.png";
 import gradientBgLight from "../../assets/images/gradient-bg-light.png";
+import { media } from "../../styles/media";
 
 const VisionSection = () => {
     return (
@@ -42,14 +43,18 @@ export default VisionSection;
 
 const SectionContainer = styled.section`
     width: 100%;
-    padding: 2rem 2rem;
+    padding: 4rem 2rem;
     background-color: ${({ theme }) => theme.colors.ngB};
     display: flex;
     justify-content: center;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-        padding: 16rem 16rem;
-    }
+    /* Tablet, PC */
+    ${media.tablet`
+        padding: 16rem 8rem;
+    `}
+    ${media.pc`
+        padding: 16rem;
+    `}
 `;
 
 const VisionCard = styled(motion.div)`
@@ -68,10 +73,12 @@ const VisionCard = styled(motion.div)`
     align-items: center;
     justify-content: center;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    /* Tablet */
+    ${media.tablet`
         min-height: 30rem;
         border-radius: 2.4rem;
-    }
+        padding: 4rem;
+    `}
 `;
 
 const CardBgImage = styled.img`
@@ -122,12 +129,17 @@ const ContentWrapper = styled.div`
     align-items: center;
     text-align: center;
     gap: 0rem;
+
+    /* PC */
+    ${media.pc`
+    gap: 1.6rem;
+    `}
 `;
 
 const IconWrapper = styled(motion.div)`
-    width: 16rem;
-    height: 16rem;
-    margin-bottom: -4rem;
+    width: 12rem;
+    height: 12rem;
+    margin-bottom: -1rem;
     position: relative;
     display: flex;
     align-items: center;
@@ -141,49 +153,63 @@ const IconWrapper = styled(motion.div)`
         filter: drop-shadow(0 0 1.5rem rgba(5, 208, 155, 0.3));
     }
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    /* Tablet, PC */
+    ${media.tablet`
         width: 16rem;
         height: 16rem;
         margin-bottom: -2rem;
-    }
+    `}
+    ${media.pc`
+        width: 16rem;
+        height: 16rem;
+        margin-bottom: -4rem;
+    `}
 `;
 
 const TextGroup = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
+
+    /* Tablet */
+    ${media.tablet`
+    gap: 0rem;
+    `}
 `;
 
 const MainTitle = styled.h1`
-    font-size: ${({ theme }) => theme.typography.xxl};
-    font-weight: 500;
+    ${({ theme }) => theme.typography.xxl};
     line-height: 1;
     color: ${({ theme }) => theme.colors.ng};
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    /* Tablet, PC */
+    ${media.tablet`
+        font-size: 4.4rem;
+    `}
+    ${media.pc`
         font-size: 4.8rem;
-    }
-
-    @media (min-width: ${({ theme }) => theme.breakpoints.pc}) {
-        font-size: 4.8rem;
-    }
+    `}
 `;
 
 const SubTitle = styled.h1`
-    font-size: 1.6rem;
+    ${({ theme }) => theme.typography.xl_2};
     color: ${({ theme }) => theme.colors.ngW};
-    font-weight: 500;
-    letter-spacing: 0.05em;
     opacity: 0.9;
     margin-bottom: 4rem;
+    line-height: 1.2;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-        font-size: 2.4rem;
-    }
+    /* Tablet */
+    ${media.tablet`
+        font-size: 3.2rem;
+        letter-spacing: -0.04em;
+            line-height: 1;
+    `}
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.pc}) {
+    /* PC */
+    ${media.pc`
         ${({ theme }) => theme.typography.xxl};
         color: ${({ theme }) => theme.colors.ngW};
         opacity: 0.9;
-    }
+        line-height: 1;
+    `}
 `;

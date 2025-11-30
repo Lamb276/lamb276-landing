@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import DiscordIcon from "../../assets/icons/discord.svg";
 import XIcon from "../../assets/icons/x.svg";
+import { media } from "../../styles/media";
 
 const SocialSection = () => {
     return (
@@ -52,15 +53,21 @@ export default SocialSection;
 const SectionContainer = styled.section`
     width: 100%;
     margin: 0 auto;
-    padding: 0 16rem 8rem 16rem;
+    padding: 0 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6.4rem;
+    gap: 4rem;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-        padding: 0 2rem 8rem 2rem;
-    }
+    /* Tablet, PC */
+    ${media.tablet`
+        padding: 0 8rem 8rem;
+        gap: 5.6rem;
+    `}
+    ${media.pc`
+    padding: 0 16rem 8rem 16rem;
+        gap: 6.4rem;
+    `}
 `;
 
 const HeaderRow = styled.div`
@@ -69,7 +76,15 @@ const HeaderRow = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 3.2rem;
+
+    /* Tablet, PC */
+    ${media.tablet`
     gap: 4rem;
+    `}
+    ${media.pc`
+    gap: 4rem;
+    `}
 `;
 
 const Line = styled.div`
@@ -77,10 +92,6 @@ const Line = styled.div`
     height: 0.1rem;
     background-color: ${({ theme }) => theme.colors.ng};
     opacity: 0.3;
-
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-        max-width: 6rem;
-    }
 `;
 
 const BottomLine = styled.div`
@@ -93,16 +104,12 @@ const BottomLine = styled.div`
 `;
 
 const Title = styled.h1`
-    font-size: ${({ theme }) => theme.typography.lg};
+    ${({ theme }) => theme.typography.xl_1};
     color: ${({ theme }) => theme.colors.ng};
     font-weight: 500;
+    letter-spacing: -0.04em;
     text-transform: capitalize;
-    letter-spacing: 0.05em;
     white-space: nowrap;
-
-    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-        font-size: ${({ theme }) => theme.typography.xl_1};
-    }
 `;
 
 const IconContainer = styled.div`
@@ -127,6 +134,7 @@ const SocialLink = styled(motion.a)`
         }
 
         img {
+            opacity: 1;
             filter: brightness(0) saturate(100%) invert(66%) sepia(63%)
                 saturate(464%) hue-rotate(107deg) brightness(93%) contrast(93%);
         }
@@ -145,15 +153,17 @@ const IconWrapper = styled.div`
         width: 4rem;
         height: 4rem;
         transition: filter 0.3s ease;
+        opacity: 0.5;
     }
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    /* Tablet */
+    ${media.tablet`
         font-size: 4rem;
         img {
             width: 4rem;
             height: 4rem;
         }
-    }
+    `}
 `;
 
 const Label = styled.span`

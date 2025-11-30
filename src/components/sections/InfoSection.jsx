@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { media } from "../../styles/media";
 
 const InfoSection = () => {
     return (
@@ -119,7 +120,15 @@ const SectionContainer = styled.section`
     background-color: ${({ theme }) => theme.colors.ngB};
     display: flex;
     justify-content: center;
+    padding: 8rem 2rem;
+
+    /* Tablet, PC */
+    ${media.tablet`
+    padding: 8rem 8rem 16rem;
+    `}
+    ${media.pc`
     padding: 8rem 16rem 16rem 16rem;
+    `}
 `;
 
 const ContentWrapper = styled.div`
@@ -131,13 +140,14 @@ const ContentWrapper = styled.div`
 `;
 
 const Paragraph = styled.p`
-    font-size: ${({ theme }) => theme.fontSizes.xs};
-    line-height: 1.6;
+    font-size: ${({ theme }) => theme.fontSizes.sm_2};
     color: ${({ theme }) => theme.colors.ngW};
     opacity: 0.4;
     text-align: justify;
+    letter-spacing: -0.04em;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    /* Tablet */
+    ${media.tablet`
         text-align: left;
-    }
+    `}
 `;

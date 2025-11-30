@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import { media } from "../../styles/media";
 // import { IoIosArrowBack } from "react-icons/io";
 
 const Footer = () => {
     return (
         <FooterContainer>
             <ContentWrapper>
-                {/* 1. Left: Brand Logo & Slogan */}
                 {/* <LogoGroup href="/">
                     <IconWrapper>
                         <IoIosArrowBack />
@@ -17,7 +17,6 @@ const Footer = () => {
                     </TextGroup>
                 </LogoGroup> */}
 
-                {/* 2. Right: Copyright */}
                 <Copyright>
                     &copy; 2025 LAMB276, Inc. All rights reserved.
                 </Copyright>
@@ -30,12 +29,21 @@ export default Footer;
 
 const FooterContainer = styled.footer`
     width: 100%;
+    height: 10rem;
     background-color: ${({ theme }) => theme.colors.ngB};
-    padding: 4rem 16rem 4rem 16rem;
+    padding: 0 2rem;
     border-top: 0.05rem solid rgba(255, 255, 255, 0.25);
-
     display: flex;
     justify-content: center;
+    align-items: center;
+
+    /* Tablet, PC */
+    ${media.tablet`
+    padding: 4rem 8rem;
+    `}
+    ${media.pc`
+    padding: 4rem 16rem;
+    `}
 `;
 
 const ContentWrapper = styled.div`
@@ -46,13 +54,14 @@ const ContentWrapper = styled.div`
     align-items: center;
     gap: 3rem;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    /* Tablet */
+    ${media.tablet`
         flex-direction: row;
         // justify-content: space-between;
         justify-content: center;
         align-items: center;
         padding: 0 4rem;
-    }
+    `}
 `;
 
 // const LogoGroup = styled.a`
@@ -102,13 +111,14 @@ const ContentWrapper = styled.div`
 // `;
 
 const Copyright = styled.p`
-    font-size: ${({ theme }) => theme.fontSizes.xs};
+    font-size: ${({ theme }) => theme.fontSizes.sm_1};
     color: ${({ theme }) => theme.colors.ngW};
     opacity: 0.3;
     text-align: center;
     letter-spacing: -0.02em;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    /* Tablet */
+    ${media.tablet`
         text-align: right;
-    }
+    `}
 `;

@@ -1,4 +1,5 @@
 import { typography } from "./typography";
+import { size } from "../constants/breakpoints";
 
 const colors = {
     ngW: "#ECFDF5",
@@ -8,10 +9,11 @@ const colors = {
     ngB: "#020202",
 };
 
+// 미디어 쿼리 설정은 breakpoints.js 파일에 정의
 const breakpoints = {
-    mobile: "360px",
-    tablet: "768px",
-    pc: "1280px",
+    mobile: `${size.mobile}px`,
+    tablet: `${size.tablet}px`,
+    pc: `${size.pc}px`,
 };
 
 const fontSizes = {

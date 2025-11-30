@@ -8,6 +8,7 @@ import {
     PresaleModalContent,
     CampaignModalContent,
 } from "../layout/ModalContents";
+import { media } from "../../styles/media";
 
 const LambSection = () => {
     const { openModal } = useModal();
@@ -77,26 +78,35 @@ const LambSection = () => {
 export default LambSection;
 
 const SectionContainer = styled.section`
-    padding: 16rem 16rem;
     background-color: ${({ theme }) => theme.colors.ngB};
     display: flex;
     justify-content: center;
     overflow: hidden;
+    padding: 8rem 2rem;
+
+    /* Tablet, PC */
+    ${media.tablet`
+        padding: 8rem 8rem 0;
+    `}
+    ${media.pc`
+        padding: 8rem 12rem;
+    `}
 `;
 
 const ContentWrapper = styled.div`
     width: 100%;
     max-width: 128rem;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 6rem;
+    gap: 0rem;
+    flex-direction: column;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.pc}) {
+    /* PC */
+    ${media.pc`
         flex-direction: row;
         justify-content: space-between;
         padding: 0 4rem;
-    }
+    `}
 `;
 
 // 텍스트 영역
@@ -106,11 +116,19 @@ const TextGroup = styled(motion.div)`
     flex-direction: column;
     align-items: flex-start;
     order: 2;
+    width: 100%;
+    max-width: 100%;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.pc}) {
+    /* Tablet */
+    ${media.tablet`
+        width: 100%;
+    `}
+
+    /* PC */
+    ${media.pc`
         order: 1;
         max-width: 50%;
-    }
+    `}
 `;
 
 const Title = styled.h2`
@@ -118,31 +136,63 @@ const Title = styled.h2`
     color: ${({ theme }) => theme.colors.ng};
     margin-bottom: 2rem;
     text-transform: uppercase;
+    font-size: 3.6rem;
+    line-height: 1.1;
+
+    ${media.tablet`
+        font-size: ${({ theme }) => theme.fontSizes.xxl};
+    `}
 `;
 
 const Description = styled.p`
     ${({ theme }) => theme.typography.sm_2};
     color: ${({ theme }) => theme.colors.ngW_Alpha};
     opacity: 0.8;
-    line-height: 1.6;
     margin-bottom: 4rem;
-    max-width: 50rem;
+
+    width: 100%;
+    max-width: 100%;
+
+    word-break: keep-all;
+    word-wrap: break-word;
+
+    /* Tablet */
+    ${media.tablet`
+        max-width: 100%;
+    `}
+
+    ${media.pc`
+        max-width: 50rem;
+    `}
 `;
 
 const ButtonGroup = styled.div`
     display: flex;
     gap: 1.5rem;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+
+    /* Tablet */
+    ${media.tablet`
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+    `}
+
+    /* PC */
+    ${media.pc`
+        flex-direction: row;
+        justify-content: flex-start;
+    `}
 `;
 
 // 이미지 영역
 const ImageGroup = styled(motion.div)`
     flex: 1;
     display: flex;
-    justify-content: center;
     align-items: center;
     position: relative;
-    order: 1;
-
     &::before {
         content: "";
         position: absolute;
@@ -155,25 +205,37 @@ const ImageGroup = styled(motion.div)`
         z-index: 0;
     }
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.pc}) {
+    /* Mobile */
+    ${media.mobile`
+        order: 1;
+        justify-content: center;
+    `}
+
+    /* PC */
+    ${media.pc`
         order: 2;
         justify-content: flex-end;
-    }
+    `}
 `;
 
 const CoinImage = styled(motion.img)`
-    width: auto;
-    max-width: 30rem;
-    height: 40rem;
+    width: 100%;
+    height: auto;
     position: relative;
     z-index: 1;
     filter: drop-shadow(0 0 3rem rgba(5, 208, 155, 0.2));
+    max-width: 24rem;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    /* Mobile */
+    ${media.mobile`
+        margin: 0 auto;
+    `}
+
+    /* Tablet, PC */
+    ${media.tablet`
+        max-width: 32rem;
+    `}
+    ${media.pc`
         max-width: 40rem;
-    }
-
-    @media (min-width: ${({ theme }) => theme.breakpoints.pc}) {
-        max-width: 50rem;
-    }
+    `}
 `;

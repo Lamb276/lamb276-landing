@@ -9,7 +9,6 @@ const Title = styled.h1`
     color: ${({ theme }) => theme.colors.ng};
     display: flex;
     align-items: center;
-    // margin-bottom: 1rem;
 `;
 
 const Description = styled.p`
@@ -17,7 +16,7 @@ const Description = styled.p`
     color: ${({ theme }) => theme.colors.ngW};
     line-height: 1.6;
     opacity: 0.8;
-    white-space: pre-line; /* 줄바꿈 허용 */
+    white-space: pre-line;
 `;
 
 // $LAMB

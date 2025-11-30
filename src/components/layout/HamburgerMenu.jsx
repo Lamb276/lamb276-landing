@@ -1,54 +1,124 @@
 import React from "react";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { MENU_ITEMS } from "../../constants/menu";
-import { IoClose } from "react-icons/io5"; // 닫기 아이콘
-
-const MenuVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: (i) => ({
-        opacity: 1,
-        x: 0,
-        transition: {
-            delay: i * 0.1,
-            duration: 0.5,
-            ease: "easeOut",
-        },
-    }),
-};
+import { useModal } from "../../context/ModalContext";
+import {
+    AboutModalContent,
+    ContactModalContent,
+    LambModalContent,
+} from "../layout/ModalContents";
+import Button from "../common/Button";
 
 const HamburgerMenu = ({ isOpen, onClose }) => {
+    const { openModal } = useModal();
+    const navigate = useNavigate();
+
+    const handleHomeClick = (e) => {
+        e.preventDefault();
+        onClose();
+        navigate("/");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    const handleLambClick = () => {
+        onClose();
+        openModal(<LambModalContent />);
+    };
+
+    const handleMenuClick = (e, item) => {
+        if (item.id === "about") {
+            e.preventDefault();
+            onClose();
+            openModal(<AboutModalContent />);
+        } else if (item.id === "contact") {
+            e.preventDefault();
+            onClose();
+            openModal(<ContactModalContent />);
+        } else if (item.id === "social") {
+            e.preventDefault();
+        } else {
+            onClose();
+        }
+    };
+
     return (
         <AnimatePresence>
             {isOpen && (
-                <Overlay
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.3 }}
-                >
-                    <HeaderRow>
-                        {/* 닫기 버튼 */}
-                        <IconButton onClick={onClose}>
-                            <IoClose />
-                        </IconButton>
-                    </HeaderRow>
+                <>
+                    <Backdrop
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={onClose}
+                    />
 
-                    <MenuList>
-                        {MENU_ITEMS.map((item, index) => (
+                    <MenuContainer
+                        initial={{ opacity: 0, y: -20, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                    >
+                        <MenuList>
                             <MenuItem
-                                key={item.id}
-                                custom={index}
-                                initial="hidden"
-                                animate="visible"
-                                variants={MenuVariants}
-                                onClick={onClose} // 메뉴 클릭 시 닫힘
+                                href="/"
+                                onClick={handleHomeClick}
+                                className="active"
                             >
-                                {item.label}
+                                Home
                             </MenuItem>
-                        ))}
-                    </MenuList>
-                </Overlay>
+
+                            {MENU_ITEMS.map((item) => (
+                                <React.Fragment key={item.id}>
+                                    <MenuItem
+                                        href={item.path}
+                                        onClick={(e) =>
+                                            handleMenuClick(e, item)
+                                        }
+                                    >
+                                        {item.label}
+                                    </MenuItem>
+
+                                    {item.children && (
+                                        <SubMenuList>
+                                            {item.children.map((subItem) => (
+                                                <SubMenuItem
+                                                    key={subItem.id}
+                                                    href={subItem.path}
+                                                    target={
+                                                        subItem.external
+                                                            ? "_blank"
+                                                            : "_self"
+                                                    }
+                                                    rel={
+                                                        subItem.external
+                                                            ? "noopener noreferrer"
+                                                            : ""
+                                                    }
+                                                    onClick={onClose}
+                                                >
+                                                    {subItem.label}
+                                                </SubMenuItem>
+                                            ))}
+                                        </SubMenuList>
+                                    )}
+                                </React.Fragment>
+                            ))}
+                        </MenuList>
+
+                        <ButtonWrapper>
+                            <Button
+                                size="sm"
+                                variant="token"
+                                onClick={handleLambClick}
+                                style={{ width: "auto" }}
+                            >
+                                $LAMB
+                            </Button>
+                        </ButtonWrapper>
+                    </MenuContainer>
+                </>
             )}
         </AnimatePresence>
     );
@@ -56,57 +126,93 @@ const HamburgerMenu = ({ isOpen, onClose }) => {
 
 export default HamburgerMenu;
 
-const Overlay = styled(motion.div)`
+const Backdrop = styled(motion.div)`
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: ${({ theme }) => theme.colors.ngB};
-    z-index: 2000; /* 헤더보다 높게 */
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
+    background-color: transparent;
+    backdrop-filter: none;
+    z-index: 1001;
 `;
 
-const HeaderRow = styled.div`
-    display: flex;
-    justify-content: flex-start; /* 디자인 시안 기준 왼쪽 정렬 */
-    padding: 1rem 0;
-    margin-bottom: 4rem;
-`;
-
-const IconButton = styled.button`
-    font-size: 3rem;
-    color: ${({ theme }) => theme.colors.ngW};
-    display: flex;
-    align-items: center;
-    justify-content: center;
+const MenuContainer = styled(motion.div)`
+    position: fixed;
+    top: 8rem;
+    left: 2rem;
+    right: auto;
+    width: 75%;
+    max-width: 40rem;
+    margin: 0;
+    z-index: 1002;
+    padding: 3.2rem 3.2rem;
+    border-radius: 1.2rem;
+    overflow: hidden;
+    backdrop-filter: blur(1.2rem);
+    background: linear-gradient(#000, #000) padding-box,
+        linear-gradient(
+                180deg,
+                ${({ theme }) => theme.colors.ng} 0%,
+                rgba(5, 208, 155, 0) 100%
+            )
+            border-box;
+    border: 0.1rem solid transparent;
+    box-shadow: 0 0 2rem rgba(5, 208, 155, 0.15), 0 1rem 3rem rgba(0, 0, 0, 0.5);
 `;
 
 const MenuList = styled.ul`
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1.6rem;
 `;
 
-const MenuItem = styled(motion.li)`
-    font-size: ${({ theme }) => theme.fontSizes.xl_1};
+const ButtonWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+`;
+
+const MenuItem = styled.a`
+    display: flex;
+    align-items: center;
+    height: 3.2rem;
+    font-size: 1.6rem;
     font-weight: 500;
     color: ${({ theme }) => theme.colors.ngW};
-    cursor: pointer;
-    transition: color 0.3s ease;
+    text-decoration: none;
+    transition: all 0.2s;
+    padding: 0 0.8rem;
+    border-radius: 0.4rem;
 
     &:hover {
         color: ${({ theme }) => theme.colors.ng};
+        background: rgba(255, 255, 255, 0.05);
     }
 
-    /* 활성화된 메뉴(예시) 스타일 */
     &.active {
+        background-color: rgba(5, 208, 155, 0.15);
         color: ${({ theme }) => theme.colors.ng};
-        background: ${({ theme }) => theme.colors.ng_Alpha};
-        padding: 1rem;
-        border-radius: 0.8rem;
-        width: fit-content;
+    }
+`;
+
+const SubMenuList = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+`;
+
+const SubMenuItem = styled.a`
+    font-size: 1.4rem;
+    color: ${({ theme }) => theme.colors.ngW_Alpha};
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover {
+        color: ${({ theme }) => theme.colors.ng};
     }
 `;

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import lambImage from "../../assets/images/hero-lamb.png";
 import gradientBgLight2 from "../../assets/images/gradient-bg-light-2.png";
 import backgroundImage from "../../assets/images/background-image.png";
+import { media } from "../../styles/media";
 
 const titleVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -123,12 +124,22 @@ export default HeroSection;
 
 const SectionWrapper = styled.section`
     width: 100%;
-    min-height: 60vh;
     background-color: ${({ theme }) => theme.colors.ngB};
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20rem 12rem 0rem 12rem;
+    min-height: 60vh;
+    padding: 10rem 2rem 4rem;
+
+    /* Tablet */
+    ${media.tablet`
+        padding: 16.8rem 4rem 0rem 4rem;
+    `}
+
+    /* PC */
+    ${media.pc`
+    padding: 20rem 16rem 0;
+    `}
 `;
 
 const HeroCard = styled(motion.div)`
@@ -143,7 +154,7 @@ const HeroCard = styled(motion.div)`
     border-radius: 3.2rem;
     overflow: hidden;
     backdrop-filter: blur(1.2rem);
-
+    border: 0.1rem solid transparent;
     background: linear-gradient(rgba(2, 2, 2, 0.2), rgba(2, 2, 2, 0.2))
             padding-box,
         linear-gradient(
@@ -152,14 +163,21 @@ const HeroCard = styled(motion.div)`
                 rgba(5, 208, 155, 0) 100%
             )
             border-box;
+    padding: 4.8rem 2rem;
+    min-height: 40rem;
 
-    border: 0.1rem solid transparent;
+    /* Tablet */
+    ${media.tablet`
+        padding: 5.6rem 4rem 0rem 4rem;
+        min-height: 36rem; 
+        height: auto;
+    `}
 
-    padding: 8rem 8rem;
-
-    @media (min-width: ${({ theme }) => theme.breakpoints.pc}) {
-        padding: 8.8rem 6rem;
-    }
+    /* PC */
+        ${media.pc`
+        padding: 8rem 6rem;
+        min-height: 52rem;
+    `}
 `;
 
 const RadialGlow = styled.div`
@@ -202,12 +220,17 @@ const ContentWrapper = styled.div`
     display: flex;
     flex-direction: column;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.pc}) {
+    /* Mobile */
+    ${media.mobile`
+    padding: 0;
+    `}
+
+    /* PC */
+    ${media.pc`
         flex-direction: row;
         align-items: flex-start;
         justify-content: space-between;
-        padding: 0 4rem;
-    }
+    `}
 `;
 
 // 텍스트 영역
@@ -216,11 +239,20 @@ const TextGroup = styled(motion.div)`
     text-align: left;
     position: relative;
     z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.pc}) {
+    /* Tablet */
+    ${media.tablet`
+        width: 100%;
+    `}
+
+    /* PC */
+    ${media.pc`
         margin-top: 0;
         max-width: 50%;
-    }
+    `}
 `;
 
 const Title = styled(motion.h1)`
@@ -228,28 +260,47 @@ const Title = styled(motion.h1)`
     color: ${({ theme }) => theme.colors.ngW};
     font-weight: 500;
     margin-bottom: 2rem;
-    line-height: 1.2;
 
     .block {
         display: block;
     }
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-        ${({ theme }) => theme.typography.xxxl};
-    }
+    /* Tablet */
+    ${media.tablet`
+        font-size: 5.6rem;
+        line-height: 100%;
+    `}
+
+    /* PC */
+    ${media.pc`
+    ${({ theme }) => theme.typography.xxxl};
+    `}
 `;
 
 const Subtitle = styled(motion.p)`
-    ${({ theme }) => theme.typography.md};
+    font-size: 1.6rem;
     color: ${({ theme }) => theme.colors.ng};
-    opacity: 0.9;
-    max-width: 40rem;
     line-height: 1.5;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-        ${({ theme }) => theme.typography.xl_1};
-        line-height: 1.5;
-    }
+    /* Mobile */
+    ${media.mobile`
+        line-height: 130%;
+        margin-top: -0.4rem;
+        letter-spacing: -0.04em;
+    `}
+
+    /* Tablet */
+    ${media.tablet`
+        ${({ theme }) => theme.typography.md};
+        line-height: 130%;
+        margin-top: -0.4rem;
+        letter-spacing: -0.04em;
+    `}
+
+    /* PC */
+    ${media.pc`
+    ${({ theme }) => theme.typography.xl_2};
+    `}
 `;
 
 // 이미지 영역
@@ -259,33 +310,36 @@ const ImageGroup = styled(motion.div)`
     right: 0;
     z-index: 1;
 
-    /* 모바일 */
-    img {
+    /* Mobile */
+    ${media.mobile`
+        img {
         width: auto;
-        max-height: 30rem;
+        max-height: 22rem;
         object-fit: contain;
         filter: drop-shadow(0 0 2rem rgba(0, 0, 0, 0.3));
-        margin-bottom: -2rem;
+        margin-bottom: -25rem;
         margin-right: -2rem;
-    }
-
-    /* 태블릿 */
-    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-        img {
-            max-height: 50rem;
-            max-width: none;
         }
-    }
+    `}
+
+    /* Tablet */
+    ${media.tablet`
+        img {
+            max-height: auto;
+            max-width: 30rem;
+            margin-bottom: -16rem;
+            margin-right: -4rem;
+        }
+    `}
 
     /* PC */
-    @media (min-width: ${({ theme }) => theme.breakpoints.pc}) {
+    ${media.pc`
         img {
-            width: 48rem;
+            width: 44rem;
             height: auto;
             max-height: 75rem;
-
-            margin-bottom: -20rem;
-            margin-right: -8rem;
+            margin-bottom: -21rem;
+            margin-right: -6rem;
         }
-    }
+    `}
 `;
