@@ -133,12 +133,12 @@ const SectionWrapper = styled.section`
 
     /* Tablet */
     ${media.tablet`
-        padding: 16.8rem 4rem 0rem 4rem;
+        padding: 16.8rem 8rem 0rem 8rem;
     `}
 
     /* PC */
     ${media.pc`
-    padding: 20rem 16rem 0;
+        padding: 20rem 16rem 0;
     `}
 `;
 
@@ -169,7 +169,8 @@ const HeroCard = styled(motion.div)`
     /* Tablet */
     ${media.tablet`
         padding: 5.6rem 4rem 0rem 4rem;
-        min-height: 36rem; 
+        max-width: 80rem;
+        min-height: 36rem;
         height: auto;
     `}
 

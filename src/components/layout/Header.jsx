@@ -219,6 +219,7 @@ const HeaderInner = styled.div`
     width: 100%;
     max-width: 128rem;
     height: 100%;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -241,7 +242,7 @@ const HeaderInner = styled.div`
 
     /* Tablet */
     ${media.tablet`
-        padding: 0 4rem;
+        padding: 0 8rem;
         flex-wrap: wrap;
         align-content: center;
         gap: 0; 
@@ -262,13 +263,20 @@ const HeaderInner = styled.div`
             order: 3; 
             width: 100%;
             justify-content: center; 
-            margin-top: 1.5rem;
+            margin-top: 2.4rem;
         }
     `}
 
     /* PC */
     ${media.pc`
-        padding: 0 16rem;
+        /* [수정] PC 기본 패딩 (1600px 이상) */
+        padding: 0;
+        
+        /* [추가] 좁은 PC 화면 (1280px ~ 1599px) 패딩 조정 */
+        @media (max-width: 1598px) {
+            padding: 0 16rem;
+        }
+
         flex-wrap: nowrap;
         justify-content: space-between;
         gap: 0;

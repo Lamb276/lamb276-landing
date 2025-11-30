@@ -98,7 +98,6 @@ const variants = {
             background-color: ${({ theme }) => theme.colors.ng_Alpha};
             color: ${({ theme }) => theme.colors.ng};
             box-shadow: 0 0 1.5rem ${({ theme }) => theme.colors.ng_Alpha};
-            transform: translateY(-0.2rem);
             svg {
                 color: ${({ theme }) => theme.colors.ng};
                 fill: ${({ theme }) => theme.colors.ng};

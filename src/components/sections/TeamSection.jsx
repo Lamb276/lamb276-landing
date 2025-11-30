@@ -248,6 +248,9 @@ const GridContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 모바일: 2열 */
     gap: 3.2rem 2rem;
+    width: 100%;
+    max-width: 44rem;
+    margin: 0 auto;
 
     /* Mobile */
     ${media.mobile`
@@ -259,6 +262,9 @@ const GridContainer = styled.div`
         grid-template-columns: repeat(3, 1fr); /* 태블릿: 3열 */
         padding: 0 0rem;
         gap: 6rem 2.4rem;
+        max-width: 80rem;
+        min-width: 56rem;
+        margin: 0 auto;
     `}
 
     /* PC */
@@ -266,6 +272,7 @@ const GridContainer = styled.div`
         grid-template-columns: repeat(4, 1fr); /* PC: 4열 */
         max-width: 108rem;
         gap: 6rem 2.4rem;
+        margin: 0 auto;
     `}
 `;
 
@@ -316,6 +323,7 @@ const MemberImage = styled.div`
     border-radius: 4.8rem;
     `}
     ${media.pc`
+    min-width: 22rem;
     border-radius: 4.8rem;
     `}
 `;
