@@ -493,8 +493,6 @@ const GoldPaper = () => {
                             entity or financial institution. The Gold Paper,
                             website, and smart contracts are provided on an "as
                             is" basis without warranties of any kind.
-                        </li>
-                        <li>
                             Participation involves significant risks including
                             extreme market volatility, technical
                             vulnerabilities, and the potential total loss of
@@ -507,14 +505,11 @@ const GoldPaper = () => {
                             Tokens associated with LAMB276 are strictly for
                             governance and utility purposes. They do not
                             represent equity, shares, debt, or ownership
-                            interests in any enterprise.
-                        </li>
-                        <li>
-                            Holding these tokens does not entitle you to
-                            dividends, revenue shares, or investment returns.
-                            The value of the token is derived solely from market
-                            forces and community utility with no guarantee of
-                            liquidity.
+                            interests in any enterprise. Holding these tokens
+                            does not entitle you to dividends, revenue shares,
+                            or investment returns. The value of the token is
+                            derived solely from market forces and community
+                            utility with no guarantee of liquidity.
                         </li>
                         <li>
                             Smart contracts may contain bugs or security risks.
@@ -529,13 +524,11 @@ const GoldPaper = () => {
                             contributor. He does not serve as a director,
                             officer, or manager as no such central positions
                             exist. He participates as an equal member of the DAO
-                            and holds no executive authority.
-                        </li>
-                        <li>
-                            His affiliations with external organizations like
-                            World Liberty Finance or the United Sigma
-                            Intelligence Association do not imply any commercial
-                            partnership or shared liability.
+                            and holds no executive authority. His affiliations
+                            with external organizations like World Liberty
+                            Finance or the United Sigma Intelligence Association
+                            do not imply any commercial partnership or shared
+                            liability.
                         </li>
                         <li>
                             The goals mentioned in this Gold Paper depend
