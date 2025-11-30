@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { MENU_ITEMS } from "../../constants/menu";
 import { useModal } from "../../context/ModalContext";
 import {
@@ -62,7 +62,7 @@ const HamburgerMenu = ({ isOpen, onClose }) => {
                     >
                         <MenuList>
                             <MenuItem
-                                href="/"
+                                to="/"
                                 onClick={handleHomeClick}
                                 className="active"
                             >
@@ -72,7 +72,7 @@ const HamburgerMenu = ({ isOpen, onClose }) => {
                             {MENU_ITEMS.map((item) => (
                                 <React.Fragment key={item.id}>
                                     <MenuItem
-                                        href={item.path}
+                                        to={item.path}
                                         onClick={(e) =>
                                             handleMenuClick(e, item)
                                         }
@@ -173,7 +173,7 @@ const ButtonWrapper = styled.div`
     justify-content: flex-end;
 `;
 
-const MenuItem = styled.a`
+const MenuItem = styled(Link)`
     display: flex;
     align-items: center;
     height: 3.2rem;
