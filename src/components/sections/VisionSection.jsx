@@ -43,17 +43,17 @@ export default VisionSection;
 
 const SectionContainer = styled.section`
     width: 100%;
-    padding: 4rem 2rem;
+    padding: 1.6rem 2rem 5.2rem;
     background-color: ${({ theme }) => theme.colors.ngB};
     display: flex;
     justify-content: center;
 
     /* Tablet, PC */
     ${media.tablet`
-        padding: 16rem 8rem;
+        padding: 18rem 8rem;
     `}
     ${media.pc`
-        padding: 16rem;
+        padding: 12rem 16rem 20rem;
     `}
 `;
 

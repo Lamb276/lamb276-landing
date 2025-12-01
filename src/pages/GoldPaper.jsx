@@ -1,11 +1,17 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import { media } from "../styles/media";
 import theme from "../styles/theme";
 import tokenChartImg from "../assets/images/gold-paper-image.png";
 import Button from "../components/common/Button";
+import { useModal } from "../context/ModalContext";
+import { VerificationModalContent } from "../components/layout/ModalContents";
 
 const GoldPaper = () => {
+    const navigate = useNavigate();
+    const { openModal } = useModal();
+
     return (
         <PageWrapper>
             <FixedBackground />
@@ -15,7 +21,27 @@ const GoldPaper = () => {
                     <Subtitle>
                         A MOVEMENT TO BUILD THE NEW CIVILIZATION GENERATION
                     </Subtitle>
-                    <Title>Gold Paper</Title>
+
+                    <TitleRow>
+                        <Title>Gold Paper</Title>
+                        <HeroButtons>
+                            <Button
+                                size="sm"
+                                variant="primary"
+                                onClick={() => navigate("/tokenomics")}
+                            >
+                                Tokenomics
+                            </Button>
+                            {/* <Button
+                                size="sm"
+                                variant="primary"
+                                style={{ opacity: 0.5, cursor: "not-allowed" }}
+                            >
+                                Coming Soon
+                            </Button> */}
+                        </HeroButtons>
+                    </TitleRow>
+
                     <MetaInfo>
                         <span>v1.0</span>
                         <span>Last Revised: November 27th, 2025</span>
@@ -84,7 +110,13 @@ const GoldPaper = () => {
                     </TextBlock>
 
                     <ButtonWrapper>
-                        <Button size="md" variant="primary">
+                        <Button
+                            size="md"
+                            variant="primary"
+                            onClick={() =>
+                                openModal(<VerificationModalContent />)
+                            }
+                        >
                             Verification Profile
                         </Button>
                     </ButtonWrapper>
@@ -466,12 +498,12 @@ const GoldPaper = () => {
                             <strong>Base</strong>
                         </DetailRow>
                         <DetailRow>
-                            <span>Contract Address</span>
-                            <strong>0x... (TBA)</strong>
-                        </DetailRow>
-                        <DetailRow>
                             <span>Total Supply</span>
                             <strong>276,000,000</strong>
+                        </DetailRow>
+                        <DetailRow>
+                            <span>Contract Address</span>
+                            <strong>0x... (TBA)</strong>
                         </DetailRow>
                     </TokenDetailBox>
 
@@ -581,7 +613,7 @@ const ContentContainer = styled.div`
 
     /* Tablet */
     ${media.tablet`
-        padding-top: 12rem;
+        padding-top: 22rem;
         padding-left: 4rem;
         padding-right: 4rem;
     `}
@@ -608,15 +640,43 @@ const HeroSection = styled(Section)`
     ${media.mobile`margin-bottom: 8rem;`}
 `;
 
+const TitleRow = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* 텍스트 베이스라인에 맞춰 버튼 정렬 */
+    margin-bottom: 2rem;
+
+    /* Mobile */
+    ${media.mobile`
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0rem;
+        margin-bottom: 0;
+    `}
+`;
+
+const HeroButtons = styled.div`
+    display: flex;
+    gap: 1.2rem;
+
+    /* Mobile */
+    ${media.mobile`
+        width: 100%;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    `}
+`;
+
 const Title = styled.h1`
     ${({ theme }) => theme.typography.xxxl};
     color: ${({ theme }) => theme.colors.ng};
-    margin-bottom: 2rem;
+    margin-bottom: 0; /* TitleRow에서 간격 처리하므로 0으로 변경 */
     text-transform: uppercase;
     text-shadow: 0 0 20px rgba(5, 208, 155, 0.3);
 
     /* Mobile,Tablet */
-    ${media.mobile`font-size: 4.4rem; margin-bottom: 0rem;`}
+    ${media.mobile`font-size: 4.4rem;`}
     ${media.tablet`font-size: 6rem;`}
 `;
 
@@ -952,9 +1012,9 @@ const DetailRow = styled.div`
 
 const ChartImageWrapper = styled.div`
     width: 60%;
-    margin-top: 2rem;
+    margin: 2rem auto 0;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
 
     img {
         width: 100%;

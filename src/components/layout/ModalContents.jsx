@@ -137,3 +137,60 @@ export const ContactModalContent = () => {
         </>
     );
 };
+
+// Discord
+export const DiscordModalContent = () => {
+    const { closeModal } = useModal();
+    return (
+        <>
+            <Title>Discord</Title>
+            <Description>Coming Soon...</Description>
+            <Button
+                size="md"
+                variant="primary"
+                style={{ width: "100%", marginTop: "2rem" }}
+                onClick={closeModal}
+            >
+                Close
+            </Button>
+        </>
+    );
+};
+
+// Leaderboard
+export const LeaderboardModalContent = () => {
+    const { closeModal } = useModal();
+    return (
+        <>
+            <Title>Leaderboard</Title>
+            <Description>Coming Soon...</Description>
+            <Button
+                size="md"
+                variant="primary"
+                style={{ width: "100%", marginTop: "2rem" }}
+                onClick={closeModal}
+            >
+                Close
+            </Button>
+        </>
+    );
+};
+
+// Verification
+export const VerificationModalContent = () => {
+    const { closeModal } = useModal();
+    return (
+        <>
+            <Title>Verification</Title>
+            <Description>Coming Soon...</Description>
+            <Button
+                size="md"
+                variant="primary"
+                style={{ width: "100%", marginTop: "2rem" }}
+                onClick={closeModal}
+            >
+                Close
+            </Button>
+        </>
+    );
+};

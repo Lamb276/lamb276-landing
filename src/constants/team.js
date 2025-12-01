@@ -8,49 +8,13 @@ export const MEMBER_DATA = [
     {
         id: 1,
         role: "Advisor",
-        name: "Michael Jordan",
-        position: "Co-Founder, Yearn Finance",
+        name: "Michael Mainelli",
+        position: "Former Lord Mayor of the City of London",
     },
     {
         id: 2,
         role: "Advisor",
-        name: "Michael Jordan",
-        position: "Co-Founder, Yearn Finance",
-    },
-    {
-        id: 3,
-        role: "Advisor",
-        name: "Michael Jordan",
-        position: "Co-Founder, Yearn Finance",
-    },
-    {
-        id: 4,
-        role: "Advisor",
-        name: "Michael Jordan",
-        position: "Co-Founder, Yearn Finance",
-    },
-    {
-        id: 5,
-        role: "Advisor",
-        name: "Michael Jordan",
-        position: "Co-Founder, Yearn Finance",
-    },
-    {
-        id: 6,
-        role: "Advisor",
-        name: "Michael Jordan",
-        position: "Co-Founder, Yearn Finance",
-    },
-    {
-        id: 7,
-        role: "Advisor",
-        name: "Michael Jordan",
-        position: "Co-Founder, Yearn Finance",
-    },
-    {
-        id: 8,
-        role: "Advisor",
-        name: "Michael Jordan",
-        position: "Co-Founder, Yearn Finance",
+        name: "Anthony Francis",
+        position: "Head of Program, Cointelegraph Accelerator",
     },
 ];

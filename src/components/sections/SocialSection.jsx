@@ -4,8 +4,12 @@ import { motion } from "framer-motion";
 import DiscordIcon from "../../assets/icons/discord.svg";
 import XIcon from "../../assets/icons/x.svg";
 import { media } from "../../styles/media";
+import { useModal } from "../../context/ModalContext";
+import { DiscordModalContent } from "../layout/ModalContents";
 
 const SocialSection = () => {
+    const { openModal } = useModal();
+
     return (
         <SectionContainer>
             <HeaderRow>
@@ -17,11 +21,11 @@ const SocialSection = () => {
             <IconContainer>
                 {/* Discord */}
                 <SocialLink
-                    href="https://discord.com/invite/lamb276"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    as="div"
+                    onClick={() => openModal(<DiscordModalContent />)}
                     whileHover={{ y: -5 }}
                     whileTap={{ scale: 0.95 }}
+                    style={{ cursor: "pointer" }}
                 >
                     <IconWrapper>
                         <img src={DiscordIcon} alt="Discord" />
@@ -29,7 +33,7 @@ const SocialSection = () => {
                     <Label>Discord</Label>
                 </SocialLink>
 
-                {/* X (Twitter) */}
+                {/* X (구 Twitter) */}
                 <SocialLink
                     href="https://x.com/LAMB276"
                     target="_blank"
@@ -52,7 +56,7 @@ export default SocialSection;
 
 const SectionContainer = styled.section`
     width: 100%;
-    margin: 0 auto;
+    margin: 0 auto 8rem;
     padding: 0 2rem;
     display: flex;
     flex-direction: column;

@@ -8,6 +8,8 @@ import {
     AboutModalContent,
     ContactModalContent,
     LambModalContent,
+    LeaderboardModalContent,
+    DiscordModalContent,
 } from "../layout/ModalContents";
 import Button from "../common/Button";
 
@@ -36,8 +38,22 @@ const HamburgerMenu = ({ isOpen, onClose }) => {
             e.preventDefault();
             onClose();
             openModal(<ContactModalContent />);
+        } else if (item.id === "leaderboard") {
+            e.preventDefault();
+            onClose();
+            openModal(<LeaderboardModalContent />);
         } else if (item.id === "social") {
             e.preventDefault();
+        } else {
+            onClose();
+        }
+    };
+
+    const handleSubMenuClick = (e, subItem) => {
+        if (subItem.id === "discord") {
+            e.preventDefault();
+            onClose();
+            openModal(<DiscordModalContent />);
         } else {
             onClose();
         }
@@ -96,7 +112,12 @@ const HamburgerMenu = ({ isOpen, onClose }) => {
                                                             ? "noopener noreferrer"
                                                             : ""
                                                     }
-                                                    onClick={onClose}
+                                                    onClick={(e) =>
+                                                        handleSubMenuClick(
+                                                            e,
+                                                            subItem
+                                                        )
+                                                    }
                                                 >
                                                     {subItem.label}
                                                 </SubMenuItem>

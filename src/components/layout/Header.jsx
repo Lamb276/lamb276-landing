@@ -13,6 +13,8 @@ import {
     LambModalContent,
     AboutModalContent,
     ContactModalContent,
+    LeaderboardModalContent,
+    DiscordModalContent,
 } from "../layout/ModalContents";
 import { media } from "../../styles/media";
 
@@ -46,24 +48,35 @@ const Header = () => {
             e.preventDefault();
             openModal(<ContactModalContent />);
         }
+        if (item.id === "leaderboard") {
+            e.preventDefault();
+            openModal(<LeaderboardModalContent />);
+        }
+    };
+
+    const handleSubMenuClick = (e, subItem) => {
+        if (subItem.id === "discord") {
+            e.preventDefault();
+            openModal(<DiscordModalContent />);
+        }
     };
 
     return (
         <>
             <HeaderWrapper $isScrolled={isScrolled}>
                 <HeaderInner>
-                    {/* 1. Hamburger (Mobile) */}
+                    {/* Hamburger Menu (Mobile) */}
                     <MobileMenuBtn onClick={() => setIsMenuOpen(true)}>
                         <RxHamburgerMenu />
                     </MobileMenuBtn>
 
-                    {/* 2. Logo */}
+                    {/* Logo */}
                     <Logo onClick={handleLogoClick}>
                         <DefaultLogo src={lambLogo} alt="Logo" />
                         <MobileLogoImg src={mobileLogo} alt="Logo Symbol" />
                     </Logo>
 
-                    {/* 3. Nav */}
+                    {/* Nav */}
                     <Nav>
                         {MENU_ITEMS.map((item) => {
                             if (item.children) {
@@ -131,6 +144,14 @@ const Header = () => {
                                                                             ? "noopener noreferrer"
                                                                             : ""
                                                                     }
+                                                                    onClick={(
+                                                                        e
+                                                                    ) =>
+                                                                        handleSubMenuClick(
+                                                                            e,
+                                                                            subItem
+                                                                        )
+                                                                    }
                                                                 >
                                                                     {
                                                                         subItem.label
@@ -158,7 +179,7 @@ const Header = () => {
                         })}
                     </Nav>
 
-                    {/* 4. Button */}
+                    {/* Button */}
                     <Button
                         size="sm"
                         variant="token"
@@ -269,14 +290,7 @@ const HeaderInner = styled.div`
 
     /* PC */
     ${media.pc`
-        /* [수정] PC 기본 패딩 (1600px 이상) */
-        padding: 0;
-        
-        /* [추가] 좁은 PC 화면 (1280px ~ 1599px) 패딩 조정 */
-        @media (max-width: 1598px) {
-            padding: 0 16rem;
-        }
-
+        padding: 0 16rem;
         flex-wrap: nowrap;
         justify-content: space-between;
         gap: 0;

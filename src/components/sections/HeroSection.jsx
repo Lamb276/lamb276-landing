@@ -95,9 +95,9 @@ const HeroSection = () => {
                             viewport={{ once: true }}
                             variants={subtitleVariants}
                         >
-                            A DAO for global movement to pursue
+                            A DAO founded by
                             <br />
-                            rational righteousness
+                            the world’s highest IQ 276 holder
                         </Subtitle>
                     </TextGroup>
 
@@ -128,17 +128,19 @@ const SectionWrapper = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 60vh;
-    padding: 10rem 2rem 4rem;
+    min-height: 52vh;
+    padding: 10rem 2rem;
 
     /* Tablet */
     ${media.tablet`
+        min-height: 52vh;
         padding: 16.8rem 8rem 0rem 8rem;
     `}
 
     /* PC */
     ${media.pc`
-        padding: 20rem 16rem 0;
+        min-height: 60vh;
+        padding: 18rem 16rem 0;
     `}
 `;
 
@@ -339,7 +341,7 @@ const ImageGroup = styled(motion.div)`
             width: 44rem;
             height: auto;
             max-height: 75rem;
-            margin-bottom: -21rem;
+            margin-bottom: -22rem;
             margin-right: -6rem;
         }
     `}

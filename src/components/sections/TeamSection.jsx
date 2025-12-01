@@ -5,6 +5,35 @@ import { LEADER_DATA, MEMBER_DATA } from "../../constants/team";
 import drKimImage from "../../assets/images/dr-kim.png";
 import Button from "../common/Button";
 import { media } from "../../styles/media";
+import worldLibertyLogo from "../../assets/images/partner/world-liberty-financial.svg";
+import pudgyLogo from "../../assets/images/partner/pudgy-penguins.svg";
+import cointelegraphLogo from "../../assets/images/partner/cointelegraph-accelerator.svg";
+import { useModal } from "../../context/ModalContext";
+import { VerificationModalContent } from "../layout/ModalContents";
+
+const PARTNERS = [
+    {
+        id: 1,
+        name: "World Liberty Financial",
+        logo: worldLibertyLogo,
+        role: "Ambassador",
+        showName: false,
+    },
+    {
+        id: 2,
+        name: "Pudgy Penguins",
+        logo: pudgyLogo,
+        role: "Advisor",
+        showName: true,
+    },
+    {
+        id: 3,
+        name: "Cointelegraph Accelerator",
+        logo: cointelegraphLogo,
+        role: "Program Mentor",
+        showName: false,
+    },
+];
 
 const memberImagesModules = import.meta.glob(
     "../../assets/images/member/*.png",
@@ -13,7 +42,7 @@ const memberImagesModules = import.meta.glob(
 
 const MEMBER_IMAGES = Object.entries(memberImagesModules).reduce(
     (acc, [path, url]) => {
-        const match = path.match(/member-(\d+)\.png$/);
+        const match = path.match(/member-(\d+)\.(png|webp)$/);
         if (match) {
             const id = Number(match[1]);
             acc[id] = url;
@@ -24,6 +53,8 @@ const MEMBER_IMAGES = Object.entries(memberImagesModules).reduce(
 );
 
 const TeamSection = () => {
+    const { openModal } = useModal();
+
     return (
         <SectionContainer>
             <InnerWrapper>
@@ -44,7 +75,13 @@ const TeamSection = () => {
                             rational righteousness.
                         </LeaderDesc>
                         <ButtonWrapper>
-                            <Button size="md" variant="primary">
+                            <Button
+                                size="md"
+                                variant="primary"
+                                onClick={() =>
+                                    openModal(<VerificationModalContent />)
+                                }
+                            >
                                 Verification
                             </Button>
                         </ButtonWrapper>
@@ -60,7 +97,31 @@ const TeamSection = () => {
                     </LeaderImageFrame>
                 </LeaderWrapper>
 
-                {/* Member*/}
+                {/* Partner Static */}
+                <PartnerContainer>
+                    {PARTNERS.map((partner, index) => (
+                        <PartnerItem
+                            key={partner.id}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ delay: index * 0.1, duration: 0.5 }}
+                            viewport={{ once: true }}
+                        >
+                            <PartnerRole>{partner.role}</PartnerRole>
+
+                            <PartnerLogoBox>
+                                <img src={partner.logo} alt={partner.name} />
+                                {partner.showName && (
+                                    <PartnerLogoText>
+                                        {partner.name}
+                                    </PartnerLogoText>
+                                )}
+                            </PartnerLogoBox>
+                        </PartnerItem>
+                    ))}
+                </PartnerContainer>
+
+                {/* Member */}
                 <GridContainer>
                     {MEMBER_DATA.map((member, index) => (
                         <MemberCard
@@ -99,48 +160,49 @@ export default TeamSection;
 const SectionContainer = styled.section`
     background-color: ${({ theme }) => theme.colors.ngB};
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    width: 100%;
     padding: 0;
+    overflow: hidden;
 
     /* Tablet */
     ${media.tablet`
-        padding: 14rem 8rem 8rem;
+        padding: 12rem 2rem 8rem;
     `}
 
     /* PC */
     ${media.pc`
-        padding: 16rem;
+        padding: 10rem 16rem;
     `}
 `;
 
 const InnerWrapper = styled.div`
     width: 100%;
     max-width: 128rem;
-
-    /* Tablet */
-    ${media.tablet`
-        padding: 0 2rem;
-    `}
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
 // Leader
 const LeaderWrapper = styled.div`
+    width: 100%;
     display: flex;
     flex-direction: column;
-    margin-bottom: 4rem;
+    margin-bottom: 0rem;
 
     /* Tablet */
     ${media.tablet`
         gap: 0;
-        margin-bottom: 8rem;
+        margin-bottom: 0rem;
     `}
 
     /* PC */
     ${media.pc`
         gap: 4rem;
         flex-direction: row;
-        align-items: end;
+        align-items: flex-end;
         justify-content: space-between;
     `}
 `;
@@ -152,10 +214,13 @@ const LeaderInfo = styled(motion.div)`
     z-index: 10;
     margin-top: -8rem;
     padding: 0 2rem;
+    width: 100%;
 
     /* Tablet */
     ${media.tablet`
-        margin-top: -16rem;
+        margin-top: -8.2rem;
+        padding: 0 6rem;
+        max-width: none;
     `}
 
     /* PC */
@@ -194,6 +259,8 @@ const LeaderImageFrame = styled(motion.div)`
     order: 1;
     height: 40rem;
     width: 100%;
+    max-width: 52rem;
+    margin: 0 auto;
     overflow: hidden;
     position: relative;
     z-index: 1;
@@ -217,7 +284,9 @@ const LeaderImageFrame = styled(motion.div)`
         display: flex;
         width: 48rem;
         height: auto;
-        margin-left: auto;
+        margin: 0 auto;
+        max-width: 40rem;
+        border-radius: 4.8rem;
     `}
 
     /* PC */
@@ -226,6 +295,7 @@ const LeaderImageFrame = styled(motion.div)`
         height: 56rem;
         max-width: 40rem;
         margin-left: 0;
+        border-radius: 0;
     `}
 `;
 
@@ -234,19 +304,130 @@ const ButtonWrapper = styled.div`
     align-items: center;
     justify-content: center;
 
-    /* Tablet, PC */
+    /* Tablet */
     ${media.tablet`
-    justify-content: flex-end;
+        justify-content: flex-end; 
     `}
+
+    /* PC */
     ${media.pc`
-    justify-content: flex-end;
+        justify-content: flex-end;
+    `}
+`;
+
+// Partner
+const PartnerContainer = styled.div`
+    width: 50;
+    max-width: 100rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    margin: 4rem 0 8rem;
+    padding: 4rem 4rem;
+
+    /* Tablet */
+    ${media.tablet`
+        flex-direction: row;
+        align-items: flex-start;
+        margin: 0rem 0 12rem;
+        gap: 4rem;
+        padding: 0;
+    `}
+
+    /* PC */
+    ${media.pc`
+        flex-direction: row;
+        margin: 10rem 0 14rem;
+        gap: 8rem;
+        padding: 0;
+    `}
+`;
+
+const PartnerItem = styled(motion.div)`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1.6rem;
+    width: 100%;
+    flex: 1;
+
+    /* PC */
+    ${media.pc`
+        gap: 2rem;
+    `}
+`;
+
+const PartnerLogoBox = styled.div`
+    height: 4rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0rem;
+
+    img {
+        height: 100%;
+        width: auto;
+        max-width: 24rem;
+        object-fit: contain;
+
+        filter: grayscale(100%);
+        opacity: 0.7;
+        transition: all 0.3s ease;
+    }
+
+    &:hover img {
+        filter: grayscale(0%);
+        opacity: 1;
+    }
+    &:hover span {
+        opacity: 1;
+    }
+
+    ${media.tablet`
+        height: 4rem;
+    `}
+
+    ${media.pc`
+        height: 4.8rem;
+    `}
+`;
+
+const PartnerLogoText = styled.span`
+    font-size: 2rem;
+    font-weight: 500;
+    color: ${({ theme }) => theme.colors.ngW};
+    opacity: 0.7;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    padding-top: 0.4rem;
+    padding-left: 0.8rem;
+
+    ${media.mobile`
+        font-size: 1.8rem;
+    `}
+`;
+
+const PartnerRole = styled.span`
+    ${({ theme }) => theme.typography.sm_1};
+    color: ${({ theme }) => theme.colors.ng};
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+
+    ${media.pc`
+        font-size: 1.6rem;
     `}
 `;
 
 // Member
 const GridContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 모바일: 2열 */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 3.2rem 2rem;
     width: 100%;
     max-width: 44rem;
@@ -259,17 +440,14 @@ const GridContainer = styled.div`
 
     /* Tablet */
     ${media.tablet`
-        grid-template-columns: repeat(3, 1fr); /* 태블릿: 3열 */
-        padding: 0 0rem;
+        padding: 0;
         gap: 6rem 2.4rem;
-        max-width: 80rem;
-        min-width: 56rem;
+        max-width: 80rem; 
         margin: 0 auto;
     `}
 
     /* PC */
     ${media.pc`
-        grid-template-columns: repeat(4, 1fr); /* PC: 4열 */
         max-width: 108rem;
         gap: 6rem 2.4rem;
         margin: 0 auto;
@@ -280,13 +458,20 @@ const MemberCard = styled(motion.div)`
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
+    width: calc(50% - 1rem);
 
-    /* Tablet, PC */
+    /* Tablet */
     ${media.tablet`
-    gap: 2rem;
+        gap: 2rem;
+        width: calc(33.33% - 1.6rem);
+        max-width: 24rem;
     `}
+
+    /* PC */
     ${media.pc`
-    gap: 2rem;
+        gap: 2rem;
+        width: calc(25% - 1.8rem); 
+        max-width: 22rem;
     `}
 `;
 
@@ -320,11 +505,10 @@ const MemberImage = styled.div`
 
     /* Tablet, PC */
     ${media.tablet`
-    border-radius: 4.8rem;
+        border-radius: 4.8rem;
     `}
     ${media.pc`
-    min-width: 22rem;
-    border-radius: 4.8rem;
+        border-radius: 4.8rem;
     `}
 `;
 

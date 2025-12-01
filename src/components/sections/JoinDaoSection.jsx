@@ -6,8 +6,12 @@ import twinkleSvg from "../../assets/icons/twinkle.svg";
 import JoinDaoBg from "../../assets/images/join-dao-background.png";
 import Button from "../common/Button";
 import { media } from "../../styles/media";
+import { useModal } from "../../context/ModalContext";
+import { DiscordModalContent } from "../layout/ModalContents";
 
 const JoinDaoSection = () => {
+    const { openModal } = useModal();
+
     return (
         <SectionContainer>
             <BackgroundImage src={JoinDaoBg} alt="DAO Background" />
@@ -22,29 +26,28 @@ const JoinDaoSection = () => {
                     <StarIcon>
                         <img src={twinkleSvg} alt="twinkle left" />
                     </StarIcon>
-                    <Title>Become part of the DAO</Title>
+                    <Title>
+                        Become part of LAMB276 DAO
+                        <br />
+                        to build the New Civilization Generation
+                    </Title>
                     <StarIcon>
                         <img src={twinkleSvg} alt="twinkle left" />
                     </StarIcon>
                 </TitleArea>
 
                 {/* Subtitle List */}
-                <SubtitleList>
+                {/* <SubtitleList>
                     <SubtitleItem>of the intellectuals</SubtitleItem>
                     <SubtitleItem>by the intellectuals</SubtitleItem>
                     <SubtitleItem>for the intellectuals</SubtitleItem>
-                </SubtitleList>
+                </SubtitleList> */}
 
                 {/* Join Button */}
                 <Button
                     size="lg"
                     variant="glow"
-                    onClick={() =>
-                        window.open(
-                            "https://discord.com/invite/lamb276",
-                            "_blank"
-                        )
-                    }
+                    onClick={() => openModal(<DiscordModalContent />)}
                 >
                     <img src={DiscordIcon} alt="Discord" />
                     <span>JOIN</span>
@@ -70,14 +73,14 @@ const neonPulseIcon = keyframes`
   }
 `;
 
-const neonPulseText = keyframes`
-  0%, 100% {
-    filter: drop-shadow(0 0 0.25rem rgba(5, 208, 155, 0.5));
-  }
-  50% {
-    filter: drop-shadow(0 0 0.25rem rgba(5, 208, 155, 0.5)) drop-shadow(0 0 0.25rem #05D09B);
-  }
-`;
+// const neonPulseText = keyframes`
+//   0%, 100% {
+//     filter: drop-shadow(0 0 0.25rem rgba(5, 208, 155, 0.5));
+//   }
+//   50% {
+//     filter: drop-shadow(0 0 0.25rem rgba(5, 208, 155, 0.5)) drop-shadow(0 0 0.25rem #05D09B);
+//   }
+// `;
 
 const opacityLoop = keyframes`
   0% { opacity: 0.5; }
@@ -88,7 +91,7 @@ const opacityLoop = keyframes`
 const SectionContainer = styled.section`
     position: relative;
     width: 100%;
-    padding: 2rem 2.8rem 16rem;
+    padding: 2rem 2.8rem 18rem;
     background-color: ${({ theme }) => theme.colors.ngB};
     display: flex;
     justify-content: center;
@@ -102,7 +105,7 @@ const SectionContainer = styled.section`
 
     /* PC */
     ${media.pc`
-    padding: 8rem 16rem 16rem;
+    padding: 12rem 16rem 32rem;
     `}
 `;
 
@@ -149,8 +152,8 @@ const TitleArea = styled.div`
 `;
 
 const StarIcon = styled.div`
-    width: 4.4rem;
-    height: 4.4rem;
+    width: 7.2rem;
+    height: 7.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -173,56 +176,55 @@ const StarIcon = styled.div`
 `;
 
 const Title = styled.h2`
-    ${({ theme }) => theme.typography.xxl};
+    font-size: 2.8rem;
     line-height: 1;
     color: ${({ theme }) => theme.colors.ng};
-    font-weight: 500;
 
     /* Tablet, PC */
     ${media.tablet`
-        font-size: 4.8rem;
+        font-size: 4rem;
         line-height: 1;
-        letter-spacing: -0.32rem;
+        letter-spacing: -0.2rem;
     `}
     ${media.pc`
-        font-size: 5.6rem;
+        font-size: 4.4rem;
         line-height: 1;
-        letter-spacing: -0.32rem;
+        letter-spacing: -0.2rem;
     `}
 `;
 
-const SubtitleList = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    margin-bottom: 2rem;
+// const SubtitleList = styled.div`
+//     display: flex;
+//     flex-direction: column;
+//     gap: 1.2rem;
+//     margin-bottom: 2rem;
 
-    /* Tablet, PC */
-    ${media.tablet`
-        gap: 2rem;
-        margin-bottom: 0;
-    `}
-    ${media.pc`
-        gap: 2rem;
-        margin-bottom: 0;
-    `}
-`;
+//     /* Tablet, PC */
+//     ${media.tablet`
+//         gap: 2rem;
+//         margin-bottom: 0;
+//     `}
+//     ${media.pc`
+//         gap: 2rem;
+//         margin-bottom: 0;
+//     `}
+// `;
 
-const SubtitleItem = styled.p`
-    ${({ theme }) => theme.typography.xl_2};
-    color: ${({ theme }) => theme.colors.ngW};
-    font-weight: 500;
-    letter-spacing: -4%;
-    animation: ${neonPulseText} 2s ease-in-out infinite;
+// const SubtitleItem = styled.p`
+//     ${({ theme }) => theme.typography.xl_2};
+//     color: ${({ theme }) => theme.colors.ngW};
+//     font-weight: 500;
+//     letter-spacing: -4%;
+//     animation: ${neonPulseText} 2s ease-in-out infinite;
 
-    /* Tablet, PC */
-    ${media.tablet`
-        ${({ theme }) => theme.typography.xxl};
-    `}
-    ${media.pc`
-        ${({ theme }) => theme.typography.xxl};
-    `}
-`;
+//     /* Tablet, PC */
+//     ${media.tablet`
+//         ${({ theme }) => theme.typography.xxl};
+//     `}
+//     ${media.pc`
+//         ${({ theme }) => theme.typography.xxl};
+//     `}
+// `;
 
 const BackgroundGlow = styled.div`
     position: absolute;

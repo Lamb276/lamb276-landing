@@ -82,7 +82,7 @@ const SectionContainer = styled.section`
     display: flex;
     justify-content: center;
     overflow: hidden;
-    padding: 8rem 2rem;
+    padding: 12rem 2rem 8rem;
 
     /* Tablet, PC */
     ${media.tablet`

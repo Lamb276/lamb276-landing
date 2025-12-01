@@ -13,13 +13,13 @@ const Home = () => {
         <>
             <main>
                 <HeroSection />
-                <LogoMarquee />
+                {/* <LogoMarquee /> */}
                 <TeamSection />
                 <LambSection />
                 <JoinDaoSection />
                 <VisionSection />
                 <SocialSection />
-                <InfoSection />
+                {/* <InfoSection /> */}
             </main>
         </>
     );

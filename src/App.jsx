@@ -10,6 +10,7 @@ import Modal from "./components/common/Modal";
 import Home from "./pages/Home";
 import Leaderboard from "./pages/Leaderboard";
 import GoldPaper from "./pages/GoldPaper";
+import Tokenomics from "./pages/Tokenomics";
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
 
                         <Route path="/leaderboard" element={<Leaderboard />} />
                         <Route path="/gold-paper" element={<GoldPaper />} />
+                        <Route path="/tokenomics" element={<Tokenomics />} />
                     </Routes>
                     <Footer />
                     <Modal />
