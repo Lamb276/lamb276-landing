@@ -63,39 +63,57 @@ export const PresaleModalContent = () => {
 // About
 export const AboutModalContent = () => {
     const { closeModal } = useModal();
-
     return (
         <>
-            <Title>About Project</Title>
-            <Description>Content is needed here.</Description>
-            <div
-                style={{
-                    display: "flex",
-                    gap: "1rem",
-                    width: "100%",
-                    marginTop: "2rem",
-                }}
+            <Title>About</Title>
+            <Description>Coming Soon...</Description>
+            <Button
+                size="md"
+                variant="primary"
+                style={{ width: "100%", marginTop: "2rem" }}
+                onClick={closeModal}
             >
-                <Button
-                    size="md"
-                    variant="secondary"
-                    onClick={closeModal}
-                    style={{ flex: 1 }}
-                >
-                    Cancel
-                </Button>
-                <Button
-                    size="md"
-                    variant="primary"
-                    onClick={() => alert("Confirmed!")}
-                    style={{ flex: 1 }}
-                >
-                    Confirm
-                </Button>
-            </div>
+                Close
+            </Button>
         </>
     );
 };
+
+// export const AboutModalContent = () => {
+//     const { closeModal } = useModal();
+
+//     return (
+//         <>
+//             <Title>About Project</Title>
+//             <Description>Content is needed here.</Description>
+//             <div
+//                 style={{
+//                     display: "flex",
+//                     gap: "1rem",
+//                     width: "100%",
+//                     marginTop: "2rem",
+//                 }}
+//             >
+//                 <Button
+//                     size="md"
+//                     variant="secondary"
+//                     onClick={closeModal}
+//                     style={{ flex: 1 }}
+//                 >
+//                     Cancel
+//                 </Button>
+//                 <Button
+//                     size="md"
+//                     variant="primary"
+//                     onClick={() => alert("Confirmed!")}
+//                     style={{ flex: 1 }}
+//                 >
+//                     Confirm
+//                 </Button>
+//             </div>
+//         </>
+//     );
+// };
 
 // Campaign
 export const CampaignModalContent = () => {
