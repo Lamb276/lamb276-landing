@@ -91,23 +91,6 @@ const ContentWrapper = styled.div`
 const Title = styled.p`
     font-size: ${({ theme }) => theme.fontSizes.md};
     color: ${({ theme }) => theme.colors.ngW};
-    opacity: 0.5;
-    text-align: justify;
-    letter-spacing: -0.04em;
-
-    /* Tablet, PC */
-    ${media.tablet`
-        text-align: left;
-    `}
-    ${media.pc`
-        font-size: ${({ theme }) => theme.fontSizes.lg};
-        text-align: left;
-    `}
-`;
-
-const Paragraph = styled.p`
-    font-size: ${({ theme }) => theme.fontSizes.sm_2};
-    color: ${({ theme }) => theme.colors.ngW};
     opacity: 0.3;
     text-align: justify;
     letter-spacing: -0.04em;
@@ -118,6 +101,23 @@ const Paragraph = styled.p`
     `}
     ${media.pc`
         font-size: ${({ theme }) => theme.fontSizes.md};
+        text-align: left;
+    `}
+`;
+
+const Paragraph = styled.p`
+    font-size: ${({ theme }) => theme.fontSizes.sm_2};
+    color: ${({ theme }) => theme.colors.ngW};
+    opacity: 0.2;
+    text-align: justify;
+    letter-spacing: -0.04em;
+
+    /* Tablet, PC */
+    ${media.tablet`
+        text-align: left;
+    `}
+    ${media.pc`
+        font-size: ${({ theme }) => theme.fontSizes.sm_2};
         text-align: left;
     `}
 `;
