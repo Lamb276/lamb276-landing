@@ -109,15 +109,11 @@ const Paragraph = styled.p`
     font-size: ${({ theme }) => theme.fontSizes.sm_2};
     color: ${({ theme }) => theme.colors.ngW};
     opacity: 0.2;
-    text-align: justify;
+    text-align: left;
     letter-spacing: -0.04em;
 
-    /* Tablet, PC */
-    ${media.tablet`
-        text-align: left;
-    `}
+    /* PC */
     ${media.pc`
         font-size: ${({ theme }) => theme.fontSizes.sm_2};
-        text-align: left;
     `}
 `;
