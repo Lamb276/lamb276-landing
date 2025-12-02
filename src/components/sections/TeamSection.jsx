@@ -270,6 +270,12 @@ const LeaderImageFrame = styled(motion.div)`
         height: 100%;
         object-fit: cover;
         object-position: top center;
+
+        /* PC: 이미지가 잘리지 않도록 설정 변경 */
+        ${media.pc`
+            object-fit: contain;
+            object-position: bottom center;
+        `}
     }
 
     /* Tablet */
@@ -286,7 +292,8 @@ const LeaderImageFrame = styled(motion.div)`
     ${media.pc`
         order: 2;
         height: 56rem;
-        max-width: 40rem;
+        /* 어깨가 잘리지 않도록 최대 너비 확장 (40rem -> 60rem) */
+        max-width: 60rem; 
         margin-left: 0;
         border-radius: 0;
     `}
@@ -296,6 +303,7 @@ const ButtonWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 2rem;
 
     /* Tablet */
     ${media.tablet`
@@ -304,7 +312,7 @@ const ButtonWrapper = styled.div`
 
     /* PC */
     ${media.pc`
-        justify-content: flex-end;
+        justify-content: flex-start; /* 디자인 시안에 맞춰 좌측 정렬, 필요시 flex-end로 변경 */
     `}
 `;
 
