@@ -1,12 +1,12 @@
 import React from "react";
 import HeroSection from "../components/sections/HeroSection";
-import LogoMarquee from "../components/sections/LogoMarquee";
+// import LogoMarquee from "../components/sections/LogoMarquee";
 import TeamSection from "../components/sections/TeamSection";
 import LambSection from "../components/sections/LambSection";
 import JoinDaoSection from "../components/sections/JoinDaoSection";
 import VisionSection from "../components/sections/VisionSection";
 import SocialSection from "../components/sections/SocialSection";
-import InfoSection from "../components/sections/InfoSection";
+import DisclaimerSection from "../components/sections/DisclaimerSection";
 
 const Home = () => {
     return (
@@ -19,7 +19,7 @@ const Home = () => {
                 <JoinDaoSection />
                 <VisionSection />
                 <SocialSection />
-                {/* <InfoSection /> */}
+                <DisclaimerSection />
             </main>
         </>
     );
