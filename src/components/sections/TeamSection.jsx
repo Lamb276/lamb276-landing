@@ -67,13 +67,7 @@ const TeamSection = () => {
                         viewport={{ once: true, margin: "0px 0px -40% 0px" }}
                     >
                         <LeaderName>{LEADER_DATA.name}</LeaderName>
-                        <LeaderDesc>
-                            {LEADER_DATA.description}
-                            <br />
-                            <br />
-                            He creates a DAO for global movement to pursue
-                            rational righteousness.
-                        </LeaderDesc>
+                        <LeaderDesc>{LEADER_DATA.description}</LeaderDesc>
                         <ButtonWrapper>
                             <Button
                                 size="md"
