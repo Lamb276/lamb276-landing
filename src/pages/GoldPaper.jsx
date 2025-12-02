@@ -5,12 +5,9 @@ import { media } from "../styles/media";
 import theme from "../styles/theme";
 import tokenChartImg from "../assets/images/gold-paper-image.png";
 import Button from "../components/common/Button";
-import { useModal } from "../context/ModalContext";
-import { VerificationModalContent } from "../components/layout/ModalContents";
 
 const GoldPaper = () => {
     const navigate = useNavigate();
-    const { openModal } = useModal();
 
     return (
         <PageWrapper>
@@ -114,7 +111,10 @@ const GoldPaper = () => {
                             size="md"
                             variant="primary"
                             onClick={() =>
-                                openModal(<VerificationModalContent />)
+                                window.open(
+                                    "https://linktr.ee/Lamb276",
+                                    "_blank"
+                                )
                             }
                         >
                             Verification Profile

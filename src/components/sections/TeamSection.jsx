@@ -8,8 +8,6 @@ import { media } from "../../styles/media";
 import worldLibertyLogo from "../../assets/images/partner/world-liberty-financial.svg";
 import pudgyLogo from "../../assets/images/partner/pudgy-penguins.svg";
 import cointelegraphLogo from "../../assets/images/partner/cointelegraph-accelerator.svg";
-import { useModal } from "../../context/ModalContext";
-import { VerificationModalContent } from "../layout/ModalContents";
 
 const PARTNERS = [
     {
@@ -53,8 +51,6 @@ const MEMBER_IMAGES = Object.entries(memberImagesModules).reduce(
 );
 
 const TeamSection = () => {
-    const { openModal } = useModal();
-
     return (
         <SectionContainer>
             <InnerWrapper>
@@ -73,7 +69,10 @@ const TeamSection = () => {
                                 size="md"
                                 variant="primary"
                                 onClick={() =>
-                                    openModal(<VerificationModalContent />)
+                                    window.open(
+                                        "https://linktr.ee/Lamb276",
+                                        "_blank"
+                                    )
                                 }
                             >
                                 Verification

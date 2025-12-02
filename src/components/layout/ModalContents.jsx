@@ -193,22 +193,3 @@ export const LeaderboardModalContent = () => {
         </>
     );
 };
-
-// Verification
-export const VerificationModalContent = () => {
-    const { closeModal } = useModal();
-    return (
-        <>
-            <Title>Verification</Title>
-            <Description>Coming Soon...</Description>
-            <Button
-                size="md"
-                variant="primary"
-                style={{ width: "100%", marginTop: "2rem" }}
-                onClick={closeModal}
-            >
-                Close
-            </Button>
-        </>
-    );
-};
