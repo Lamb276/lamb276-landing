@@ -21,7 +21,7 @@ const SocialSection = () => {
             <IconContainer>
                 {/* Discord */}
                 <SocialLink
-                    as="div"
+                    as={motion.div}
                     onClick={() => openModal(<DiscordModalContent />)}
                     whileHover={{ y: -5 }}
                     whileTap={{ scale: 0.95 }}

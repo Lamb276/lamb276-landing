@@ -523,6 +523,63 @@ const GoldPaper = () => {
                             LAMB276 operates as a Decentralized Autonomous
                             Organization and is not a registered corporate
                             entity or financial institution. The Gold Paper,
+                            website, and smart contracts are provided on an “as
+                            is” basis without warranties of any kind.
+                            Participation involves significant risks, including
+                            extreme market volatility, technical
+                            vulnerabilities, and the potential total loss of
+                            funds. You acknowledge that you have sufficient
+                            technical knowledge to understand these risks and
+                            are solely responsible for compliance with local
+                            laws.
+                        </li>
+                        <li>
+                            Tokens associated with LAMB276 are strictly for
+                            governance and utility purposes. They do not
+                            represent equity, shares, debt, or ownership
+                            interests in any enterprise. Holding these tokens
+                            does not entitle you to dividends, revenue shares,
+                            or investment returns. The value of the token is
+                            derived solely from market forces and community
+                            utility, with no guarantee of liquidity.
+                        </li>
+                        <li>
+                            Nothing in this document should be interpreted as
+                            financial, investment, legal, or tax advice. No
+                            statements in this Gold Paper should be considered a
+                            guarantee, promise, or representation regarding the
+                            future performance or value of any tokens or any
+                            components of the ecosystem.
+                        </li>
+                        <li>
+                            Smart contracts may contain bugs or security risks.
+                            Blockchain transactions are immutable and cannot be
+                            reversed by the DAO or any contributor in the event
+                            of theft, loss of keys, or interaction with
+                            malicious addresses.
+                        </li>
+                        <li>
+                            Dr. YoungHoon Kim's affiliations with external
+                            organizations such as World Liberty Finance or Pudgy
+                            Penguins do not imply any commercial partnership or
+                            shared liability.
+                        </li>
+                        <li>
+                            The goals mentioned in this Gold Paper depend
+                            entirely on community consensus and governance
+                            approval. There is no guarantee that these
+                            objectives will be realized as described.
+                        </li>
+                        <li>
+                            Participants are responsible for understanding and
+                            complying with the laws and regulations applicable
+                            in their own jurisdictions.
+                        </li>
+
+                        {/* <li>
+                            LAMB276 operates as a Decentralized Autonomous
+                            Organization and is not a registered corporate
+                            entity or financial institution. The Gold Paper,
                             website, and smart contracts are provided on an "as
                             is" basis without warranties of any kind.
                             Participation involves significant risks including
@@ -567,7 +624,7 @@ const GoldPaper = () => {
                             entirely on community consensus and governance
                             approval. There is no guarantee that these
                             objectives will be realized as described.
-                        </li>
+                        </li> */}
                     </DisclaimerList>
                 </DisclaimerSection>
             </ContentContainer>
