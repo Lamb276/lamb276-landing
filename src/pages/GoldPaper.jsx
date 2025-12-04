@@ -86,13 +86,12 @@ const GoldPaper = () => {
                             Noble World Records.
                         </p>
                         <p>
-                            Notably, the WMSC serves as an official partner to
-                            Guinness World Records. Furthermore, this record
-                            underwent statistical verification by an Accredited
-                            Professional Statistician with a PhD from the
-                            University of Oxford. It was also scientifically
-                            verified and clinically proven by the World Academy
-                            of Medical Sciences WAMS.
+                            Furthermore, this record received psychometric
+                            endorsement from an Accredited Professional
+                            Statistician with a PhD from the University of
+                            Oxford, and was also scientifically verified and
+                            clinically affirmed by the World Academy of Medical
+                            Sciences (WAMS).
                         </p>
                         <p>
                             The results were published in the international
