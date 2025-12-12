@@ -424,17 +424,17 @@ const PartnerRole = styled.span`
 
 // Member
 const GridContainer = styled.div`
-    display: grid; /* Flex 대신 Grid 사용 */
+    display: grid;
     width: 100%;
     max-width: 44rem;
     margin: 0 auto;
 
-    /* [Mobile] 2열 그리드 */
+    /* Mobile - 2열 그리드 */
     grid-template-columns: repeat(2, 1fr);
     gap: 3.2rem 2rem;
     padding: 0 2rem;
 
-    /* [Tablet] 3열 그리드 */
+    /* Tablet - 3열 그리드 */
     ${media.tablet`
         grid-template-columns: repeat(3, 1fr);
         gap: 6rem 2.4rem;
@@ -442,22 +442,21 @@ const GridContainer = styled.div`
         max-width: 80rem;
     `}
 
-    /* [PC] 반응형 그리드 전략 */
+    /* PC */
     ${media.pc`
         margin: 0 auto;
-        gap: 4rem 2.4rem; /* 상하 간격을 살짝 줄여서(6rem->4rem) 첫 멤버와 나머지 사이 공백 완화 */
+        gap: 4rem 2.4rem;
 
-        /* 1. 일반 PC (~1599px): 4열 그리드 */
-        /* 공간이 좁을 때는 4열로 배치하고, 첫 멤버가 한 줄을 차지하게 함 */
-        grid-template-columns: repeat(4, 1fr);
-        max-width: 100rem; /* 4명이 예쁘게 모이는 너비 */
+        /* 일반 PC (~1599px): 3열 그리드 */
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 84rem;
+        justify-content: center;
 
-        /* 2. 와이드 PC (1600px~): 5열 그리드 */
-        /* 공간이 충분할 때는 5열로 변경하여 한 줄로 정렬 */
+        /* 와이드 PC (1600px~): 5열 그리드 (일렬 배치) */
         @media (min-width: 1600px) {
             grid-template-columns: repeat(5, 1fr);
             max-width: 128rem;
-            gap: 6rem 2.4rem; /* 넓은 화면에서는 상하 간격 원복 */
+            gap: 6rem 2.4rem;
         }
     `}
 `;
@@ -467,46 +466,41 @@ const MemberCard = styled(motion.div)`
     flex-direction: column;
     gap: 1.2rem;
 
-    /* Grid 셀 내에서 카드 크기 및 정렬 설정 */
     width: 100%;
     max-width: 24rem;
-    margin: 0 auto; /* 셀 안에서 가운데 정렬 */
+    margin: 0 auto;
 
-    /* [Mobile] 첫 번째 멤버: 전체 너비 차지 (1열~끝열) */
+    /* Mobile */
     &:first-child {
-        grid-column: 1 / -1; /* Grid 영역은 한 줄 전체를 차지하되 */
-
-        /* ★ 핵심 수정: 컨텐츠 너비는 '한 컬럼' 크기로 제한 */
-        /* 전체 50%에서 gap(2rem)의 절반인 1rem을 뺌 */
+        grid-column: 1 / -1;
         width: calc(50% - 1rem);
     }
 
-    /* [Tablet] 첫 번째 멤버: 일반 배치 (1칸만 차지) */
+    /* Tablet */
     ${media.tablet`
         gap: 2rem;
         &:first-child {
-            grid-column: auto; /* Grid 영역 초기화 */
-            width: 100%;       /* 너비 제한 해제 (Grid 셀 크기에 맞춤) */
+            grid-column: auto;
+            width: 100%;
         }
     `}
 
-    /* [PC] 화면 크기에 따른 첫 번째 멤버 배치 변경 */
+    /* PC */
     ${media.pc`
         gap: 2rem;
         max-width: 22rem;
 
-        /* 1. 일반 PC (~1599px): 첫 번째 멤버 강조 (한 줄 차지) */
+        /* 일반 PC */
         &:first-child {
-            grid-column: 1 / -1; /* 4칸을 모두 차지 */
-            width: 100%;         /* Grid 셀 안에서 가득 차게 */
-            max-width: 22rem;    /* 단, 최대 너비를 제한하여 너무 커지지 않게 함 */
+            grid-column: auto;
+            width: 100%;
+            max-width: 22rem;
         }
 
-        /* 2. 와이드 PC (1600px~): 일렬 배치 (일반 배치) */
+        /* 와이드 PC (1600px~): 일렬 배치 */
         @media (min-width: 1600px) {
             &:first-child {
-                grid-column: auto; /* 5명이 나란히 서도록 초기화 */
-                width: 100%;       /* 일반적인 셀 크기 */
+                grid-column: auto;
             }
         }
     `}

@@ -33,7 +33,7 @@ export const MEMBER_DATA = [
     {
         id: 5,
         role: "Advisor",
-        name: "Raymond Keene OBE",
+        name: "Raymond Keene",
         position: "President of World Memory Championships",
     },
 ];
