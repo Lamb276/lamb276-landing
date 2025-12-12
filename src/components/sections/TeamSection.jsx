@@ -424,37 +424,33 @@ const PartnerRole = styled.span`
 
 // Member
 const GridContainer = styled.div`
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     width: 100%;
     max-width: 44rem;
     margin: 0 auto;
 
-    /* Mobile - 2열 그리드 */
-    grid-template-columns: repeat(2, 1fr);
+    /* [Mobile] 2열 구조 */
     gap: 3.2rem 2rem;
     padding: 0 2rem;
 
-    /* Tablet - 3열 그리드 */
+    /* [Tablet] 3열 구조 */
     ${media.tablet`
-        grid-template-columns: repeat(3, 1fr);
         gap: 6rem 2.4rem;
         padding: 0;
         max-width: 80rem;
     `}
 
-    /* PC */
+    /* [PC] 반응형 구조 */
     ${media.pc`
         margin: 0 auto;
         gap: 4rem 2.4rem;
-
-        /* 일반 PC (~1599px): 3열 그리드 */
-        grid-template-columns: repeat(3, 1fr);
+        /* 일반 PC: 3열 구조 (3명 / 2명) */
         max-width: 84rem;
-        justify-content: center;
 
-        /* 와이드 PC (1600px~): 5열 그리드 (일렬 배치) */
+        /* 와이드 PC: 5열 구조 (1줄) */
         @media (min-width: 1600px) {
-            grid-template-columns: repeat(5, 1fr);
             max-width: 128rem;
             gap: 6rem 2.4rem;
         }
@@ -466,42 +462,48 @@ const MemberCard = styled(motion.div)`
     flex-direction: column;
     gap: 1.2rem;
 
-    width: 100%;
-    max-width: 24rem;
-    margin: 0 auto;
+    /* --- [Mobile] 설정 --- */
+    /* 기본 너비: 2열 (50% - gap 절반) */
+    width: calc((100% - 2rem) / 2);
 
-    /* Mobile */
+    /* ★ 핵심: 첫 번째 멤버만 강제로 한 줄 차지 (크기는 유지) */
     &:first-child {
-        grid-column: 1 / -1;
-        width: calc(50% - 1rem);
+        margin-left: 25%; /* 좌측 여백 25% */
+        margin-right: 25%; /* 우측 여백 25% */
+        /* (25% 여백 + 50% 카드 + 25% 여백 = 100% -> 줄바꿈 발생) */
     }
 
-    /* Tablet */
+    /* --- [Tablet] 설정 --- */
     ${media.tablet`
         gap: 2rem;
+        /* 3열 너비 계산 */
+        width: calc((100% - 4.8rem) / 3);
+        max-width: 24rem;
+
+        /* 모바일에서 준 여백 초기화 (다시 3열 흐름에 합류) */
         &:first-child {
-            grid-column: auto;
-            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
         }
     `}
 
-    /* PC */
+    /* --- [PC] 설정 --- */
     ${media.pc`
         gap: 2rem;
         max-width: 22rem;
 
-        /* 일반 PC */
+        /* 1. 일반 PC (~1599px): 3열 구조 */
+        /* Tablet과 동일하게 3열 너비 및 여백 초기화 유지 */
+        width: calc((100% - 4.8rem) / 3);
+        
         &:first-child {
-            grid-column: auto;
-            width: 100%;
-            max-width: 22rem;
+            margin-left: 0;
+            margin-right: 0;
         }
 
-        /* 와이드 PC (1600px~): 일렬 배치 */
+        /* 2. 와이드 PC (1600px~): 5열 구조 */
         @media (min-width: 1600px) {
-            &:first-child {
-                grid-column: auto;
-            }
+            width: calc((100% - 9.6rem) / 5);
         }
     `}
 `;
