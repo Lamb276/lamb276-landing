@@ -165,7 +165,7 @@ const SectionContainer = styled.section`
 
     /* PC */
     ${media.pc`
-        padding: 10rem 16rem;
+        padding: 8rem 16rem;
     `}
 `;
 
@@ -271,7 +271,6 @@ const LeaderImageFrame = styled(motion.div)`
         object-fit: cover;
         object-position: top center;
 
-        /* PC: 이미지가 잘리지 않도록 설정 변경 */
         ${media.pc`
             object-fit: contain;
             object-position: bottom center;
@@ -292,7 +291,6 @@ const LeaderImageFrame = styled(motion.div)`
     ${media.pc`
         order: 2;
         height: 56rem;
-        /* 어깨가 잘리지 않도록 최대 너비 확장 (40rem -> 60rem) */
         max-width: 60rem; 
         margin-left: 0;
         border-radius: 0;
@@ -312,7 +310,7 @@ const ButtonWrapper = styled.div`
 
     /* PC */
     ${media.pc`
-        justify-content: flex-start; /* 디자인 시안에 맞춰 좌측 정렬, 필요시 flex-end로 변경 */
+        justify-content: flex-start;
     `}
 `;
 
@@ -449,9 +447,10 @@ const GridContainer = styled.div`
 
     /* PC */
     ${media.pc`
-        max-width: 108rem;
+        max-width: 128rem;
         gap: 6rem 2.4rem;
-        margin: 0 auto;
+        margin: 0;
+        // margin: 0 auto;
     `}
 `;
 

@@ -9,13 +9,31 @@ export const MEMBER_DATA = [
     {
         id: 1,
         role: "Advisor",
-        name: "Michael Mainelli",
-        position: "Former Lord Mayor of the City of London",
+        name: "Conor McGregor",
+        position: "5 time World Champion",
     },
     {
         id: 2,
         role: "Advisor",
+        name: "Michael Mainelli",
+        position: "Former Lord Mayor of the City of London",
+    },
+    {
+        id: 3,
+        role: "Advisor",
+        name: "Matthew Morgan",
+        position: "WLFI Advisor",
+    },
+    {
+        id: 4,
+        role: "Advisor",
         name: "Anthony Francis",
         position: "Head of Program, Cointelegraph Accelerator",
+    },
+    {
+        id: 5,
+        role: "Advisor",
+        name: "Raymond Keene OBE",
+        position: "President of World Memory Championships",
     },
 ];
