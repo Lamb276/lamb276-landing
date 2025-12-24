@@ -85,8 +85,7 @@ const HeroSection = () => {
                             viewport={{ once: true }}
                             variants={titleVariants}
                         >
-                            <span className="block">Intellectual</span>
-                            <span className="block">Renaissance</span>
+                            <span className="block">LAMB276</span>
                         </Title>
 
                         <Subtitle
@@ -95,7 +94,7 @@ const HeroSection = () => {
                             viewport={{ once: true }}
                             variants={subtitleVariants}
                         >
-                            A DAO founded by
+                            The final meme created by
                             <br />
                             the world’s highest IQ 276 holder
                         </Subtitle>
