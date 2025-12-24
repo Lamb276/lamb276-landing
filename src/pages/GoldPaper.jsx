@@ -44,7 +44,12 @@ const GoldPaper = () => {
                         <span>Last Revised: November 27th, 2025</span>
                     </MetaInfo>
                     <DisclaimerText>
-                        LAMB276 is not a religious or political organization.
+                        * This Gold Paper has been prepared solely to present
+                        the long-term vision, principles, and conceptual
+                        framework of LAMB276.
+                        <br />
+                        &nbsp;&nbsp; It does not constitute an offer,
+                        solicitation, or commitment of any kind.
                     </DisclaimerText>
                 </HeroSection>
 

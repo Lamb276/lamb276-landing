@@ -85,7 +85,10 @@ const HamburgerMenu = ({ isOpen, onClose }) => {
                                 Home
                             </MenuItem>
 
-                            {MENU_ITEMS.map((item) => (
+                            {/* About 메뉴 필터링 적용 */}
+                            {MENU_ITEMS.filter(
+                                (item) => item.id !== "about"
+                            ).map((item) => (
                                 <React.Fragment key={item.id}>
                                     <MenuItem
                                         to={item.path}

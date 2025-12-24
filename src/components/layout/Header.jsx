@@ -78,105 +78,115 @@ const Header = () => {
 
                     {/* Nav */}
                     <Nav>
-                        {MENU_ITEMS.map((item) => {
-                            if (item.children) {
-                                return (
-                                    <NavGroup
-                                        key={item.id}
-                                        onMouseEnter={() =>
-                                            setHoveredItem(item.id)
-                                        }
-                                        onMouseLeave={() =>
-                                            setHoveredItem(null)
-                                        }
-                                    >
-                                        <NavItem
-                                            as="div"
-                                            style={{ cursor: "default" }}
+                        {MENU_ITEMS.filter((item) => item.id !== "about").map(
+                            (item) => {
+                                if (item.children) {
+                                    return (
+                                        <NavGroup
+                                            key={item.id}
+                                            onMouseEnter={() =>
+                                                setHoveredItem(item.id)
+                                            }
+                                            onMouseLeave={() =>
+                                                setHoveredItem(null)
+                                            }
                                         >
-                                            {item.label}
-                                            <ArrowIcon
-                                                animate={{
-                                                    rotate:
-                                                        hoveredItem === item.id
-                                                            ? 180
-                                                            : 0,
-                                                }}
-                                                transition={{ duration: 0.2 }}
+                                            <NavItem
+                                                as="div"
+                                                style={{ cursor: "default" }}
                                             >
-                                                <IoIosArrowDown />
-                                            </ArrowIcon>
-                                        </NavItem>
-
-                                        <AnimatePresence>
-                                            {hoveredItem === item.id && (
-                                                <DropdownMenu
-                                                    initial={{
-                                                        opacity: 0,
-                                                        y: 10,
-                                                    }}
+                                                {item.label}
+                                                <ArrowIcon
                                                     animate={{
-                                                        opacity: 1,
-                                                        y: 0,
+                                                        rotate:
+                                                            hoveredItem ===
+                                                            item.id
+                                                                ? 180
+                                                                : 0,
                                                     }}
-                                                    exit={{ opacity: 0, y: 10 }}
                                                     transition={{
                                                         duration: 0.2,
                                                     }}
                                                 >
-                                                    <DropdownContent>
-                                                        {item.children.map(
-                                                            (subItem) => (
-                                                                <DropdownItem
-                                                                    key={
-                                                                        subItem.id
-                                                                    }
-                                                                    href={
-                                                                        subItem.path
-                                                                    }
-                                                                    target={
-                                                                        subItem.external
-                                                                            ? "_blank"
-                                                                            : "_self"
-                                                                    }
-                                                                    rel={
-                                                                        subItem.external
-                                                                            ? "noopener noreferrer"
-                                                                            : ""
-                                                                    }
-                                                                    onClick={(
-                                                                        e
-                                                                    ) =>
-                                                                        handleSubMenuClick(
-                                                                            e,
-                                                                            subItem
-                                                                        )
-                                                                    }
-                                                                >
-                                                                    {
-                                                                        subItem.label
-                                                                    }
-                                                                </DropdownItem>
-                                                            )
-                                                        )}
-                                                    </DropdownContent>
-                                                </DropdownMenu>
-                                            )}
-                                        </AnimatePresence>
-                                    </NavGroup>
+                                                    <IoIosArrowDown />
+                                                </ArrowIcon>
+                                            </NavItem>
+
+                                            <AnimatePresence>
+                                                {hoveredItem === item.id && (
+                                                    <DropdownMenu
+                                                        initial={{
+                                                            opacity: 0,
+                                                            y: 10,
+                                                        }}
+                                                        animate={{
+                                                            opacity: 1,
+                                                            y: 0,
+                                                        }}
+                                                        exit={{
+                                                            opacity: 0,
+                                                            y: 10,
+                                                        }}
+                                                        transition={{
+                                                            duration: 0.2,
+                                                        }}
+                                                    >
+                                                        <DropdownContent>
+                                                            {item.children.map(
+                                                                (subItem) => (
+                                                                    <DropdownItem
+                                                                        key={
+                                                                            subItem.id
+                                                                        }
+                                                                        href={
+                                                                            subItem.path
+                                                                        }
+                                                                        target={
+                                                                            subItem.external
+                                                                                ? "_blank"
+                                                                                : "_self"
+                                                                        }
+                                                                        rel={
+                                                                            subItem.external
+                                                                                ? "noopener noreferrer"
+                                                                                : ""
+                                                                        }
+                                                                        onClick={(
+                                                                            e
+                                                                        ) =>
+                                                                            handleSubMenuClick(
+                                                                                e,
+                                                                                subItem
+                                                                            )
+                                                                        }
+                                                                    >
+                                                                        {
+                                                                            subItem.label
+                                                                        }
+                                                                    </DropdownItem>
+                                                                )
+                                                            )}
+                                                        </DropdownContent>
+                                                    </DropdownMenu>
+                                                )}
+                                            </AnimatePresence>
+                                        </NavGroup>
+                                    );
+                                }
+
+                                return (
+                                    <NavItem
+                                        key={item.id}
+                                        to={item.path}
+                                        onClick={(e) =>
+                                            handleMenuClick(e, item)
+                                        }
+                                    >
+                                        {item.label}
+                                    </NavItem>
                                 );
                             }
-
-                            return (
-                                <NavItem
-                                    key={item.id}
-                                    to={item.path}
-                                    onClick={(e) => handleMenuClick(e, item)}
-                                >
-                                    {item.label}
-                                </NavItem>
-                            );
-                        })}
+                        )}
                     </Nav>
 
                     {/* Button */}
