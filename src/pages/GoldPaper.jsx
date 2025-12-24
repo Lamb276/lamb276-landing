@@ -47,9 +47,6 @@ const GoldPaper = () => {
                         * This Gold Paper has been prepared solely to present
                         the long-term vision, principles, and conceptual
                         framework of LAMB276.
-                        <br />
-                        &nbsp;&nbsp; It does not constitute an offer,
-                        solicitation, or commitment of any kind.
                     </DisclaimerText>
                 </HeroSection>
 
