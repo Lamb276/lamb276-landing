@@ -148,10 +148,11 @@ const HeroCard = styled(motion.div)`
     width: 100%;
     max-width: 108rem;
     max-height: 60rem;
-    min-height: 52rem;
+
     display: flex;
     align-items: flex-start;
     justify-content: center;
+
     border-radius: 3.2rem;
     overflow: hidden;
     backdrop-filter: blur(1.2rem);
@@ -164,19 +165,22 @@ const HeroCard = styled(motion.div)`
                 rgba(5, 208, 155, 0) 100%
             )
             border-box;
-    padding: 4.8rem 2rem;
+
+    padding: 4.8rem 4rem;
     min-height: 40rem;
 
     /* Tablet */
     ${media.tablet`
-        padding: 5.6rem 4rem 0rem 4rem;
+        align-items: center; 
+        padding: 0 4rem; 
         max-width: 80rem;
         min-height: 36rem;
         height: auto;
     `}
 
     /* PC */
-        ${media.pc`
+    ${media.pc`
+        align-items: center;
         padding: 8rem 6rem;
         min-height: 52rem;
     `}
@@ -212,7 +216,6 @@ const BgLayer = styled.img`
     pointer-events: none;
 `;
 
-// 콘텐츠 래퍼
 const ContentWrapper = styled.div`
     position: relative;
     z-index: 1;
@@ -221,21 +224,26 @@ const ContentWrapper = styled.div`
     padding: 0 2rem;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
 
     /* Mobile */
     ${media.mobile`
-    padding: 0;
+        padding: 0;
+    `}
+
+    /* Tablet */
+    ${media.tablet`
+        justify-content: center;
     `}
 
     /* PC */
     ${media.pc`
         flex-direction: row;
-        align-items: flex-start;
+        align-items: center;
         justify-content: space-between;
     `}
 `;
 
-// 텍스트 영역
 const TextGroup = styled(motion.div)`
     flex: 1;
     text-align: left;
@@ -254,14 +262,20 @@ const TextGroup = styled(motion.div)`
     ${media.pc`
         margin-top: 0;
         max-width: 50%;
+        transform: translateY(-2rem); 
     `}
 `;
 
 const Title = styled(motion.h1)`
-    ${({ theme }) => theme.typography.xxl};
+    font-size: 5.2rem;
     color: ${({ theme }) => theme.colors.ngW};
     font-weight: 500;
     margin-bottom: 2rem;
+
+    /* Mobile */
+    ${media.mobile`
+        margin-bottom: 0.8rem;
+    `}
 
     .block {
         display: block;
@@ -269,18 +283,18 @@ const Title = styled(motion.h1)`
 
     /* Tablet */
     ${media.tablet`
-        font-size: 5.6rem;
+        font-size: 6.4rem;
         line-height: 100%;
     `}
 
     /* PC */
     ${media.pc`
-    ${({ theme }) => theme.typography.xxxl};
+        ${({ theme }) => theme.typography.xxxl};
     `}
 `;
 
 const Subtitle = styled(motion.p)`
-    font-size: 1.6rem;
+    font-size: 2rem;
     color: ${({ theme }) => theme.colors.ng};
     line-height: 1.5;
 
@@ -293,7 +307,7 @@ const Subtitle = styled(motion.p)`
 
     /* Tablet */
     ${media.tablet`
-        ${({ theme }) => theme.typography.md};
+        ${({ theme }) => theme.typography.lg};
         line-height: 130%;
         margin-top: -0.4rem;
         letter-spacing: -0.04em;
@@ -301,11 +315,10 @@ const Subtitle = styled(motion.p)`
 
     /* PC */
     ${media.pc`
-    ${({ theme }) => theme.typography.xl_2};
+        ${({ theme }) => theme.typography.xl_2};
     `}
 `;
 
-// 이미지 영역
 const ImageGroup = styled(motion.div)`
     position: absolute;
     bottom: 0;
@@ -315,12 +328,12 @@ const ImageGroup = styled(motion.div)`
     /* Mobile */
     ${media.mobile`
         img {
-        width: auto;
-        max-height: 22rem;
-        object-fit: contain;
-        filter: drop-shadow(0 0 2rem rgba(0, 0, 0, 0.3));
-        margin-bottom: -25rem;
-        margin-right: -2rem;
+            width: auto;
+            max-height: 22rem;
+            object-fit: contain;
+            filter: drop-shadow(0 0 2rem rgba(0, 0, 0, 0.3));
+            margin-bottom: -25rem;
+            margin-right: -4rem;
         }
     `}
 
@@ -329,7 +342,7 @@ const ImageGroup = styled(motion.div)`
         img {
             max-height: auto;
             max-width: 30rem;
-            margin-bottom: -16rem;
+            margin-bottom: -14rem;
             margin-right: -4rem;
         }
     `}
@@ -340,7 +353,7 @@ const ImageGroup = styled(motion.div)`
             width: 44rem;
             height: auto;
             max-height: 75rem;
-            margin-bottom: -22rem;
+            margin-bottom: -20rem;
             margin-right: -6rem;
         }
     `}
