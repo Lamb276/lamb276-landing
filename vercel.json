@@ -6,6 +6,7 @@
     { "source": "/presale", "destination": "https://app.lamb276.org/presale" },
     { "source": "/presale/:path*", "destination": "https://app.lamb276.org/presale/:path*" },
     { "source": "/_next/:path*", "destination": "https://app.lamb276.org/_next/:path*" },
+    { "source": "/api/:path*", "destination": "https://app.lamb276.org/api/:path*" },
 
     { "source": "/((?!campaign|presale).*)", "destination": "/index.html" }
   ]
