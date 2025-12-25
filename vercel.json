@@ -8,6 +8,11 @@
     { "source": "/_next/:path*", "destination": "https://app.lamb276.org/_next/:path*" },
     { "source": "/api/:path*", "destination": "https://app.lamb276.org/api/:path*" },
 
+    { "source": "/monitoring", "destination": "https://app.lamb276.org/monitoring" },
+    { "source": "/monitoring/:path*", "destination": "https://app.lamb276.org/monitoring/:path*" },
+
+    { "source": "/campaign-assets/:path*", "destination": "https://app.lamb276.org/campaign-assets/:path*" },
+
     { "source": "/((?!campaign|presale).*)", "destination": "/index.html" }
   ]
 }
