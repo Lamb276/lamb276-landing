@@ -3,6 +3,8 @@
       {
         "source": "/(.*)",
         "destination": "/index.html"
-      }
+      },
+      { "source": "/campaign", "destination": "https://app.lamb276.org" },
+      { "source": "/campaign/(.*)", "destination": "https://app.lamb276.org/$1" }
     ]
   }
