@@ -17,7 +17,7 @@ const SocialSection = () => {
             <IconContainer>
                 {/* Discord */}
                 <SocialLink
-                    href="https://discord.com/invite/lamb276"
+                    href="https://discord.gg/lamb276"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ y: -5 }}

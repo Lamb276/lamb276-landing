@@ -15,7 +15,7 @@ export const MENU_ITEMS = [
             {
                 id: "discord",
                 label: "Discord",
-                path: "https://discord.com/invite/lamb276",
+                path: "https://discord.gg/lamb276",
                 external: true,
             },
         ],
