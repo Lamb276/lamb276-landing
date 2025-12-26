@@ -1,14 +1,10 @@
-import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import DiscordIcon from "../../assets/icons/discord.svg";
 import XIcon from "../../assets/icons/x.svg";
 import { media } from "../../styles/media";
-import { useModal } from "../../context/ModalContext";
-import { DiscordModalContent } from "../layout/ModalContents";
 
 const SocialSection = () => {
-    const { openModal } = useModal();
 
     return (
         <SectionContainer>
@@ -21,11 +17,11 @@ const SocialSection = () => {
             <IconContainer>
                 {/* Discord */}
                 <SocialLink
-                    as={motion.div}
-                    onClick={() => openModal(<DiscordModalContent />)}
+                    href="https://discord.com/invite/lamb276"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ y: -5 }}
                     whileTap={{ scale: 0.95 }}
-                    style={{ cursor: "pointer" }}
                 >
                     <IconWrapper>
                         <img src={DiscordIcon} alt="Discord" />

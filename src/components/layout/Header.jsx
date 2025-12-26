@@ -14,7 +14,6 @@ import {
     AboutModalContent,
     ContactModalContent,
     LeaderboardModalContent,
-    DiscordModalContent,
 } from "../layout/ModalContents";
 import { media } from "../../styles/media";
 
@@ -54,10 +53,10 @@ const Header = () => {
         }
     };
 
-    const handleSubMenuClick = (e, subItem) => {
+    const handleSubMenuClick = (subItem) => {
         if (subItem.id === "discord") {
-            e.preventDefault();
-            openModal(<DiscordModalContent />);
+            // Discord 링크로 바로 이동
+            return;
         }
     };
 
@@ -151,11 +150,8 @@ const Header = () => {
                                                                                 ? "noopener noreferrer"
                                                                                 : ""
                                                                         }
-                                                                        onClick={(
-                                                                            e
-                                                                        ) =>
+                                                                        onClick={() =>
                                                                             handleSubMenuClick(
-                                                                                e,
                                                                                 subItem
                                                                             )
                                                                         }

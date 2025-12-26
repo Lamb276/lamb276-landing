@@ -9,7 +9,6 @@ import {
     ContactModalContent,
     LambModalContent,
     LeaderboardModalContent,
-    DiscordModalContent,
 } from "../layout/ModalContents";
 import Button from "../common/Button";
 
@@ -49,11 +48,10 @@ const HamburgerMenu = ({ isOpen, onClose }) => {
         }
     };
 
-    const handleSubMenuClick = (e, subItem) => {
+    const handleSubMenuClick = (subItem) => {
         if (subItem.id === "discord") {
-            e.preventDefault();
+            // Discord 링크로 바로 이동
             onClose();
-            openModal(<DiscordModalContent />);
         } else {
             onClose();
         }
@@ -115,9 +113,8 @@ const HamburgerMenu = ({ isOpen, onClose }) => {
                                                             ? "noopener noreferrer"
                                                             : ""
                                                     }
-                                                    onClick={(e) =>
+                                                    onClick={() =>
                                                         handleSubMenuClick(
-                                                            e,
                                                             subItem
                                                         )
                                                     }
