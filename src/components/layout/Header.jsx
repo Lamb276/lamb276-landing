@@ -186,12 +186,13 @@ const Header = () => {
                     </Nav>
 
                     {/* Button */}
-                    <Button
-                        size="sm"
-                        variant="token"
-                        onClick={() => openModal(<LambModalContent />)}
-                    >
-                        $LAMB
+                     <Button
+                         as={Link}
+                         to="/presale"
+                         size="sm"
+                         variant="token"
+                     >
+                         $LAMB
                     </Button>
                 </HeaderInner>
             </HeaderWrapper>
