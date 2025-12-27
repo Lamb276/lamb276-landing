@@ -186,12 +186,12 @@ const Header = () => {
                     </Nav>
 
                     {/* Button */}
-                     <Button
-                         as={Link}
-                         to="/presale"
-                         size="sm"
-                         variant="token"
-                     >
+                    <Button
+                        as="a"
+                        href="https://www.lamb276.org/presale"
+                        size="sm"
+                        variant="token"
+                    >
                          $LAMB
                     </Button>
                 </HeaderInner>
