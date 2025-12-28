@@ -496,7 +496,7 @@ const GoldPaper = () => {
                         </DetailRow>
                         <DetailRow>
                             <span>Network</span>
-                            <strong>TBA</strong>
+                            <strong>Solana</strong>
                         </DetailRow>
                         <DetailRow>
                             <span>Total Supply</span>
@@ -504,7 +504,9 @@ const GoldPaper = () => {
                         </DetailRow>
                         <DetailRow>
                             <span>Contract Address</span>
-                            <strong>TBA</strong>
+                            <strong>
+                                9zMp6RJchojv36MpxWgmmpxT1gFk9TopcnsRGXZ9d6tA
+                            </strong>
                         </DetailRow>
                     </TokenDetailBox>
 
