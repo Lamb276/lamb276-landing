@@ -4,10 +4,7 @@ import { motion } from "framer-motion";
 import coinImage from "../../assets/images/lamb-coin.png";
 import Button from "../common/Button";
 import { useModal } from "../../context/ModalContext";
-import {
-    PresaleModalContent,
-    CampaignModalContent,
-} from "../layout/ModalContents";
+import { CampaignModalContent } from "../layout/ModalContents";
 import { media } from "../../styles/media";
 
 const LambSection = () => {
@@ -36,7 +33,12 @@ const LambSection = () => {
                         <Button
                             size="md"
                             variant="primary"
-                            onClick={() => openModal(<PresaleModalContent />)}
+                            onClick={() =>
+                                window.open(
+                                    "https://www.lamb276.org/presale",
+                                    "_blank"
+                                )
+                            }
                         >
                             Presale
                         </Button>
