@@ -23,6 +23,11 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [hoveredItem, setHoveredItem] = useState(null);
+    const [timeLeft, setTimeLeft] = useState({
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+    });
     const { openModal } = useModal();
     const navigate = useNavigate();
 
@@ -32,6 +37,32 @@ const Header = () => {
         };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    useEffect(() => {
+        const targetDate = new Date("2026-01-01T12:00:00.000Z");
+
+        const calculateTimeLeft = () => {
+            const now = new Date();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const hours = Math.floor(difference / (1000 * 60 * 60));
+                const minutes = Math.floor(
+                    (difference % (1000 * 60 * 60)) / (1000 * 60)
+                );
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                setTimeLeft({ hours, minutes, seconds });
+            } else {
+                setTimeLeft({ hours: 0, minutes: 0, seconds: 0 });
+            }
+        };
+
+        calculateTimeLeft();
+        const timer = setInterval(calculateTimeLeft, 1000);
+
+        return () => clearInterval(timer);
     }, []);
 
     const handleLogoClick = () => {
@@ -74,6 +105,18 @@ const Header = () => {
                         <DefaultLogo src={lambLogo} alt="Logo" />
                         <MobileLogoImg src={mobileLogo} alt="Logo Symbol" />
                     </Logo>
+
+                    {/* Countdown Timer */}
+                    <CountdownWrapper>
+                        <CountdownText>
+                            Starts in{" "}
+                            <CountdownTime>
+                                {String(timeLeft.hours).padStart(2, "0")}:
+                                {String(timeLeft.minutes).padStart(2, "0")}:
+                                {String(timeLeft.seconds).padStart(2, "0")}
+                            </CountdownTime>
+                        </CountdownText>
+                    </CountdownWrapper>
 
                     {/* Nav */}
                     <Nav>
@@ -228,7 +271,8 @@ const HeaderWrapper = styled.header`
 
     /* Tablet */
     ${media.tablet`
-        height: 14rem;
+        // height: 14rem; 카운트다운 삭제 시, 해당 주석으로 교제
+        height: 18rem;
         background: linear-gradient(
             180deg,
             rgba(2, 2, 2, 1) 0%,
@@ -271,28 +315,10 @@ const HeaderInner = styled.div`
     /* Tablet */
     ${media.tablet`
         padding: 0 8rem;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         align-content: center;
-        gap: 0; 
+        gap: 0;
         justify-content: space-between;
-
-        & > :nth-child(2) { 
-            order: 1; 
-            width: auto;
-        }
-        
-        & > :nth-child(4) { 
-            order: 2; 
-            width: auto;
-            margin-left: 0;
-        }
-
-        & > :nth-child(3) { 
-            order: 3; 
-            width: 100%;
-            justify-content: center; 
-            margin-top: 2.4rem;
-        }
     `}
 
     /* PC */
@@ -433,4 +459,45 @@ const DropdownItem = styled.a`
     &:hover {
         color: ${({ theme }) => theme.colors.ngW};
     }
+`;
+
+const CountdownWrapper = styled.div`
+    position: absolute;
+    top: 4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 10;
+
+    /* Mobile */
+    ${media.mobile`
+        top: 5.6rem;
+    `}
+
+    /* Tablet */
+    ${media.tablet`
+        top: 3.2rem;
+    `}
+
+    /* PC */
+    ${media.pc`
+        top: 3.6rem;
+    `}
+`;
+
+const CountdownText = styled.div`
+    font-size: ${({ theme }) => theme.fontSizes.lg};
+    color: ${({ theme }) => theme.colors.ngW_Alpha};
+    font-weight: 500;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+`;
+
+const CountdownTime = styled.span`
+    font-size: ${({ theme }) => theme.fontSizes.md_1};
+    color: ${({ theme }) => theme.colors.ng};
+    text-shadow: 0 0 0.8rem ${({ theme }) => theme.colors.ng_Alpha};
+    letter-spacing: 0.1rem;
 `;
