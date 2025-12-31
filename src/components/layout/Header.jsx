@@ -109,7 +109,7 @@ const Header = () => {
                     {/* Countdown Timer */}
                     <CountdownWrapper>
                         <CountdownText>
-                            Starts in{" "}
+                            Presale Starts in{" "}
                             <CountdownTime>
                                 {String(timeLeft.hours).padStart(2, "0")}:
                                 {String(timeLeft.minutes).padStart(2, "0")}:
@@ -496,11 +496,21 @@ const CountdownText = styled.div`
     display: flex;
     align-items: center;
     gap: 0.8rem;
+
+    /* Mobile */
+    ${media.mobile`
+    font-size: ${({ theme }) => theme.fontSizes.md};
+    `}
 `;
 
 const CountdownTime = styled.span`
-    font-size: ${({ theme }) => theme.fontSizes.md_1};
+    font-size: ${({ theme }) => theme.fontSizes.lg};
     color: ${({ theme }) => theme.colors.ng};
     text-shadow: 0 0 0.8rem ${({ theme }) => theme.colors.ng_Alpha};
     letter-spacing: 0.1rem;
+
+    /* Mobile */
+    ${media.mobile`
+    font-size: ${({ theme }) => theme.fontSizes.md};
+    `}
 `;
