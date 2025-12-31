@@ -5,6 +5,7 @@ import lambImage from "../../assets/images/hero-lamb.png";
 import gradientBgLight2 from "../../assets/images/gradient-bg-light-2.png";
 import backgroundImage from "../../assets/images/background-image.png";
 import { media } from "../../styles/media";
+import Button from "../common/Button";
 
 const titleVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -96,8 +97,23 @@ const HeroSection = () => {
                         >
                             The final meme created by
                             <br />
-                            the world’s highest IQ 276 holder
+                            the world's highest IQ 276 holder
                         </Subtitle>
+
+                        <ButtonWrapper>
+                            <Button
+                                size="md"
+                                variant="primary"
+                                onClick={() =>
+                                    window.open(
+                                        "https://www.lamb276.org/presale",
+                                        "_blank"
+                                    )
+                                }
+                            >
+                                Presale
+                            </Button>
+                        </ButtonWrapper>
                     </TextGroup>
 
                     <ImageGroup
@@ -332,7 +348,7 @@ const ImageGroup = styled(motion.div)`
             max-height: 22rem;
             object-fit: contain;
             filter: drop-shadow(0 0 2rem rgba(0, 0, 0, 0.3));
-            margin-bottom: -25rem;
+            margin-bottom: -19rem;
             margin-right: -4rem;
         }
     `}
@@ -342,7 +358,7 @@ const ImageGroup = styled(motion.div)`
         img {
             max-height: auto;
             max-width: 30rem;
-            margin-bottom: -14rem;
+            margin-bottom: -10.5rem;
             margin-right: -4rem;
         }
     `}
@@ -356,5 +372,35 @@ const ImageGroup = styled(motion.div)`
             margin-bottom: -20rem;
             margin-right: -6rem;
         }
+    `}
+`;
+
+const ButtonWrapper = styled.div`
+    display: flex;
+    gap: 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 2rem;
+
+    /* Mobile */
+    ${media.mobile`
+        button {
+            width: auto;
+            padding-left: 5.2rem;
+            padding-right: 5.2rem;
+        }
+    `}
+
+    /* Tablet */
+    ${media.tablet`
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+    `}
+
+    /* PC */
+    ${media.pc`
+        flex-direction: row;
+        justify-content: flex-start;
     `}
 `;

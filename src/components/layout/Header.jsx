@@ -192,7 +192,7 @@ const Header = () => {
                         size="sm"
                         variant="token"
                     >
-                         $LAMB
+                        $LAMB PRESALE
                     </Button>
                 </HeaderInner>
             </HeaderWrapper>

@@ -135,7 +135,7 @@ const HamburgerMenu = ({ isOpen, onClose }) => {
                                 onClick={handleLambClick}
                                 style={{ width: "auto" }}
                             >
-                                $LAMB
+                                $LAMB PRESALE
                             </Button>
                         </ButtonWrapper>
                     </MenuContainer>
