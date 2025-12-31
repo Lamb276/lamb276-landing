@@ -471,7 +471,10 @@ const CountdownWrapper = styled.div`
 
     /* Mobile */
     ${media.mobile`
-        top: 5.6rem;
+        top: 50%;
+        left: auto;
+        right: 2rem;
+        transform: translateY(-50%);
     `}
 
     /* Tablet */
