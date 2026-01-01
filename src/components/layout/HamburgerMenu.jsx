@@ -7,7 +7,6 @@ import { useModal } from "../../context/ModalContext";
 import {
     AboutModalContent,
     ContactModalContent,
-    LambModalContent,
     LeaderboardModalContent,
 } from "../layout/ModalContents";
 import Button from "../common/Button";
@@ -21,11 +20,6 @@ const HamburgerMenu = ({ isOpen, onClose }) => {
         onClose();
         navigate("/");
         window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-
-    const handleLambClick = () => {
-        onClose();
-        openModal(<LambModalContent />);
     };
 
     const handleMenuClick = (e, item) => {
@@ -50,7 +44,6 @@ const HamburgerMenu = ({ isOpen, onClose }) => {
 
     const handleSubMenuClick = (subItem) => {
         if (subItem.id === "discord") {
-            // Discord 링크로 바로 이동
             onClose();
         } else {
             onClose();
@@ -130,9 +123,11 @@ const HamburgerMenu = ({ isOpen, onClose }) => {
 
                         <ButtonWrapper>
                             <Button
+                                as="a"
+                                href="https://www.lamb276.org/presale"
                                 size="sm"
                                 variant="token"
-                                onClick={handleLambClick}
+                                onClick={onClose}
                                 style={{ width: "auto" }}
                             >
                                 $LAMB PRESALE

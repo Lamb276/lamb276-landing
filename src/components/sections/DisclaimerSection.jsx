@@ -57,6 +57,10 @@ const DisclaimerSection = () => {
                     with the laws and regulations applicable in their own
                     jurisdictions.
                 </Paragraph>
+                <Paragraph>
+                    Due to regulatory considerations, the $LAMB presale is not
+                    available to U.S. persons.
+                </Paragraph>
             </ContentWrapper>
         </SectionContainer>
     );
@@ -91,7 +95,7 @@ const ContentWrapper = styled.div`
 const Title = styled.p`
     font-size: ${({ theme }) => theme.fontSizes.md};
     color: ${({ theme }) => theme.colors.ngW};
-    opacity: 0.3;
+    opacity: 0.4;
     text-align: justify;
     letter-spacing: -0.04em;
 
@@ -108,7 +112,7 @@ const Title = styled.p`
 const Paragraph = styled.p`
     font-size: ${({ theme }) => theme.fontSizes.sm_2};
     color: ${({ theme }) => theme.colors.ngW};
-    opacity: 0.2;
+    opacity: 0.3;
     text-align: left;
     letter-spacing: -0.04em;
 

@@ -86,7 +86,6 @@ const Header = () => {
 
     const handleSubMenuClick = (subItem) => {
         if (subItem.id === "discord") {
-            // Discord 링크로 바로 이동
             return;
         }
     };
@@ -314,11 +313,31 @@ const HeaderInner = styled.div`
 
     /* Tablet */
     ${media.tablet`
-        padding: 0 8rem;
-        flex-wrap: nowrap;
-        align-content: center;
-        gap: 0;
+        padding: 2.4rem 8rem 0;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        gap: 2.4rem;
         justify-content: space-between;
+
+        & > :nth-child(2) { /* Logo */
+            order: 1;
+            flex: 0 0 auto;
+        }
+        & > :nth-child(5) { /* Button */
+            order: 2;
+            flex: 0 0 auto;
+        }
+
+        & > :nth-child(4) { /* Nav */
+            order: 3;
+            flex: 1 1 100%;
+            justify-content: center;
+            margin-top: 0;
+        }
+
+        & > :nth-child(3) { /* CountdownWrapper */
+            order: 0;
+        }
     `}
 
     /* PC */
@@ -386,6 +405,12 @@ const Nav = styled.nav`
     gap: 4rem;
     align-items: center;
     ${media.mobile`display: none;`}
+    ${media.tablet`
+        width: 100%;
+    `}
+    ${media.pc`
+        width: auto;
+    `}
 `;
 
 const NavGroup = styled.div`

@@ -21,5 +21,6 @@ export const MENU_ITEMS = [
         ],
     },
     { id: "goldpaper", label: "Gold Paper", path: "/gold-paper" },
+    { id: "tokenomics", label: "Tokenomics", path: "/tokenomics" },
     { id: "contact", label: "Contact", path: "/contact" },
 ];

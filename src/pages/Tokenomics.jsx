@@ -59,7 +59,9 @@ const Tokenomics = () => {
                     <AllocationCard>
                         <CardHeader>
                             <CardTitle>1. Genesis - Token Sale</CardTitle>
-                            <CardPercent>25%</CardPercent>
+                            <CardPercent>
+                                100% unlocked at TGE &nbsp;|&nbsp; 25%
+                            </CardPercent>
                         </CardHeader>
                         <QuoteText>
                             "A beginning not rooted in the authority of a
@@ -110,7 +112,9 @@ const Tokenomics = () => {
                     <AllocationCard>
                         <CardHeader>
                             <CardTitle>2. Team - Team Allocation</CardTitle>
-                            <CardPercent>8%</CardPercent>
+                            <CardPercent>
+                                Unlock by DAO &nbsp;|&nbsp; 8%
+                            </CardPercent>
                         </CardHeader>
                         <QuoteText>
                             "The founder is not an authority, but the first
@@ -155,7 +159,9 @@ const Tokenomics = () => {
                             <CardTitle>
                                 3. Advisory - Advisor Allocation
                             </CardTitle>
-                            <CardPercent>2%</CardPercent>
+                            <CardPercent>
+                                Unlock by DAO &nbsp;|&nbsp; 2%
+                            </CardPercent>
                         </CardHeader>
                         <QuoteText>
                             "Intellectual partners and collaborative allies in
@@ -253,7 +259,9 @@ const Tokenomics = () => {
                     <AllocationCard>
                         <CardHeader>
                             <CardTitle>5. LAMB Ambassador</CardTitle>
-                            <CardPercent>8%</CardPercent>
+                            <CardPercent>
+                                100% unlocked at TGE &nbsp;|&nbsp; 8%
+                            </CardPercent>
                         </CardHeader>
                         <QuoteText>
                             "A Community of Vanguards Leading the New
