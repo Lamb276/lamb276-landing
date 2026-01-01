@@ -56,15 +56,7 @@ const Header = () => {
 
                 setTimeLeft({ hours, minutes, seconds, isExpired: false });
             } else {
-                // 시간이 지난 경우 경과 시간을 계산
-                const elapsed = Math.abs(difference);
-                const hours = Math.floor(elapsed / (1000 * 60 * 60));
-                const minutes = Math.floor(
-                    (elapsed % (1000 * 60 * 60)) / (1000 * 60)
-                );
-                const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
-
-                setTimeLeft({ hours, minutes, seconds, isExpired: true });
+                setTimeLeft({ hours: 0, minutes: 0, seconds: 0, isExpired: true });
             }
         };
 
@@ -116,15 +108,20 @@ const Header = () => {
 
                     {/* Countdown Timer */}
                     <CountdownWrapper>
-                        <CountdownText>
-                            Presale Starts in{" "}
-                            <CountdownTime>
-                                {timeLeft.isExpired && "+"}
-                                {String(timeLeft.hours).padStart(2, "0")}:
-                                {String(timeLeft.minutes).padStart(2, "0")}:
-                                {String(timeLeft.seconds).padStart(2, "0")}
-                            </CountdownTime>
-                        </CountdownText>
+                        {timeLeft.isExpired ? (
+                            <CountdownText>
+                                <CountdownTime>Presale is live</CountdownTime>
+                            </CountdownText>
+                        ) : (
+                            <CountdownText>
+                                Presale Starts in{" "}
+                                <CountdownTime>
+                                    {String(timeLeft.hours).padStart(2, "0")}:
+                                    {String(timeLeft.minutes).padStart(2, "0")}:
+                                    {String(timeLeft.seconds).padStart(2, "0")}
+                                </CountdownTime>
+                            </CountdownText>
+                        )}
                     </CountdownWrapper>
 
                     {/* Nav */}
