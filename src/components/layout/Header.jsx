@@ -27,6 +27,7 @@ const Header = () => {
         hours: 0,
         minutes: 0,
         seconds: 0,
+        isExpired: false,
     });
     const { openModal } = useModal();
     const navigate = useNavigate();
@@ -53,9 +54,17 @@ const Header = () => {
                 );
                 const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-                setTimeLeft({ hours, minutes, seconds });
+                setTimeLeft({ hours, minutes, seconds, isExpired: false });
             } else {
-                setTimeLeft({ hours: 0, minutes: 0, seconds: 0 });
+                // 시간이 지난 경우 경과 시간을 계산
+                const elapsed = Math.abs(difference);
+                const hours = Math.floor(elapsed / (1000 * 60 * 60));
+                const minutes = Math.floor(
+                    (elapsed % (1000 * 60 * 60)) / (1000 * 60)
+                );
+                const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
+
+                setTimeLeft({ hours, minutes, seconds, isExpired: true });
             }
         };
 
@@ -110,6 +119,7 @@ const Header = () => {
                         <CountdownText>
                             Presale Starts in{" "}
                             <CountdownTime>
+                                {timeLeft.isExpired && "+"}
                                 {String(timeLeft.hours).padStart(2, "0")}:
                                 {String(timeLeft.minutes).padStart(2, "0")}:
                                 {String(timeLeft.seconds).padStart(2, "0")}
