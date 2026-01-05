@@ -45,7 +45,12 @@ const LambSection = () => {
                         <Button
                             size="md"
                             variant="secondary"
-                            onClick={() => openModal(<CampaignModalContent />)}
+                            onClick={() =>
+                                window.open(
+                                    "https://www.lamb276.org/campaign",
+                                    "_blank"
+                                )
+                            }
                         >
                             Campaign
                         </Button>

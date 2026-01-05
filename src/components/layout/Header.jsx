@@ -13,7 +13,6 @@ import {
     LambModalContent,
     AboutModalContent,
     ContactModalContent,
-    LeaderboardModalContent,
 } from "../layout/ModalContents";
 import { media } from "../../styles/media";
 
@@ -23,12 +22,6 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [hoveredItem, setHoveredItem] = useState(null);
-    const [timeLeft, setTimeLeft] = useState({
-        hours: 0,
-        minutes: 0,
-        seconds: 0,
-        isExpired: false,
-    });
     const { openModal } = useModal();
     const navigate = useNavigate();
 
@@ -38,32 +31,6 @@ const Header = () => {
         };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
-
-    useEffect(() => {
-        const targetDate = new Date("2026-01-01T12:00:00.000Z");
-
-        const calculateTimeLeft = () => {
-            const now = new Date();
-            const difference = targetDate - now;
-
-            if (difference > 0) {
-                const hours = Math.floor(difference / (1000 * 60 * 60));
-                const minutes = Math.floor(
-                    (difference % (1000 * 60 * 60)) / (1000 * 60)
-                );
-                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-                setTimeLeft({ hours, minutes, seconds, isExpired: false });
-            } else {
-                setTimeLeft({ hours: 0, minutes: 0, seconds: 0, isExpired: true });
-            }
-        };
-
-        calculateTimeLeft();
-        const timer = setInterval(calculateTimeLeft, 1000);
-
-        return () => clearInterval(timer);
     }, []);
 
     const handleLogoClick = () => {
@@ -78,10 +45,6 @@ const Header = () => {
         } else if (item.id === "contact") {
             e.preventDefault();
             openModal(<ContactModalContent />);
-        }
-        if (item.id === "leaderboard") {
-            e.preventDefault();
-            openModal(<LeaderboardModalContent />);
         }
     };
 
@@ -105,24 +68,6 @@ const Header = () => {
                         <DefaultLogo src={lambLogo} alt="Logo" />
                         <MobileLogoImg src={mobileLogo} alt="Logo Symbol" />
                     </Logo>
-
-                    {/* Countdown Timer */}
-                    <CountdownWrapper>
-                        {timeLeft.isExpired ? (
-                            <CountdownText>
-                                <CountdownTime>Presale is live</CountdownTime>
-                            </CountdownText>
-                        ) : (
-                            <CountdownText>
-                                Presale Starts in{" "}
-                                <CountdownTime>
-                                    {String(timeLeft.hours).padStart(2, "0")}:
-                                    {String(timeLeft.minutes).padStart(2, "0")}:
-                                    {String(timeLeft.seconds).padStart(2, "0")}
-                                </CountdownTime>
-                            </CountdownText>
-                        )}
-                    </CountdownWrapper>
 
                     {/* Nav */}
                     <Nav>
@@ -277,8 +222,7 @@ const HeaderWrapper = styled.header`
 
     /* Tablet */
     ${media.tablet`
-        // height: 14rem; 카운트다운 삭제 시, 해당 주석으로 교제
-        height: 18rem;
+        height: 14rem;
         background: linear-gradient(
             180deg,
             rgba(2, 2, 2, 1) 0%,
@@ -330,20 +274,16 @@ const HeaderInner = styled.div`
             order: 1;
             flex: 0 0 auto;
         }
-        & > :nth-child(5) { /* Button */
+        & > :nth-child(4) { /* Button */
             order: 2;
             flex: 0 0 auto;
         }
 
-        & > :nth-child(4) { /* Nav */
+        & > :nth-child(3) { /* Nav */
             order: 3;
             flex: 1 1 100%;
             justify-content: center;
             margin-top: 0;
-        }
-
-        & > :nth-child(3) { /* CountdownWrapper */
-            order: 0;
         }
     `}
 
@@ -353,17 +293,9 @@ const HeaderInner = styled.div`
         flex-wrap: nowrap;
         justify-content: space-between;
         gap: 0;
-        
+
         & > :nth-child(2) { width: auto; order: 0; margin: 0; }
-        & > :nth-child(4) { width: auto; order: 0; margin: 0; }
-        & > :nth-child(3) { 
-            width: auto; 
-            order: 0; 
-            margin-top: 0; 
-            position: absolute; 
-            left: 50%; 
-            transform: translateX(-50%); 
-        }
+        & > :nth-child(3) { width: auto; order: 0; margin: 0; }
     `}
 `;
 
@@ -491,58 +423,4 @@ const DropdownItem = styled.a`
     &:hover {
         color: ${({ theme }) => theme.colors.ngW};
     }
-`;
-
-const CountdownWrapper = styled.div`
-    position: absolute;
-    top: 4rem;
-    left: 50%;
-    transform: translateX(-50%);
-    pointer-events: none;
-    z-index: 10;
-
-    /* Mobile */
-    ${media.mobile`
-        top: 50%;
-        left: auto;
-        right: 2rem;
-        transform: translateY(-50%);
-    `}
-
-    /* Tablet */
-    ${media.tablet`
-        top: 3.2rem;
-    `}
-
-    /* PC */
-    ${media.pc`
-        top: 3.6rem;
-    `}
-`;
-
-const CountdownText = styled.div`
-    font-size: ${({ theme }) => theme.fontSizes.lg};
-    color: ${({ theme }) => theme.colors.ngW_Alpha};
-    font-weight: 500;
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-
-    /* Mobile */
-    ${media.mobile`
-    font-size: ${({ theme }) => theme.fontSizes.md};
-    `}
-`;
-
-const CountdownTime = styled.span`
-    font-size: ${({ theme }) => theme.fontSizes.lg};
-    color: ${({ theme }) => theme.colors.ng};
-    text-shadow: 0 0 0.8rem ${({ theme }) => theme.colors.ng_Alpha};
-    letter-spacing: 0.1rem;
-
-    /* Mobile */
-    ${media.mobile`
-    font-size: ${({ theme }) => theme.fontSizes.md};
-    `}
 `;

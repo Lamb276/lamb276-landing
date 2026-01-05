@@ -7,7 +7,6 @@ import { useModal } from "../../context/ModalContext";
 import {
     AboutModalContent,
     ContactModalContent,
-    LeaderboardModalContent,
 } from "../layout/ModalContents";
 import Button from "../common/Button";
 
@@ -33,8 +32,8 @@ const HamburgerMenu = ({ isOpen, onClose }) => {
             openModal(<ContactModalContent />);
         } else if (item.id === "leaderboard") {
             e.preventDefault();
+            window.location.href = item.path;
             onClose();
-            openModal(<LeaderboardModalContent />);
         } else if (item.id === "social") {
             e.preventDefault();
         } else {

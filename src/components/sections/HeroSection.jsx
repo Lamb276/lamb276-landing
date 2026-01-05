@@ -106,12 +106,12 @@ const HeroSection = () => {
                                 variant="primary"
                                 onClick={() =>
                                     window.open(
-                                        "https://www.lamb276.org/presale",
+                                        "https://www.lamb276.org/campaign",
                                         "_blank"
                                     )
                                 }
                             >
-                                Presale
+                                Campaign
                             </Button>
                         </ButtonWrapper>
                     </TextGroup>
