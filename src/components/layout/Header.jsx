@@ -45,6 +45,9 @@ const Header = () => {
         } else if (item.id === "contact") {
             e.preventDefault();
             openModal(<ContactModalContent />);
+        } else if (item.external) {
+            e.preventDefault();
+            window.open(item.path, "_blank");
         }
     };
 
