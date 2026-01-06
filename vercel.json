@@ -13,9 +13,12 @@
 
     { "source": "/admin", "destination": "https://app.lamb276.org/admin" },
     { "source": "/admin/:path*", "destination": "https://app.lamb276.org/admin/:path*" },
+
+    { "source": "/ambassador", "destination": "https://app.lamb276.org/ambassador" },
+    { "source": "/ambassador/:path*", "destination": "https://app.lamb276.org/ambassador/:path*" },
     
     { "source": "/campaign-assets/:path*", "destination": "https://app.lamb276.org/campaign-assets/:path*" },
-
-    { "source": "/((?!campaign|presale|admin).*)", "destination": "/index.html" }
+    
+    { "source": "/((?!campaign|presale|admin|ambassador).*)", "destination": "/index.html" }
   ]
 }
