@@ -17,7 +17,7 @@ const Tokenomics = () => {
                     <Title>TOKENOMICS</Title>
                     <MetaInfo>
                         <span>
-                            Total Supply: 276,000,000 $LAMB : LAMB276 token is
+                            Total Supply: 27,600,000 $LAMB : LAMB276 token is
                             not religious funding, nor is it political funding.
                         </span>
                     </MetaInfo>

@@ -500,7 +500,7 @@ const GoldPaper = () => {
                         </DetailRow>
                         <DetailRow>
                             <span>Total Supply</span>
-                            <strong>276,000,000</strong>
+                            <strong>27,600,000</strong>
                         </DetailRow>
                         <DetailRow>
                             <span>Contract Address</span>
