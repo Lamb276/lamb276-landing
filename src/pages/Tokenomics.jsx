@@ -386,7 +386,7 @@ const Tokenomics = () => {
                             civilizational restoration.
                         </p>
                         <p>
-                            The total supply of 276M originates from the
+                            The total supply of 27.6M originates from the
                             founder's symbolic number, 276 (IQ) but it signifies
                             a starting point—not authority.
                         </p>
