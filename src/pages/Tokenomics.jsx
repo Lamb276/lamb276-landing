@@ -269,10 +269,11 @@ const Tokenomics = () => {
                         </QuoteText>
                         <CardBody>
                             <p>
-                                This allocation is not for mere promotion; it is
-                                a structural support system for intellectual
-                                emissaries who advance the philosophy and values
-                                of LAMB276.
+                                This allocation is not a simple marketing or
+                                promotional budget. It is a structural incentive
+                                pool designed for core participants who prove
+                                and propagate LAMB276’s philosophy and values
+                                through direct action.
                             </p>
                             <List>
                                 <li>
@@ -294,10 +295,12 @@ const Tokenomics = () => {
                                 </li>
                             </List>
                             <p>
-                                Ambassadors are not advertisers;
+                                Ambassadors are not substitutes for advertising.
                                 <br />
-                                Ambassadors are representatives who proclaim the
-                                mission of civilizational restoration.
+                                Ambassadors are intellectual and cultural
+                                operators who embody and actualize LAMB’s
+                                worldview, discourse, and actions in the real
+                                world.
                             </p>
                         </CardBody>
                     </AllocationCard>
