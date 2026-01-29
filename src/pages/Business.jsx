@@ -245,7 +245,7 @@ const Business = () => {
                                         src={founderInfluence2}
                                         alt="X Icon"
                                     />
-                                    X Annual Views : <span>2.88B+</span>
+                                    X Annual Views : <span>3B+</span>
                                 </MetricItem>
                                 <MetricItem>
                                     <MetricIcon
@@ -274,7 +274,7 @@ const Business = () => {
                             />
                             <SocialContent>
                                 <SocialLabel>Total followers</SocialLabel>
-                                <SocialNumber $highlight>656K +</SocialNumber>
+                                <SocialNumber $highlight>677K +</SocialNumber>
                             </SocialContent>
                         </SocialStatCard>
 
@@ -282,7 +282,7 @@ const Business = () => {
                             <SocialIcon src={founderInfluence6} alt="X" />
                             <SocialContent>
                                 <SocialLabel>X (Twitter)</SocialLabel>
-                                <SocialNumber>390K Followers</SocialNumber>
+                                <SocialNumber>407K Followers</SocialNumber>
                             </SocialContent>
                         </SocialStatCard>
 
@@ -301,7 +301,7 @@ const Business = () => {
                             />
                             <SocialContent>
                                 <SocialLabel>Instagram</SocialLabel>
-                                <SocialNumber>140K Followers</SocialNumber>
+                                <SocialNumber>144K Followers</SocialNumber>
                             </SocialContent>
                         </SocialStatCard>
 
