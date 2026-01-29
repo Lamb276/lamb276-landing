@@ -186,6 +186,7 @@ const ButtonWrapper = styled.div`
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    margin-top: 2.4rem;
 `;
 
 const MenuItem = styled(Link)`

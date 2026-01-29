@@ -480,12 +480,15 @@ const HeroSection = styled(Section)`
 const Title = styled.h1`
     ${({ theme }) => theme.typography.xxxl};
     color: ${({ theme }) => theme.colors.ng};
-    margin-bottom: 0;
+    margin-bottom: 2rem;
     text-transform: uppercase;
     text-shadow: 0 0 20px rgba(5, 208, 155, 0.3);
 
     /* Mobile,Tablet */
-    ${media.mobile`font-size: 4.4rem;`}
+    ${media.mobile`
+        font-size: 4.4rem;
+        margin-bottom: 0rem;
+        `}
     ${media.tablet`font-size: 6rem;`}
 `;
 

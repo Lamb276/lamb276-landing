@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import Leaderboard from "./pages/Leaderboard";
 import GoldPaper from "./pages/GoldPaper";
 import Tokenomics from "./pages/Tokenomics";
+import Business from "./pages/Business";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                         <Route path="/leaderboard" element={<Leaderboard />} />
                         <Route path="/gold-paper" element={<GoldPaper />} />
                         <Route path="/tokenomics" element={<Tokenomics />} />
+                        <Route path="/business" element={<Business />} />
                     </Routes>
                     <Footer />
                     <Modal />
