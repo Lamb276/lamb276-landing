@@ -95,9 +95,9 @@ const HeroSection = () => {
                             viewport={{ once: true }}
                             variants={subtitleVariants}
                         >
-                            The final meme created by
+                            Collective Intelligence Capital
                             <br />
-                            the world's highest IQ 276 holder
+                            by the World's Highest IQ 276
                         </Subtitle>
 
                         <ButtonWrapper>
