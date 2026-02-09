@@ -5,7 +5,6 @@ import XIcon from "../../assets/icons/x.svg";
 import { media } from "../../styles/media";
 
 const SocialSection = () => {
-
     return (
         <SectionContainer>
             <HeaderRow>
@@ -31,7 +30,7 @@ const SocialSection = () => {
 
                 {/* X (구 Twitter) */}
                 <SocialLink
-                    href="https://x.com/LAMB276"
+                    href="https://x.com/OfficialLamb276"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ y: -5 }}

@@ -1,6 +1,11 @@
 export const MENU_ITEMS = [
     { id: "about", label: "About", path: "/about" },
-    { id: "leaderboard", label: "Leaderboard", path: "https://www.lamb276.org/campaign", external: true },
+    {
+        id: "leaderboard",
+        label: "Leaderboard",
+        path: "https://www.lamb276.org/campaign",
+        external: true,
+    },
     {
         id: "social",
         label: "Social",
@@ -9,7 +14,7 @@ export const MENU_ITEMS = [
             {
                 id: "x",
                 label: "X",
-                path: "https://x.com/LAMB276",
+                path: "https://x.com/OfficialLamb276",
                 external: true,
             },
             {
