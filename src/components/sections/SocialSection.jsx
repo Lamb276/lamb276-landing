@@ -30,7 +30,7 @@ const SocialSection = () => {
 
                 {/* X (구 Twitter) */}
                 <SocialLink
-                    href="https://x.com/OfficialLamb276"
+                    href="https://x.com/LAMB276_X"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ y: -5 }}

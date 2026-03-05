@@ -14,7 +14,7 @@ export const MENU_ITEMS = [
             {
                 id: "x",
                 label: "X",
-                path: "https://x.com/OfficialLamb276",
+                path: "https://x.com/LAMB276_X",
                 external: true,
             },
             {
