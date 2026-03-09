@@ -252,6 +252,18 @@ const Tokenomics = () => {
                                 flows are transparent, no external power can
                                 interfere.
                             </p>
+                            <SmallNoteText>
+                                * If demand exceeds the allocated sale supply
+                                during the pre-TGE sale, a portion of the
+                                ecosystem allocation may be converted into sale
+                                allocation. This is intended to onboard more
+                                participants, strengthen the $LAMB holder base,
+                                and enhance community decentralization,
+                                ultimately reinforcing the stability and
+                                scalability of the ecosystem. All allocation
+                                conversions and executions will be fully
+                                disclosed on-chain for transparency.
+                            </SmallNoteText>
                         </CardBody>
                     </AllocationCard>
 
@@ -605,6 +617,14 @@ const CardBody = styled.div`
         line-height: 1.3;
         opacity: 0.8;
         margin-bottom: 1.5rem;
+    }
+`;
+
+const SmallNoteText = styled.p`
+    && {
+        ${({ theme }) => theme.typography.sm_2};
+        line-height: 1.3;
+        opacity: 0.4;
     }
 `;
 
