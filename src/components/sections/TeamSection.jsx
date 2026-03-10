@@ -70,7 +70,7 @@ const TeamSection = () => {
                                 variant="primary"
                                 onClick={() =>
                                     window.open(
-                                        "https://linktr.ee/Lamb276",
+                                        "https://linktr.ee/iq276",
                                         "_blank"
                                     )
                                 }

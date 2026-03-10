@@ -30,8 +30,8 @@ const VisionSection = () => {
                     </IconWrapper>
 
                     <TextGroup>
-                        <MainTitle>Intellectual Renaissance</MainTitle>
-                        <SubTitle>Pursue Rational Righteousness</SubTitle>
+                        <MainTitle>Collective Intelligence</MainTitle>
+                        <SubTitle>For High-IQ Investors</SubTitle>
                     </TextGroup>
                 </ContentWrapper>
             </VisionCard>

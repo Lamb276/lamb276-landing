@@ -102,16 +102,16 @@ const HeroSection = () => {
 
                         <ButtonWrapper>
                             <Button
-                                size="md"
+                                size="lg"
                                 variant="primary"
                                 onClick={() =>
                                     window.open(
-                                        "https://www.lamb276.org/campaign",
+                                        "https://lamb276-sale.figma.site/",
                                         "_blank"
                                     )
                                 }
                             >
-                                Campaign
+                                Final Sale
                             </Button>
                         </ButtonWrapper>
                     </TextGroup>
@@ -396,6 +396,9 @@ const ButtonWrapper = styled.div`
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
+        button {
+            width: 26rem;
+        }
     `}
 
     /* PC */

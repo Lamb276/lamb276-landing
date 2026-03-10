@@ -11,7 +11,7 @@ const LambSection = () => {
     const { openModal } = useModal();
 
     return (
-        <SectionContainer>
+        <SectionContainer id="product">
             <ContentWrapper>
                 {/* Text */}
                 <TextGroup
@@ -35,24 +35,24 @@ const LambSection = () => {
                             variant="primary"
                             onClick={() =>
                                 window.open(
-                                    "https://www.lamb276.org/presale",
+                                    "https://www.notion.so/LAMBIQFI-The-Holder-Return-Engine-Real-Products-Verifiable-Returns-ec13cc12d9234f5d906b63ee605cd50f",
                                     "_blank"
                                 )
                             }
                         >
-                            Presale
+                            IQFI
                         </Button>
                         <Button
                             size="md"
-                            variant="secondary"
+                            variant="primary"
                             onClick={() =>
                                 window.open(
-                                    "https://www.lamb276.org/campaign",
+                                    "https://www.notion.so/276CLUB-Premium-Membership-31ac00164bb580e7859dd58c319502b9",
                                     "_blank"
                                 )
                             }
                         >
-                            Campaign
+                            276 Club
                         </Button>
                     </ButtonGroup>
                 </TextGroup>

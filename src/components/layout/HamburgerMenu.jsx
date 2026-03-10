@@ -30,10 +30,18 @@ const HamburgerMenu = ({ isOpen, onClose }) => {
             e.preventDefault();
             onClose();
             openModal(<ContactModalContent />);
-        } else if (item.id === "leaderboard") {
+        } else if (item.scrollTo) {
             e.preventDefault();
-            window.location.href = item.path;
             onClose();
+            const el = document.getElementById(item.scrollTo);
+            if (el) {
+                el.scrollIntoView({ behavior: "smooth" });
+            } else {
+                navigate("/");
+                setTimeout(() => {
+                    document.getElementById(item.scrollTo)?.scrollIntoView({ behavior: "smooth" });
+                }, 300);
+            }
         } else if (item.id === "social") {
             e.preventDefault();
         } else {
@@ -75,9 +83,8 @@ const HamburgerMenu = ({ isOpen, onClose }) => {
                                 Home
                             </MenuItem>
 
-                            {/* About 메뉴 필터링 적용 */}
                             {MENU_ITEMS.filter(
-                                (item) => item.id !== "about"
+                                (item) => !["about", "goldpaper", "leaderboard", "business"].includes(item.id)
                             ).map((item) => (
                                 <React.Fragment key={item.id}>
                                     <MenuItem
@@ -123,13 +130,13 @@ const HamburgerMenu = ({ isOpen, onClose }) => {
                         <ButtonWrapper>
                             <Button
                                 as="a"
-                                href="https://www.lamb276.org/presale"
+                                href="https://www.lamb276.org/campaign"
                                 size="sm"
                                 variant="token"
                                 onClick={onClose}
                                 style={{ width: "auto" }}
                             >
-                                $LAMB PRESALE
+                                Campaign
                             </Button>
                         </ButtonWrapper>
                     </MenuContainer>

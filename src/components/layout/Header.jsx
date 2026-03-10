@@ -8,6 +8,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { IoIosArrowDown } from "react-icons/io";
 import lambLogo from "../../assets/icons/lamb276-logo.svg";
 import Button from "../common/Button";
+import Countdown from "../common/Countdown";
 import { useModal } from "../../context/ModalContext";
 import {
     LambModalContent,
@@ -17,6 +18,8 @@ import {
 import { media } from "../../styles/media";
 
 const mobileLogo = "/favicon.svg";
+
+const COUNTDOWN_TARGET = new Date("2026-03-25T13:00:00Z");
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,6 +48,19 @@ const Header = () => {
         } else if (item.id === "contact") {
             e.preventDefault();
             openModal(<ContactModalContent />);
+        } else if (item.scrollTo) {
+            e.preventDefault();
+            const el = document.getElementById(item.scrollTo);
+            if (el) {
+                el.scrollIntoView({ behavior: "smooth" });
+            } else {
+                navigate("/");
+                setTimeout(() => {
+                    document
+                        .getElementById(item.scrollTo)
+                        ?.scrollIntoView({ behavior: "smooth" });
+                }, 300);
+            }
         } else if (item.external) {
             e.preventDefault();
             window.open(item.path, "_blank");
@@ -60,6 +76,9 @@ const Header = () => {
     return (
         <>
             <HeaderWrapper $isScrolled={isScrolled}>
+                {/* Countdown (PC): absolute center-top */}
+                <PcCountdown as={Countdown} target={COUNTDOWN_TARGET} />
+
                 <HeaderInner>
                     {/* Hamburger Menu (Mobile) */}
                     <MobileMenuBtn onClick={() => setIsMenuOpen(true)}>
@@ -72,124 +91,133 @@ const Header = () => {
                         <MobileLogoImg src={mobileLogo} alt="Logo Symbol" />
                     </Logo>
 
+                    {/* Countdown (Mobile) */}
+                    <MobileCountdown as={Countdown} target={COUNTDOWN_TARGET} />
+
+                    {/* Countdown (Tablet) */}
+                    <TabletCountdown as={Countdown} target={COUNTDOWN_TARGET} />
+
                     {/* Nav */}
                     <Nav>
-                        {MENU_ITEMS.filter((item) => item.id !== "about").map(
-                            (item) => {
-                                if (item.children) {
-                                    return (
-                                        <NavGroup
-                                            key={item.id}
-                                            onMouseEnter={() =>
-                                                setHoveredItem(item.id)
-                                            }
-                                            onMouseLeave={() =>
-                                                setHoveredItem(null)
-                                            }
+                        {MENU_ITEMS.filter(
+                            (item) =>
+                                ![
+                                    "about",
+                                    "goldpaper",
+                                    "leaderboard",
+                                    "business",
+                                ].includes(item.id)
+                        ).map((item) => {
+                            if (item.children) {
+                                return (
+                                    <NavGroup
+                                        key={item.id}
+                                        onMouseEnter={() =>
+                                            setHoveredItem(item.id)
+                                        }
+                                        onMouseLeave={() =>
+                                            setHoveredItem(null)
+                                        }
+                                    >
+                                        <NavItem
+                                            as="div"
+                                            style={{ cursor: "default" }}
                                         >
-                                            <NavItem
-                                                as="div"
-                                                style={{ cursor: "default" }}
+                                            {item.label}
+                                            <ArrowIcon
+                                                animate={{
+                                                    rotate:
+                                                        hoveredItem === item.id
+                                                            ? 180
+                                                            : 0,
+                                                }}
+                                                transition={{
+                                                    duration: 0.2,
+                                                }}
                                             >
-                                                {item.label}
-                                                <ArrowIcon
+                                                <IoIosArrowDown />
+                                            </ArrowIcon>
+                                        </NavItem>
+
+                                        <AnimatePresence>
+                                            {hoveredItem === item.id && (
+                                                <DropdownMenu
+                                                    initial={{
+                                                        opacity: 0,
+                                                        y: 10,
+                                                    }}
                                                     animate={{
-                                                        rotate:
-                                                            hoveredItem ===
-                                                            item.id
-                                                                ? 180
-                                                                : 0,
+                                                        opacity: 1,
+                                                        y: 0,
+                                                    }}
+                                                    exit={{
+                                                        opacity: 0,
+                                                        y: 10,
                                                     }}
                                                     transition={{
                                                         duration: 0.2,
                                                     }}
                                                 >
-                                                    <IoIosArrowDown />
-                                                </ArrowIcon>
-                                            </NavItem>
-
-                                            <AnimatePresence>
-                                                {hoveredItem === item.id && (
-                                                    <DropdownMenu
-                                                        initial={{
-                                                            opacity: 0,
-                                                            y: 10,
-                                                        }}
-                                                        animate={{
-                                                            opacity: 1,
-                                                            y: 0,
-                                                        }}
-                                                        exit={{
-                                                            opacity: 0,
-                                                            y: 10,
-                                                        }}
-                                                        transition={{
-                                                            duration: 0.2,
-                                                        }}
-                                                    >
-                                                        <DropdownContent>
-                                                            {item.children.map(
-                                                                (subItem) => (
-                                                                    <DropdownItem
-                                                                        key={
-                                                                            subItem.id
-                                                                        }
-                                                                        href={
-                                                                            subItem.path
-                                                                        }
-                                                                        target={
-                                                                            subItem.external
-                                                                                ? "_blank"
-                                                                                : "_self"
-                                                                        }
-                                                                        rel={
-                                                                            subItem.external
-                                                                                ? "noopener noreferrer"
-                                                                                : ""
-                                                                        }
-                                                                        onClick={() =>
-                                                                            handleSubMenuClick(
-                                                                                subItem
-                                                                            )
-                                                                        }
-                                                                    >
-                                                                        {
-                                                                            subItem.label
-                                                                        }
-                                                                    </DropdownItem>
-                                                                )
-                                                            )}
-                                                        </DropdownContent>
-                                                    </DropdownMenu>
-                                                )}
-                                            </AnimatePresence>
-                                        </NavGroup>
-                                    );
-                                }
-
-                                return (
-                                    <NavItem
-                                        key={item.id}
-                                        to={item.path}
-                                        onClick={(e) =>
-                                            handleMenuClick(e, item)
-                                        }
-                                    >
-                                        {item.label}
-                                    </NavItem>
+                                                    <DropdownContent>
+                                                        {item.children.map(
+                                                            (subItem) => (
+                                                                <DropdownItem
+                                                                    key={
+                                                                        subItem.id
+                                                                    }
+                                                                    href={
+                                                                        subItem.path
+                                                                    }
+                                                                    target={
+                                                                        subItem.external
+                                                                            ? "_blank"
+                                                                            : "_self"
+                                                                    }
+                                                                    rel={
+                                                                        subItem.external
+                                                                            ? "noopener noreferrer"
+                                                                            : ""
+                                                                    }
+                                                                    onClick={() =>
+                                                                        handleSubMenuClick(
+                                                                            subItem
+                                                                        )
+                                                                    }
+                                                                >
+                                                                    {
+                                                                        subItem.label
+                                                                    }
+                                                                </DropdownItem>
+                                                            )
+                                                        )}
+                                                    </DropdownContent>
+                                                </DropdownMenu>
+                                            )}
+                                        </AnimatePresence>
+                                    </NavGroup>
                                 );
                             }
-                        )}
+
+                            return (
+                                <NavItem
+                                    key={item.id}
+                                    to={item.path}
+                                    onClick={(e) => handleMenuClick(e, item)}
+                                >
+                                    {item.label}
+                                </NavItem>
+                            );
+                        })}
                     </Nav>
 
                     {/* Button */}
                     <Button
                         as="a"
-                        href="https://www.lamb276.org/presale"
+                        href="https://www.lamb276.org/campaign"
                         size="sm"
                         variant="token"
                     >
-                        $LAMB PRESALE
+                        Campaign
                     </Button>
                 </HeaderInner>
             </HeaderWrapper>
@@ -259,31 +287,40 @@ const HeaderInner = styled.div`
         justify-content: flex-start;
         padding: 0 2rem;
         gap: 2rem;
-        
+
         & > :last-child {
             display: none;
         }
     `}
 
     /* Tablet */
+    /* Children: 1=MobileMenuBtn 2=Logo 3=MobileCountdown 4=TabletCountdown 5=Nav 6=Button */
     ${media.tablet`
-        padding: 2.4rem 8rem 0;
+        padding: 1.2rem 8rem 0;
         flex-wrap: wrap;
         align-content: flex-start;
-        gap: 2.4rem;
+        gap: 1.2rem;
         justify-content: space-between;
 
         & > :nth-child(2) { /* Logo */
             order: 1;
             flex: 0 0 auto;
+            margin-top: 1.6rem;
         }
-        & > :nth-child(4) { /* Button */
+        & > :nth-child(6) { /* Button */
             order: 2;
             flex: 0 0 auto;
+            margin-top: 1.6rem;
         }
-
-        & > :nth-child(3) { /* Nav */
+        & > :nth-child(4) { /* TabletCountdown */
             order: 3;
+            flex: 1 1 100%;
+            justify-content: center;
+            position: relative;
+            top: -1.6rem;
+        }
+        & > :nth-child(5) { /* Nav */
+            order: 4;
             flex: 1 1 100%;
             justify-content: center;
             margin-top: 0;
@@ -295,10 +332,11 @@ const HeaderInner = styled.div`
         padding: 0 16rem;
         flex-wrap: nowrap;
         justify-content: space-between;
+        align-items: center;
         gap: 0;
 
-        & > :nth-child(2) { width: auto; order: 0; margin: 0; }
-        & > :nth-child(3) { width: auto; order: 0; margin: 0; }
+        & > :nth-child(2) { width: auto; order: 0; margin: 0; } /* Logo */
+        & > :nth-child(5) { width: auto; order: 0; margin: 0; } /* Nav */
     `}
 `;
 
@@ -319,7 +357,7 @@ const Logo = styled.div`
     align-items: center;
     gap: 1rem;
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 500;
     color: ${({ theme }) => theme.colors.ngW};
     cursor: pointer;
     height: 3.2rem;
@@ -426,4 +464,57 @@ const DropdownItem = styled.a`
     &:hover {
         color: ${({ theme }) => theme.colors.ngW};
     }
+`;
+
+/* 모바일 전용: 오른쪽 끝, 햄버거 반대편 */
+const MobileCountdown = styled.div`
+    font-size: ${({ theme }) => theme.fontSizes.lg};
+    color: ${({ theme }) => theme.colors.ng};
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+    display: none;
+    margin-left: auto;
+
+    ${media.mobile`display: block;`}
+`;
+
+/* 태블릿 전용: HeaderInner 내 Nav 위 행, 가운데 정렬 */
+const TabletCountdown = styled.div`
+    font-size: ${({ theme }) => theme.fontSizes.lg};
+    color: ${({ theme }) => theme.colors.ng};
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+    display: none;
+
+    ${media.tablet`
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    `}
+    ${media.pc`display: none;`}
+`;
+
+/* PC 전용: HeaderWrapper 상단 가운데 absolute */
+const PcCountdown = styled.div`
+    font-size: ${({ theme }) => theme.fontSizes.lg};
+    color: ${({ theme }) => theme.colors.ng};
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+    display: none;
+    pointer-events: auto;
+
+    ${media.pc`
+        display: flex;
+        position: absolute;
+        top: 3.6rem;
+        left: 50%;
+        transform: translateX(-50%);
+        align-items: center;
+    `}
 `;

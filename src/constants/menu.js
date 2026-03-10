@@ -6,6 +6,9 @@ export const MENU_ITEMS = [
         path: "https://www.lamb276.org/campaign",
         external: true,
     },
+    { id: "product", label: "Product", path: "/#product", scrollTo: "product" },
+    { id: "tokenomics", label: "Tokenomics", path: "/tokenomics" },
+    { id: "goldpaper", label: "Gold Paper", path: "/gold-paper" },
     {
         id: "social",
         label: "Social",
@@ -25,8 +28,6 @@ export const MENU_ITEMS = [
             },
         ],
     },
-    { id: "goldpaper", label: "Gold Paper", path: "/gold-paper" },
-    { id: "tokenomics", label: "Tokenomics", path: "/tokenomics" },
     { id: "business", label: "Business", path: "/business" },
     { id: "contact", label: "Contact", path: "/contact" },
 ];
