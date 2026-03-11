@@ -291,7 +291,7 @@ const HeaderInner = styled.div`
     `}
 
     /* Tablet */
-    /* Children: 1=MobileMenuBtn 2=Logo 3=MobileCountdown 4=TabletCountdown 5=Nav 6=Button */
+    /* Children: 1=MobileMenuBtn(hidden) 2=Logo 3=Nav 4=Button */
     ${media.tablet`
         padding: 1.2rem 8rem 0;
         flex-wrap: wrap;
@@ -304,23 +304,16 @@ const HeaderInner = styled.div`
             flex: 0 0 auto;
             margin-top: 1.6rem;
         }
-        & > :nth-child(6) { /* Button */
+        & > :nth-child(4) { /* Button */
             order: 2;
             flex: 0 0 auto;
             margin-top: 1.6rem;
         }
-        & > :nth-child(4) { /* TabletCountdown */
+        & > :nth-child(3) { /* Nav */
             order: 3;
             flex: 1 1 100%;
             justify-content: center;
-            position: relative;
-            top: -1.6rem;
-        }
-        & > :nth-child(5) { /* Nav */
-            order: 4;
-            flex: 1 1 100%;
-            justify-content: center;
-            margin-top: 0;
+            margin-top: 2.4rem;
         }
     `}
 
