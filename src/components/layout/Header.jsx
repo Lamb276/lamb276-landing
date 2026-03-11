@@ -8,7 +8,6 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { IoIosArrowDown } from "react-icons/io";
 import lambLogo from "../../assets/icons/lamb276-logo.svg";
 import Button from "../common/Button";
-import Countdown from "../common/Countdown";
 import { useModal } from "../../context/ModalContext";
 import {
     LambModalContent,
@@ -18,8 +17,6 @@ import {
 import { media } from "../../styles/media";
 
 const mobileLogo = "/favicon.svg";
-
-const COUNTDOWN_TARGET = new Date("2026-03-25T13:00:00Z");
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -76,8 +73,8 @@ const Header = () => {
     return (
         <>
             <HeaderWrapper $isScrolled={isScrolled}>
-                {/* Countdown (PC): absolute center-top */}
-                <PcCountdown as={Countdown} target={COUNTDOWN_TARGET} />
+                {/* Countdown (PC): 세일 기간 중 sale 서브도메인에서만 표시 — 비노출 */}
+                {/* <PcCountdown as={Countdown} target={COUNTDOWN_TARGET} /> */}
 
                 <HeaderInner>
                     {/* Hamburger Menu (Mobile) */}
@@ -91,11 +88,11 @@ const Header = () => {
                         <MobileLogoImg src={mobileLogo} alt="Logo Symbol" />
                     </Logo>
 
-                    {/* Countdown (Mobile) */}
-                    <MobileCountdown as={Countdown} target={COUNTDOWN_TARGET} />
+                    {/* Countdown (Mobile): 세일 기간 중 sale 서브도메인에서만 표시 — 비노출 */}
+                    {/* <MobileCountdown as={Countdown} target={COUNTDOWN_TARGET} /> */}
 
-                    {/* Countdown (Tablet) */}
-                    <TabletCountdown as={Countdown} target={COUNTDOWN_TARGET} />
+                    {/* Countdown (Tablet): 세일 기간 중 sale 서브도메인에서만 표시 — 비노출 */}
+                    {/* <TabletCountdown as={Countdown} target={COUNTDOWN_TARGET} /> */}
 
                     {/* Nav */}
                     <Nav>
@@ -464,57 +461,4 @@ const DropdownItem = styled.a`
     &:hover {
         color: ${({ theme }) => theme.colors.ngW};
     }
-`;
-
-/* 모바일 전용: 오른쪽 끝, 햄버거 반대편 */
-const MobileCountdown = styled.div`
-    font-size: ${({ theme }) => theme.fontSizes.lg};
-    color: ${({ theme }) => theme.colors.ng};
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    white-space: nowrap;
-    font-variant-numeric: tabular-nums;
-    display: none;
-    margin-left: auto;
-
-    ${media.mobile`display: block;`}
-`;
-
-/* 태블릿 전용: HeaderInner 내 Nav 위 행, 가운데 정렬 */
-const TabletCountdown = styled.div`
-    font-size: ${({ theme }) => theme.fontSizes.lg};
-    color: ${({ theme }) => theme.colors.ng};
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    white-space: nowrap;
-    font-variant-numeric: tabular-nums;
-    display: none;
-
-    ${media.tablet`
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    `}
-    ${media.pc`display: none;`}
-`;
-
-/* PC 전용: HeaderWrapper 상단 가운데 absolute */
-const PcCountdown = styled.div`
-    font-size: ${({ theme }) => theme.fontSizes.lg};
-    color: ${({ theme }) => theme.colors.ng};
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    white-space: nowrap;
-    font-variant-numeric: tabular-nums;
-    display: none;
-    pointer-events: auto;
-
-    ${media.pc`
-        display: flex;
-        position: absolute;
-        top: 3.6rem;
-        left: 50%;
-        transform: translateX(-50%);
-        align-items: center;
-    `}
 `;
