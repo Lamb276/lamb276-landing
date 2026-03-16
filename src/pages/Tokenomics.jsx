@@ -388,9 +388,9 @@ const Tokenomics = () => {
                 {/* Conclusion */}
                 <Section>
                     <SectionTitle>
-                        The Civilizational Meaning of the Token
+                        The Civilizational Meaning <span className="desktop-break">of the Token</span>
                         <br />
-                        Founder Say,
+                        <span className="mobile-only">of the Token </span>Founder Say,
                     </SectionTitle>
                     <QuoteBox>$LAMB is more than a token.</QuoteBox>
                     <TextBlock>
@@ -533,10 +533,15 @@ const SectionTitle = styled.h3`
     width: 100%;
     letter-spacing: -0.04em;
 
+    .mobile-only { display: none; }
+    .desktop-break { display: inline; }
+
     /* Mobile */
     ${media.mobile`
-        ${({ theme }) => theme.typography.xxl};
+        font-size: 2.6rem;
         margin-bottom: 3rem;
+        .mobile-only { display: inline; }
+        .desktop-break { display: none; }
     `}
 `;
 
@@ -583,7 +588,9 @@ const CardHeader = styled.div`
     padding-bottom: 1.5rem;
 
     ${media.mobile`
-        gap: 2rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
         padding-bottom: 2.4rem;
     `}
 `;
@@ -594,13 +601,18 @@ const CardTitle = styled.h4`
     margin: 0;
 
     ${media.mobile`
-        ${({ theme }) => theme.typography.lg};
+        ${({ theme }) => theme.typography.xl_1};
+        line-height: 1.3;
     `}
 `;
 
 const CardPercent = styled.span`
     ${({ theme }) => theme.typography.xl_2};
     color: ${({ theme }) => theme.colors.ngW};
+
+    ${media.mobile`
+        ${({ theme }) => theme.typography.lg};
+    `}
 `;
 
 const QuoteText = styled.p`

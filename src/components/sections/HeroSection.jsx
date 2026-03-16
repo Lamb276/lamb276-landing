@@ -182,7 +182,7 @@ const HeroCard = styled(motion.div)`
             )
             border-box;
 
-    padding: 4.8rem 4rem;
+    padding: 3.2rem 3.6rem;
     min-height: 40rem;
 
     /* Tablet */
@@ -316,6 +316,7 @@ const Subtitle = styled(motion.p)`
 
     /* Mobile */
     ${media.mobile`
+            font-size: 1.8rem;
         line-height: 130%;
         margin-top: -0.4rem;
         letter-spacing: -0.04em;
@@ -348,7 +349,7 @@ const ImageGroup = styled(motion.div)`
             max-height: 22rem;
             object-fit: contain;
             filter: drop-shadow(0 0 2rem rgba(0, 0, 0, 0.3));
-            margin-bottom: -19rem;
+            margin-bottom: -20rem;
             margin-right: -4rem;
         }
     `}
@@ -386,8 +387,10 @@ const ButtonWrapper = styled.div`
     ${media.mobile`
         button {
             width: auto;
-            padding-left: 5.2rem;
-            padding-right: 5.2rem;
+            padding-left: 4rem;
+            padding-right: 4rem;
+            height: 5.676rem;
+            background: rgba(10, 51, 31, 0.7);
         }
     `}
 
