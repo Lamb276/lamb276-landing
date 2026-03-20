@@ -42,6 +42,10 @@ const HamburgerMenu = ({ isOpen, onClose }) => {
                     document.getElementById(item.scrollTo)?.scrollIntoView({ behavior: "smooth" });
                 }, 300);
             }
+        } else if (item.external) {
+            e.preventDefault();
+            onClose();
+            window.open(item.path, "_blank", "noopener noreferrer");
         } else if (item.id === "social") {
             e.preventDefault();
         } else {

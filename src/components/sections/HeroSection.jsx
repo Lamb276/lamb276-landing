@@ -106,7 +106,7 @@ const HeroSection = () => {
                                 variant="primary"
                                 onClick={() =>
                                     window.open(
-                                        "https://lamb276-sale.figma.site/",
+                                        "https://sale.lamb276.org/",
                                         "_blank"
                                     )
                                 }

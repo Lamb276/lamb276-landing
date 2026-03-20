@@ -6,7 +6,13 @@ export const MENU_ITEMS = [
         path: "https://www.lamb276.org/campaign",
         external: true,
     },
-    { id: "product", label: "Product", path: "/#product", scrollTo: "product" },
+    {
+        id: "product",
+        label: "Product",
+        path: "https://quant.lamb276.org/",
+        external: true,
+    },
+    { id: "whitepaper", label: "Whitepaper", path: "/#product", scrollTo: "product" },
     { id: "tokenomics", label: "Tokenomics", path: "/tokenomics" },
     { id: "goldpaper", label: "Gold Paper", path: "/gold-paper" },
     {
