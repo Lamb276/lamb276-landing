@@ -1,31 +1,63 @@
 {
-  "redirects": [
-    {
-      "source": "/",
-      "destination": "https://sale.lamb276.org",
-      "permanent": true
-    }
-  ],
-  "rewrites": [
-    { "source": "/campaign", "destination": "https://app.lamb276.org/campaign" },
-    { "source": "/campaign/:path*", "destination": "https://app.lamb276.org/campaign/:path*" },
+    "rewrites": [
+        {
+            "source": "/campaign",
+            "destination": "https://app.lamb276.org/campaign"
+        },
+        {
+            "source": "/campaign/:path*",
+            "destination": "https://app.lamb276.org/campaign/:path*"
+        },
 
-    { "source": "/presale", "destination": "https://app.lamb276.org/presale" },
-    { "source": "/presale/:path*", "destination": "https://app.lamb276.org/presale/:path*" },
-    { "source": "/_next/:path*", "destination": "https://app.lamb276.org/_next/:path*" },
-    { "source": "/api/:path*", "destination": "https://app.lamb276.org/api/:path*" },
+        {
+            "source": "/presale",
+            "destination": "https://app.lamb276.org/presale"
+        },
+        {
+            "source": "/presale/:path*",
+            "destination": "https://app.lamb276.org/presale/:path*"
+        },
+        {
+            "source": "/_next/:path*",
+            "destination": "https://app.lamb276.org/_next/:path*"
+        },
+        {
+            "source": "/api/:path*",
+            "destination": "https://app.lamb276.org/api/:path*"
+        },
 
-    { "source": "/monitoring", "destination": "https://app.lamb276.org/monitoring" },
-    { "source": "/monitoring/:path*", "destination": "https://app.lamb276.org/monitoring/:path*" },
+        {
+            "source": "/monitoring",
+            "destination": "https://app.lamb276.org/monitoring"
+        },
+        {
+            "source": "/monitoring/:path*",
+            "destination": "https://app.lamb276.org/monitoring/:path*"
+        },
 
-    { "source": "/admin", "destination": "https://app.lamb276.org/admin" },
-    { "source": "/admin/:path*", "destination": "https://app.lamb276.org/admin/:path*" },
+        { "source": "/admin", "destination": "https://app.lamb276.org/admin" },
+        {
+            "source": "/admin/:path*",
+            "destination": "https://app.lamb276.org/admin/:path*"
+        },
 
-    { "source": "/ambassador", "destination": "https://app.lamb276.org/ambassador" },
-    { "source": "/ambassador/:path*", "destination": "https://app.lamb276.org/ambassador/:path*" },
-    
-    { "source": "/campaign-assets/:path*", "destination": "https://app.lamb276.org/campaign-assets/:path*" },
-    
-    { "source": "/((?!campaign|presale|admin|ambassador).*)", "destination": "/index.html" }
-  ]
+        {
+            "source": "/ambassador",
+            "destination": "https://app.lamb276.org/ambassador"
+        },
+        {
+            "source": "/ambassador/:path*",
+            "destination": "https://app.lamb276.org/ambassador/:path*"
+        },
+
+        {
+            "source": "/campaign-assets/:path*",
+            "destination": "https://app.lamb276.org/campaign-assets/:path*"
+        },
+
+        {
+            "source": "/((?!campaign|presale|admin|ambassador).*)",
+            "destination": "/index.html"
+        }
+    ]
 }
