@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "https://sale.lamb276.org",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     { "source": "/campaign", "destination": "https://app.lamb276.org/campaign" },
     { "source": "/campaign/:path*", "destination": "https://app.lamb276.org/campaign/:path*" },
