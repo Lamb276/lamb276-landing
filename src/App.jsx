@@ -12,12 +12,11 @@ import Leaderboard from "./pages/Leaderboard";
 import GoldPaper from "./pages/GoldPaper";
 import Tokenomics from "./pages/Tokenomics";
 import Business from "./pages/Business";
-import { SALE_END, SALE_URL } from "./constants/sale";
+import { SALE_URL } from "./constants/sale";
 
-const isSalePeriod = Date.now() < SALE_END.getTime();
 const fromSale =
     new URLSearchParams(window.location.search).get("from") === "sale";
-const shouldRedirect = isSalePeriod && !fromSale;
+const shouldRedirect = !fromSale;
 
 // ?from=sale 파라미터를 URL에서 제거
 if (fromSale) {
