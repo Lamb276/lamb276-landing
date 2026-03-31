@@ -5,33 +5,33 @@ import { LEADER_DATA, MEMBER_DATA } from "../../constants/team";
 import drKimImage from "../../assets/images/dr-kim.png";
 import Button from "../common/Button";
 import { media } from "../../styles/media";
-import worldLibertyLogo from "../../assets/images/partner/world-liberty-financial.svg";
-import pudgyLogo from "../../assets/images/partner/pudgy-penguins.svg";
-import cointelegraphLogo from "../../assets/images/partner/cointelegraph-accelerator.svg";
+// import worldLibertyLogo from "../../assets/images/partner/world-liberty-financial.svg";
+// import pudgyLogo from "../../assets/images/partner/pudgy-penguins.svg";
+// import cointelegraphLogo from "../../assets/images/partner/cointelegraph-accelerator.svg";
 
-const PARTNERS = [
-    {
-        id: 1,
-        name: "World Liberty Financial",
-        logo: worldLibertyLogo,
-        role: "Ambassador",
-        showName: false,
-    },
-    {
-        id: 2,
-        name: "Pudgy Penguins",
-        logo: pudgyLogo,
-        role: "Advisor",
-        showName: true,
-    },
-    {
-        id: 3,
-        name: "Cointelegraph Accelerator",
-        logo: cointelegraphLogo,
-        role: "Program Mentor",
-        showName: false,
-    },
-];
+// const PARTNERS = [
+//     {
+//         id: 1,
+//         name: "World Liberty Financial",
+//         logo: worldLibertyLogo,
+//         role: "Ambassador",
+//         showName: false,
+//     },
+//     {
+//         id: 2,
+//         name: "Pudgy Penguins",
+//         logo: pudgyLogo,
+//         role: "Advisor",
+//         showName: true,
+//     },
+//     {
+//         id: 3,
+//         name: "Cointelegraph Accelerator",
+//         logo: cointelegraphLogo,
+//         role: "Program Mentor",
+//         showName: false,
+//     },
+// ];
 
 const memberImagesModules = import.meta.glob(
     "../../assets/images/member/*.png",
@@ -90,8 +90,8 @@ const TeamSection = () => {
                     </LeaderImageFrame>
                 </LeaderWrapper>
 
-                {/* Partner Static */}
-                <PartnerContainer>
+                {/* Partner Static - hidden */}
+                {/* <PartnerContainer>
                     {PARTNERS.map((partner, index) => (
                         <PartnerItem
                             key={partner.id}
@@ -112,7 +112,7 @@ const TeamSection = () => {
                             </PartnerLogoBox>
                         </PartnerItem>
                     ))}
-                </PartnerContainer>
+                </PartnerContainer> */}
 
                 {/* Member */}
                 <GridContainer>
@@ -183,12 +183,12 @@ const LeaderWrapper = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-bottom: 0rem;
+    margin-bottom: 4rem;
 
     /* Tablet */
     ${media.tablet`
         gap: 0;
-        margin-bottom: 0rem;
+        margin-bottom: 6rem;
     `}
 
     /* PC */
@@ -197,6 +197,7 @@ const LeaderWrapper = styled.div`
         flex-direction: row;
         align-items: flex-end;
         justify-content: space-between;
+        margin-bottom: 8rem;
     `}
 `;
 
@@ -314,113 +315,113 @@ const ButtonWrapper = styled.div`
     `}
 `;
 
-// Partner
-const PartnerContainer = styled.div`
-    width: 50;
-    max-width: 100rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4rem;
-    margin: 4rem 0 8rem;
-    padding: 4rem 4rem;
-
-    /* Tablet */
-    ${media.tablet`
-        flex-direction: row;
-        align-items: flex-start;
-        margin: 0rem 0 12rem;
-        gap: 4rem;
-        padding: 0;
-    `}
-
-    /* PC */
-    ${media.pc`
-        flex-direction: row;
-        margin: 10rem 0 14rem;
-        gap: 8rem;
-        padding: 0;
-    `}
-`;
-
-const PartnerItem = styled(motion.div)`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 1.6rem;
-    width: 100%;
-    flex: 1;
-
-    /* PC */
-    ${media.pc`
-        gap: 2rem;
-    `}
-`;
-
-const PartnerLogoBox = styled.div`
-    height: 4rem;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0rem;
-
-    img {
-        height: 100%;
-        width: auto;
-        max-width: 24rem;
-        object-fit: contain;
-
-        filter: grayscale(100%);
-        opacity: 0.7;
-        transition: all 0.3s ease;
-    }
-
-    &:hover img {
-        filter: grayscale(0%);
-        opacity: 1;
-    }
-    &:hover span {
-        opacity: 1;
-    }
-
-    ${media.tablet`
-        height: 4rem;
-    `}
-
-    ${media.pc`
-        height: 4.8rem;
-    `}
-`;
-
-const PartnerLogoText = styled.span`
-    font-size: 2rem;
-    font-weight: 500;
-    color: ${({ theme }) => theme.colors.ngW};
-    opacity: 0.7;
-    white-space: nowrap;
-    transition: all 0.3s ease;
-    padding-top: 0.4rem;
-    padding-left: 0.8rem;
-
-    ${media.mobile`
-        font-size: 1.8rem;
-    `}
-`;
-
-const PartnerRole = styled.span`
-    ${({ theme }) => theme.typography.sm_1};
-    color: ${({ theme }) => theme.colors.ng};
-    text-align: center;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-
-    ${media.pc`
-        font-size: 1.6rem;
-    `}
-`;
+// Partner - hidden
+// const PartnerContainer = styled.div`
+//     width: 50;
+//     max-width: 100rem;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: center;
+//     gap: 4rem;
+//     margin: 4rem 0 8rem;
+//     padding: 4rem 4rem;
+//
+//     /* Tablet */
+//     ${media.tablet`
+//         flex-direction: row;
+//         align-items: flex-start;
+//         margin: 0rem 0 12rem;
+//         gap: 4rem;
+//         padding: 0;
+//     `}
+//
+//     /* PC */
+//     ${media.pc`
+//         flex-direction: row;
+//         margin: 10rem 0 14rem;
+//         gap: 8rem;
+//         padding: 0;
+//     `}
+// `;
+//
+// const PartnerItem = styled(motion.div)`
+//     display: flex;
+//     flex-direction: column;
+//     align-items: flex-start;
+//     justify-content: flex-start;
+//     gap: 1.6rem;
+//     width: 100%;
+//     flex: 1;
+//
+//     /* PC */
+//     ${media.pc`
+//         gap: 2rem;
+//     `}
+// `;
+//
+// const PartnerLogoBox = styled.div`
+//     height: 4rem;
+//     width: 100%;
+//     display: flex;
+//     align-items: center;
+//     justify-content: flex-start;
+//     gap: 0rem;
+//
+//     img {
+//         height: 100%;
+//         width: auto;
+//         max-width: 24rem;
+//         object-fit: contain;
+//
+//         filter: grayscale(100%);
+//         opacity: 0.7;
+//         transition: all 0.3s ease;
+//     }
+//
+//     &:hover img {
+//         filter: grayscale(0%);
+//         opacity: 1;
+//     }
+//     &:hover span {
+//         opacity: 1;
+//     }
+//
+//     ${media.tablet`
+//         height: 4rem;
+//     `}
+//
+//     ${media.pc`
+//         height: 4.8rem;
+//     `}
+// `;
+//
+// const PartnerLogoText = styled.span`
+//     font-size: 2rem;
+//     font-weight: 500;
+//     color: ${({ theme }) => theme.colors.ngW};
+//     opacity: 0.7;
+//     white-space: nowrap;
+//     transition: all 0.3s ease;
+//     padding-top: 0.4rem;
+//     padding-left: 0.8rem;
+//
+//     ${media.mobile`
+//         font-size: 1.8rem;
+//     `}
+// `;
+//
+// const PartnerRole = styled.span`
+//     ${({ theme }) => theme.typography.sm_1};
+//     color: ${({ theme }) => theme.colors.ng};
+//     text-align: center;
+//     font-weight: 500;
+//     letter-spacing: -0.02em;
+//
+//     ${media.pc`
+//         font-size: 1.6rem;
+//     `}
+// `;
 
 // Member
 const GridContainer = styled.div`
